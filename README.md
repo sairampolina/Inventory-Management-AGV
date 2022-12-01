@@ -123,8 +123,8 @@ The Members are Graduate students at The University of Maryland, College Park. T
 ## Development Aspects
 Agile Iterative Development Process will be used to develop the software along Test-Driven Development.
 
-### [Product Backlog and Sprint Sheet](https://docs.google.com/spreadsheets/d/18YPf_3DI0MOv161B0Y4bDmjeRzd9c_LTEvauJ4ByTYQ/edit#gid=0)
-### [Sprint Review Sheet](https://docs.google.com/document/d/1KK2tiQVW7YDc3A5AzL9GQOzPdxCIJ_7yfH8meOmB9ho/edit#heading=h.dawifg8c0hwe)
+### [Product Backlog and Sprint Sheet](https://docs.google.com/spreadsheets/d/1BZ1SMS-pVFIOvnL44yTZs3nGOwIKBSiaRsw7p3ZLkmk/edit#gid=0)
+### [Sprint Review Sheet](https://docs.google.com/document/d/102MQqVZMxTfVCX7L_Uc2SSMKDLDpSjjp1_cofrB92XM/edit#)
 
 ### Software Dependencies
 - OpenCV 4.6.0 (covered under the open-source Apache 2 License)
