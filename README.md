@@ -1,7 +1,8 @@
 # Inventory-Management-AGV
 
-[![Build Status](https://app.travis-ci.com/spauly98/ENPM808X_Midterm_project.svg?branch=phase2)](https://app.travis-ci.com/github/bharadwaj-chukkala/ENPM808X_Midterm_project)
-[![Coverage Status](https://coveralls.io/repos/github/spauly98/ENPM808X_Midterm_project/badge.svg?branch=phase2)](https://coveralls.io/github/spauly98/ENPM808X_Midterm_project?branch=phase2)
+<!-- [![Build Status](https://app.travis-ci.com/spauly98/ENPM808X_Midterm_project.svg?branch=phase2)](https://app.travis-ci.com/github/bharadwaj-chukkala/ENPM808X_Midterm_project)
+[![Coverage Status](https://coveralls.io/repos/github/spauly98/ENPM808X_Midterm_project/badge.svg?branch=phase2)](https://coveralls.io/github/spauly98/ENPM808X_Midterm_project?branch=phase2) -->
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ---
 
@@ -50,7 +51,7 @@ SOFTWARE.
 ```
 ---
 ### Team
-The Members are Graduate students at The University of Maryland, College Park. The members each have a Bachelors in Mechanical Engineering from prestigious universities in India. Their Graduate Study is in the field of Robotics with each of them having a specialization. Bharadwaj is pursuing a career in Control systems and Path planning, Sairam aims to build his career in Deep Learning and Computer Vision and Shelvin is developing expertise in SLAM and Autonomous Vehicles.
+The Members are Graduate students at The University of Maryland, College Park. The members each have a Bachelors in Mechanical Engineering from prestigious universities in India. Their Graduate Study is in the field of Robotics with each of them having a specialization. Sanchit is pursuing a career in Control systems and Path planning, Sairam aims to build his career in Deep Learning and Computer Vision and Shelvin is developing expertise in SLAM and Autonomous Vehicles.
 
 | `Shelvin Pauly`  | `Venkata Sairam Polina` | `Sanchit Tanwar` |
 | ------------- | ------------- |------------- |
@@ -58,7 +59,7 @@ The Members are Graduate students at The University of Maryland, College Park. T
 | Navigator | Driver |  Design Keeper |
 
 ---
-## Content Tree
+<!-- ## Content Tree
 <pre>├── <font color="#3465A4"><b>app</b></font>
 │   ├── CMakeLists.txt
 │   ├── main.cpp
@@ -92,8 +93,10 @@ The Members are Graduate students at The University of Maryland, College Park. T
 │   ├── <font color="#3465A4"><b>initial</b></font>
 │   └── <font color="#3465A4"><b>revised</b></font>
 └── <font color="#3465A4"><b>vendor</b></font>
-    └── <font color="#3465A4"><b>googletest</b></font></pre>
+   └── <font color="#3465A4"><b>googletest</b></font></pre>
 ---
+-->
+
 ## Software Project Management Plan Aspects
 - ```Process, Tools and Technologies, Risk Management, References``` - [Project Proposal](https://github.com/bharadwaj-chukkala/ENPM808X_Midterm_project/blob/master/Project%20Proposal.pdf)
 - ```Design, Initial Product Backlog (ESC), Assigning Responsibilities (CRC)``` - [Software Development utils](https://github.com/bharadwaj-chukkala/ENPM808X_Midterm_project/tree/master/Design_Neccesities)
@@ -112,7 +115,7 @@ The Members are Graduate students at The University of Maryland, College Park. T
 
 
 ## Results
-### Image Result
+<!-- ### Image Result
 ![image_result](https://user-images.githubusercontent.com/106445479/198862636-5c1d19d4-fd54-41fc-9838-d262e331e8c9.jpeg)
 
 ### Video Result
@@ -120,6 +123,8 @@ The Members are Graduate students at The University of Maryland, College Park. T
 
 
 ---
+-->
+
 ## Development Aspects
 Agile Iterative Development Process will be used to develop the software along Test-Driven Development.
 
@@ -131,8 +136,9 @@ Agile Iterative Development Process will be used to develop the software along T
 - Eigen 3.4 the Mozilla Public License 2.0
 - GTest BSD 3-Clause "New" or "Revised" License
 ### Tools and Technologies
-`Ubuntu 18.04(LTS)` `C++ 14+` `CMake` `OpenCV` `TravisCI` `Coveralls`
+`Ubuntu 22.04(LTS)` `C++ 14+` `CMake` `OpenCV` `TravisCI` `Coveralls`
 `Makefile` `CMake` `cpplint` `cppcheck` `clangd` `Valgrind` `GTest` `VScode`
+
 
 ### Installation via Command Line
 ```
@@ -223,12 +229,12 @@ doxygen doxygen.config
 doxywizard
 ```
 ---
-## Project Videos
+<!--## Project Videos
 ### [Final Video](https://drive.google.com/drive/folders/1NprRueNb3u7tsn6D-Y5_eI7PGIxM4owS?usp=share_link)
 Note: The Microphone had some issue, apologies beforehand
 ### [Sprint 1 Video](https://drive.google.com/file/d/1hh5f50VzA4mIPJmc9IJAOi4N9bs-uyPp/view?usp=sharing)
 Note: The Microphone had some issue, apologies beforehand
 ### [Proposal Video](https://drive.google.com/file/d/1BUSOc8T6gLknhAt8TJ6uW9MLCY49dpPH/view?usp=sharing)
 
-
+-->
 
