@@ -97,7 +97,7 @@ The Members are Graduate students at The University of Maryland, College Park. T
 ---
 -->
 
-## Software Project Management Plan Aspects
+## Software Project Management 
 - ```Process, Tools and Technologies, Risk Management, References``` - [Project Proposal](https://github.com/sairampolina/Enpm808x-finalproject/blob/phase1/finalproject_enpm808x_proposal.pdf)
 
 - ``` Implementation, Class Diagram, Activity Diagram``` - [UML Diagrams]()
@@ -132,12 +132,19 @@ Agile Iterative Development Process will be used to develop the software along T
 ### [Product Backlog and Sprint Sheet](https://docs.google.com/spreadsheets/d/1BZ1SMS-pVFIOvnL44yTZs3nGOwIKBSiaRsw7p3ZLkmk/edit#gid=0)
 ### [Sprint Review Sheet](https://docs.google.com/document/d/102MQqVZMxTfVCX7L_Uc2SSMKDLDpSjjp1_cofrB92XM/edit#)
 
+### ROS Packages
+ - tiago_simulation
+ - tiago_2dnav
+ - move_base
+ 
 ### Software Dependencies
 - OpenCV 4.6.0 (covered under the open-source Apache 2 License)
 - Eigen 3.4 the Mozilla Public License 2.0
 - GTest BSD 3-Clause "New" or "Revised" License
+
+
 ### Tools and Technologies
-`Ubuntu 22.04(LTS)` `C++ 14+` `CMake` `OpenCV` `TravisCI` `Coveralls`
+`Ubuntu 22.04(LTS)` `C++ 14+` `CMake` `OpenCV` `GitHubCI` `Coveralls`
 `Makefile` `CMake` `cpplint` `cppcheck` `clangd` `Valgrind` `GTest` `VScode`
 
 
