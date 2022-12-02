@@ -26,10 +26,10 @@ The Software Product will consist of 4 modules each tasked with different aspect
 
 
 <p align="center"> 
-  <img width="500" height="300" src="https://user-images.githubusercontent.com/106445479/198857946-d84752f5-9db8-45dc-8b48-200fb6bf2f12.jpg">
+  <img width="500" height="300" src="https://user-images.githubusercontent.com/48856345/205377455-878763b3-81f5-4133-9c8d-d718491c88e8.jpg">
+  
 </p>
-<h4 align="center">Advanced AGV with Perception capabilities</h1>
-
+<h4 align="center">AGV with inventory management capabilities</h1>
 
 ---
 ## License
@@ -115,8 +115,9 @@ The Members are Graduate students at The University of Maryland, College Park. T
 ---
 -->
 
+<!--
 ## Results
-<!-- ### Image Result
+ ### Image Result
 ![image_result](https://user-images.githubusercontent.com/106445479/198862636-5c1d19d4-fd54-41fc-9838-d262e331e8c9.jpeg)
 
 ### Video Result
