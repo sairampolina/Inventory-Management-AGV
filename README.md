@@ -94,9 +94,9 @@ The Members are Graduate students at The University of Maryland, College Park. T
 -->
 
 ## Software Project Management Plan Aspects
-- ```Process, Tools and Technologies, Risk Management, References``` - [Project Proposal](https://github.com/bharadwaj-chukkala/ENPM808X_Midterm_project/blob/master/Project%20Proposal.pdf)
+- ```Process, Tools and Technologies, Risk Management, References``` - [Project Proposal](https://github.com/sairampolina/Enpm808x-finalproject/blob/phase1/finalproject_enpm808x_proposal.pdf)
 - ```Design, Initial Product Backlog (ESC), Assigning Responsibilities (CRC)``` - [Software Development utils](https://github.com/bharadwaj-chukkala/ENPM808X_Midterm_project/tree/master/Design_Neccesities)
-- ``` Implementation, Class Diagram, Activity Diagram``` - [UML Diagrams](https://github.com/bharadwaj-chukkala/ENPM808X_Midterm_project/tree/master/UML%20Diagrams)
+- ``` Implementation, Class Diagram, Activity Diagram``` - [UML Diagrams]()
 ---
 ## Deliverables
 - Project: Perception Module [Human obstacle detector and tracker]
