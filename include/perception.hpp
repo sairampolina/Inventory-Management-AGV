@@ -34,16 +34,16 @@
 #include <opencv2/objdetect/objdetect.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-class objectDetector {
+class PackageDetector {
     public:
 
-        objectDetector(ros::NodeHandle*);
+        PackageDetector(ros::NodeHandle*);
 
         bool find_obj();
 
         bool if_obj_detected;
 
-        void image_callback();
+        void image_callback(const sensor_msgs::ImageConstPtr &);
 
     private:
 
@@ -55,6 +55,7 @@ class objectDetector {
 
     image_transport::Subscriber image_sub_;
     
+    // check
     std::vector<std::vector<cv::Point>> contours_;
 
 };
