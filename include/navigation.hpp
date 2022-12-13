@@ -14,15 +14,17 @@
 
 # pragma once
 
+#include <actionlib/client/simple_action_client.h>
 
-#include <chrono>
-#include <functional>
-#include <memory>
-#include <string>
-
-#include "rclcpp/rclcpp.hpp"
 #include <geometry_msgs/Pose.h>
 #include <geometry_msgs/Twist.h>
+#include <geometry_msgs/Quaternion.h>
+#include <geometry_msgs/PoseWithCovarianceStamped.h>
+
+#include <ros/ros.h>
+#include <std_srvs/Empty.h>
+
+#include <tf2/LinearMath/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
 #include <tf2/utils.h>
 
@@ -30,21 +32,72 @@
 
 using namespace std::chrono_literals;
 
-class Navigation: public rclcpp::Node {
+class Navigation {
     
     public:
-        Navigation();
+        Navigation(ros::NodeHandle*);
+
+        void set_next_goal();
+
+        void set_pkgloc_as_goal();
+
+        void set_droploc_as_goal();
+
+        //  robot pose fn
+
+        bool if_reached_goal;
+
+        //  turn rbot
+
+        void stop_robot();
+
+        enum rotation {
+        ROT_START,
+        ROTATING,
+        ROT_COMPLETE,
+        };
+        rotation rot_state;
+
         geometry_msgs::Pose get_goal();
+
         void set_goal();
+
         void move_to_goal();
+
         void move_close_to_object();
     private:
-        geometry_msgs::Pose goal_;
-        geometry_msgs::Pose package_droplocation;
-        rclcpp::Publisher<geometry_msgs::PoseStamped>::SharedPtr goal_pub_;
-        rclcpp::Publisher<geometry_msgs::Twist>::SharedPtr vel_pub_;
 
-        rclcpp::Subscription<geometry_msgs::PoseWithCovarianceStamped >::SharedPtr pres_pose_sub_;
-        
+        void set_waypoints();
+
+        ros::NodeHandle* nh_;
+
+        // subscriber to get present pose
+        ros::Subscriber pre_pose_sub_;
+
+        // Publisher to set goals 
+        ros::Publisher goal_pub_;
+
+        ros::Publisher vel_pub_;
+
+        ros::ServiceClient kill_costmap_clent_;
+
+        bool pose_recieved;
+
+        // present location of robot
+        geometry_msgs::Pose pre_pos_;
+
+        // approximate location of pkg 
+        geometry_msgs::Pose goal_;
+
+        // location of pkg
+        geometry_msgs::Pose pkg_loc_;
+
+        // robot initial orientation
+        tf2::Quaternion init_quaternion_;
+
+        std::vector <geometry_msgs::Pose> waypoints_;
+
+        std::vector<geometry_msgs::Pose>::size_type waypoint_counter_;
+ 
 };
 
