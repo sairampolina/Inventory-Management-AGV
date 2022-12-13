@@ -45,18 +45,20 @@ class Navigation {
 
         //  robot pose fn
 
-        bool if_reached_goal;
+        bool if_reached_goal();
 
         //  turn rbot
 
         void stop_robot();
+
+        void pose_callback(const geometry_msgs::PoseWithCovarianceStamped&);
 
         enum rotation {
         ROT_START,
         ROTATING,
         ROT_COMPLETE,
         };
-        rotation rot_state;
+        rotation rot_state_;
 
         geometry_msgs::Pose get_goal();
 
@@ -66,6 +68,8 @@ class Navigation {
 
         void move_close_to_object();
     private:
+
+        void set_rot_vel();
 
         void set_waypoints();
 
@@ -79,9 +83,11 @@ class Navigation {
 
         ros::Publisher vel_pub_;
 
+        ros::Publisher cancel_goal_pub_;
+
         ros::ServiceClient kill_costmap_clent_;
 
-        bool pose_recieved;
+        bool pose_flag_;
 
         // present location of robot
         geometry_msgs::Pose pre_pos_;
@@ -89,8 +95,8 @@ class Navigation {
         // approximate location of pkg 
         geometry_msgs::Pose goal_;
 
-        // location of pkg
-        geometry_msgs::Pose pkg_loc_;
+        // Drop location of pkg
+        geometry_msgs::Pose drop_loc_;
 
         // robot initial orientation
         tf2::Quaternion init_quaternion_;
