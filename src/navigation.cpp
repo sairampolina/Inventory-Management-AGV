@@ -90,7 +90,7 @@ void Navigation::pose_callback(const geometry_msgs::PoseWithCovarianceStamped &a
     pose_flag_ = true;
 }
 
-bool if_goal_reached() {
+bool Navigation::if_goal_reached() {
     auto x = pre_pose_.position.x - goal_.position.x;
     x = std::pow(x, 2);
     auto y = pre_pose_.position.y - goal_.position.y;
@@ -98,5 +98,71 @@ bool if_goal_reached() {
     if (std::sqrt(x, y) > 0.1)
         return false;
     return true;
+}
+
+
+void Navigation::turn_robot() {
+
+    if(pose_flag_) {
+        if (rot_state_ == ROT_START) {
+
+            tf2::fromMsg(pre_pose_.orientation, init_quaternion_);
+            init_quaternion_ = init_quaternion_.inverse();
+
+            rot_state_ = ROTATING;
+        } else {
+
+            tf2::Quaternion tf2_quaternion;
+
+            tf2::fromMsg(pre_pose_.orientation,tf2_quaternion);
+
+            tf2_quaternion *= init_quaternion_;
+
+            auto rot_angle = tf2::getYaw(tf2_quaternion);
+
+            set_rot_vel();
+
+            if (rot_angle < 0 && rot_angle > -0.1){
+                rot_state_ = ROT_COMPLETE;
+            }
+        }
+    } else {
+        ROS_INFO_STREM("Navigation initial pose not published")
+    }
+}
+
+
+void Navigation::stop_robot() {
+
+    actionlib_msgs::GoalID msg_;
+    cancel_goal_pub_.publish(msg_);
+
+    actionlib_msgs::GoalStatusArrayConstPtr status_;
+
+    ROS_INFO_STREAM("Cancelling assigned goal")
+
+    status_ = ros::topic::waitForMessage<actionlib_msgs::GoalStatusArray>(
+                                                                "/move_base/status",
+    ROS_INFO_STREAM("Robot has stopped.");      
+}
+
+void Navigation::set_waypoints() {
+
+    std::array<int,5> waypoints_x = {-1, 1, 4, -1, -4};
+    std::array<int,5> waypoints_y = {1, -1, -6, -6, -3};
+    for (int i = 0; i < 5; i++) {
+        geometry_msgs::Pose pose_;
+        pose_.position.x = cp_arr_x[i];
+        pose_.position.y = cp_arr_y[i];
+        _.push_back(pose_);
+    }
+
+}
+
+void Navigation::set_rot_vel() {
+
+    geometry_msgs::Twist msg_;
+    msg_.angular.z = 0.5;
+    vel_pub_.publish(msg_);
 }
 
