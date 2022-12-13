@@ -12,28 +12,42 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <chrono>
-#include <functional>
-#include <memory>
-#include <string>
+#pragma once
 
-#include "rclcpp/rclcpp.hpp"
+
 #include <geometry_msgs/Pose.h>
-#include <geometry_msgs/Twist.h>
+#include <geometry_msgs/Quaternion.h>
+#include <std_srvs/SetBool.h>
+
+#include <ros/ros.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
-#include <tf2/utils.h>
+#include <tf2/transform_datatypes.h>
 
+#include <moveit/move_group_interface/move_group_interface.h>
+
+
+#include <string>
 #include <vector>
+#include <map>
 
-class Manipulation  : public rclcpp::Node {
+class Manipulation {
     public:
 
-        Manipulation();
-        bool pick_package();
-        bool place_package();
-        void move_to_pickpose();
-        
+        Manipulation(ros::NodeHandle*);
+
+        // move to object
+
+        void pick_package();
+
+        void place_package();
+
     private:
+
+        ros::NodeHandle* nh_;
+        
+        ros::ServiceClient set_obj_state;
+
+        void move_arm_down();
 
 
 }
