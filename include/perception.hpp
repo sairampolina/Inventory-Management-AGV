@@ -13,26 +13,48 @@
 // limitations under the License.
 
 
-
-
 # pragma once
 
-#include <geometry_msgs/Pose.h>
-#include <sensor_msgs/Image.h>
 #include <cv_bridge/cv_bridge.h>
+#include <image_transport/image_transport.h>
 
-#include<rclcpp/rclcpp.h>
+#include <geometry_msgs/Pose.h>
+#include <ros/ros.h>
+
+#include <sensor_msgs/Image.h>
+#include <sensor_msgs/image_encodings.h>
+
+#include <string.h>
 #include <vector>
 
-class objectDetector:: public rclcpp::Node{
+
+// 
+
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/objdetect/objdetect.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+class objectDetector {
     public:
 
-        objectDetector();
+        objectDetector(ros::NodeHandle*);
 
-        bool find_object();
-        
+        bool find_obj();
+
+        bool if_obj_detected;
+
+        void image_callback();
+
     private:
 
-    cv::Mat image_;
+    ros::NodeHandle* nh_;
 
-}
+    cv::Mat image_, image_hsv_, image_thresh_;
+
+    image_transport::ImageTransport image_transport_;
+
+    image_transport::Subscriber image_sub_;
+    
+    std::vector<std::vector<cv::Point>> contours_;
+
+};
