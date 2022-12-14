@@ -112,3 +112,21 @@ void Object::publish_pkg_loc(const ros::TimerEvent&) {
     broadcaster_.sendTransform(trans_stamp);
 }
 
+
+int main(int argc, char *argv[]) {
+    // Initialize the node
+    ros::init(argc, argv, "object_node");
+    ROS_INFO_STREAM(" Started object_node");
+    ros::NodeHandle nh_;
+
+    // spawn new object
+    Object pkg(&nh_);
+    pkg.spawn_pkg()=();
+
+    ros::Rate r(10);
+    while (ros::ok()) {
+        ros::spinOnce();
+        r.sleep();
+    }
+    return 0;
+}
