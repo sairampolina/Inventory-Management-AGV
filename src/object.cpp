@@ -17,13 +17,12 @@
 Object::Object(ros::NodeHandle* nh): 
                         tflistener_(this->tfbuffer_){
 
-    pkg_name = "box";
+    pkg_name_ = "box";
     if_spawned = false;
 
     if_picked_up_pkg = false;
 
-    seed = 4;
-    map_range = {-6,-7,2,7};
+    // map_range = {-6,-7,2,7};
 
     ros::topic::waitForMessage<geometry_msgs::PoseWithCovarianceStamped>(
                                                     "/robot_pose",ros::Duration(10));
@@ -51,19 +50,20 @@ Object::Object(ros::NodeHandle* nh):
 
 bool Object::spawn_pkg(){
     if(if_spawned) {
-        ROS_INFO_STREAM("Package already spawned.");
-        return 0;
+        ROS_INFO_STREAM("[Package Stack]: Package already spawned.");
+        return false;
     }
 
     spawn_pkg_client_ = 
         nh_-> serviceClient<gazebo_msgs::SpawnModel>("/gazebo/spawn_urdf_model");
     
     gazebo_msgs::SpawnModel srv;
-    srv.request.model_name = pkg_name;
+    srv.request.model_name = pkg_name_;
     srv.request.model_xml = urdf_string_;  
 
-    srv.request.initial_pose.position.x = -4;
-    srv.request.initial_pose.position.y = -2;
+    //change val
+    srv.request.initial_pose.position.x = 4;
+    srv.request.initial_pose.position.y = 2;
     srv.request.initial_pose.position.z = 0.025;
     srv.request.initial_pose.orientation.w = 1;
     srv.request.reference_frame = "world";
@@ -72,41 +72,46 @@ bool Object::spawn_pkg(){
 
 
     if (srv.response.success) {
-        ROS_INFO_STREAM("Package spawned successfully");
+        ROS_INFO_STREAM("[Package Stack]: Package spawned successfully");
         if_spawned = true;
 
         pkg_pose_ = srv.request.initial_pose;
 
 
-        pkg_pose_tf_timer = nh_->createTimer(ros::Duration(0.1),
+        pkg_pose_tf_timer_ = nh_->createTimer(ros::Duration(0.1),
                                             &Object::publish_pkg_loc, this);
 
         update_state_service_ = nh_->advertiseService("/setObjectState",
-                                    &ObjectSpawner::set_pkg_state_callback, this);
+                                    &Object::set_pkg_state_callback, this);
     } else {
-        ROS_ERROR_STREAM("[object_spawner] Failed to spawn object");
-        return 1;
-        
+        ROS_ERROR_STREAM("[Package Stack]: Failed to spawn object");
+        return true;
     }
+    return false;
+}
 
+bool Object::set_pkg_state_callback(std_srvs::SetBool::Request &request,
+                                    std_srvs::SetBool::Response &response) {
+    if_picked_up_pkg = request.data;
+    response.message = "ObjectStateUpdated";
+    response.success = true;
     return true;
 }
 
-
 void Object::set_pose_of_pkg(geometry_msgs::Pose pkg_pose) {
-    gazebo_msgs::ModelState msg_;
-    msg_.model_name = pkg_name;
-    msg_.pose = pkg_pose;
-    msg_.reference_frame = "world";
-    pose_pub_.publish(msg_); 
+    gazebo_msgs::ModelState msg;
+    msg.model_name = pkg_name_;
+    msg.pose = pkg_pose;
+    msg.reference_frame = "world";
+    pose_pub_.publish(msg); 
 }
 
 void Object::publish_pkg_loc(const ros::TimerEvent&) {
 
-    geometry_msgs::trans_stamp trans_stamp;
+    geometry_msgs::TransformStamped trans_stamp;
     if (if_picked_up_pkg) {
-        geometry_msgs::trans_stamp trans_stamp;
-        trans_stamp = tfBuffer_.lookupTransform("map",
+        geometry_msgs::TransformStamped trans_stamp;
+        trans_stamp = tfbuffer_.lookupTransform("map",
                                                     "gripper_grasping_frame",
                                                                 ros::Time(0));
         pkg_pose_.position.x = trans_stamp.transform.translation.x;
@@ -116,10 +121,10 @@ void Object::publish_pkg_loc(const ros::TimerEvent&) {
     } else {
         pkg_pose_.position.z = 0.025;
     }
-    set_object_pose(pkg_pose_);
+    set_pose_of_pkg(pkg_pose_);
     trans_stamp.header.stamp = ros::Time::now();
     trans_stamp.header.frame_id = "map";
-    trans_stamp.child_frame_id = pkg_name;
+    trans_stamp.child_frame_id = pkg_name_;
     trans_stamp.transform.translation.x = pkg_pose_.position.x;
     trans_stamp.transform.translation.y = pkg_pose_.position.y;
     trans_stamp.transform.translation.z = pkg_pose_.position.z;
@@ -131,12 +136,12 @@ void Object::publish_pkg_loc(const ros::TimerEvent&) {
 int main(int argc, char *argv[]) {
     // Initialize the node
     ros::init(argc, argv, "object_node");
-    ROS_INFO_STREAM(" Started object_node");
+    ROS_INFO_STREAM("[Package Stack]: Started object_node");
     ros::NodeHandle nh_;
 
     // spawn new object
     Object pkg(&nh_);
-    pkg.spawn_pkg()=();
+    pkg.spawn_pkg();
 
     ros::Rate r(10);
     while (ros::ok()) {
