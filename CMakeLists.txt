@@ -1,12 +1,6 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(im_agv)
 
-## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
-
-## Find catkin macros and libraries
-## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
-## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   gazebo_msgs
@@ -33,14 +27,8 @@ if(NOT OPENCV_FOUND)
 	add_definitions(-DNO_CV_XFEATURES2D)
 endif()
 
-## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
 find_package(Eigen3 REQUIRED)
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES im_agv
-#  CATKIN_DEPENDS roscpp
-#  DEPENDS system_lib
 )
 
 ###########
@@ -49,27 +37,19 @@ catkin_package(
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 
-add_library(my_tiago src/my_tiago.cpp)
-add_library(navigation src/navigation.cpp)
-add_library(packagedetector src/perception.cpp)
-add_library(manipulator src/manipulation.cpp)
-add_library(object src/object.cpp)
-
-
 include_directories(
   include
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(tiago_node src/my_tiago.cpp)
+add_executable(tiago_node src/my_tiago.cpp src/navigation.cpp 
+          src/perception.cpp src/manipulation.cpp)
 
-target_link_libraries(tiago_node
-  navigation
-  packagedetector
-  manipulator
+target_link_libraries(tiago_node 
   ${catkin_LIBRARIES}
   ${OpenCV_LIBRARIES}
 )
+
 
 add_executable(object_node src/object.cpp)
 
