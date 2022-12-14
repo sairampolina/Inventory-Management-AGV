@@ -17,20 +17,35 @@
 Object::Object(ros::NodeHandle* nh): 
                         tflistener_(this->tfbuffer_){
 
-pkg_name = "box";
-if_spawned = false;
+    pkg_name = "box";
+    if_spawned = false;
 
-if_picked_up_pkg = false;
+    if_picked_up_pkg = false;
 
-seed = 4;
-map_range = {-6,-7,2,7};
+    seed = 4;
+    map_range = {-6,-7,2,7};
 
-ros::topic::waitForMessage<geometry_msgs::PoseWithCovarianceStamped>(
-                                                  "/robot_pose",ros::Duration(10));
-nh_ = nh;
+    ros::topic::waitForMessage<geometry_msgs::PoseWithCovarianceStamped>(
+                                                    "/robot_pose",ros::Duration(10));
+    nh_ = nh;
 
-pose_pub_ = nh_->advertise<gazebo_msgs::ModelState>(
-                                            "/gazebo/set_model_state",10);
+    pose_pub_ = nh_->advertise<gazebo_msgs::ModelState>(
+                                                "/gazebo/set_model_state",10);
+
+    urdf_string_ = R"(<robot name="simple_box"><link name="object_base_link">
+    </link><joint name="object_base_joint" type="fixed">
+    <parent link="object_base_link"/><child link="my_box"/>
+    <axis xyz="0 0 1" /><origin xyz="0 0 0" rpy="0 0 0"/></joint>
+    <link name="my_box"><inertial><origin xyz="0 0 0" />
+    <mass value="0.1" /><inertia  ixx="0.0001" ixy="0.0"  
+    ixz="0.0"  iyy="0.0001"  iyz="0.0"  izz="0.0001" /></inertial>
+    <visual><origin xyz="0 0 0"/><geometry><box size="0.05 0.05 0.05" />
+    </geometry></visual><collision><origin xyz="0 0 0"/><geometry>
+    <box size="0.05 0.05 0.05" /></geometry></collision></link>
+    <gazebo reference="my_box"><material>Gazebo/Blue</material>
+    </gazebo><gazebo reference="object_base_link"><gravity>0</gravity>
+    </gazebo></robot>)";
+
 }
 
 
