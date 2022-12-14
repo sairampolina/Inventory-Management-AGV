@@ -30,22 +30,19 @@
 
 #include <vector>
 
-using namespace std::chrono_literals;
-
 class Navigation {
     
     public:
         Navigation(ros::NodeHandle*);
 
-        void set_next_goal();
-
-        void set_pkgloc_as_goal();
+        void set_pkgloc_as_goal(geometry_msgs::Pose);
 
         void set_droploc_as_goal();
 
-        //  robot pose fn
+        void set_goal();
 
-        bool if_reached_goal();
+
+        bool if_goal_reached();
 
         //  turn rbot
         void turn_robot();
@@ -61,13 +58,6 @@ class Navigation {
         };
         rotation rot_state_;
 
-        geometry_msgs::Pose get_goal();
-
-        void set_goal();
-
-        void move_to_goal();
-
-        void move_close_to_object();
     private:
 
         void set_rot_vel();
@@ -86,15 +76,15 @@ class Navigation {
 
         ros::Publisher cancel_goal_pub_;
 
-        ros::ServiceClient kill_costmap_clent_;
+        ros::ServiceClient kill_costmap_client_;
 
         bool pose_flag_;
 
         // present location of robot
-        geometry_msgs::Pose pre_pos_;
+        geometry_msgs::Pose pre_pose_;
 
         // approximate location of pkg 
-        geometry_msgs::Pose goal_;
+        geometry_msgs::Pose goal_pose_;
 
         // Drop location of pkg
         geometry_msgs::Pose drop_loc_;
