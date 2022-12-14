@@ -15,10 +15,10 @@
 
 #include "../include/manipulation.hpp"
 
-Manipulation::Manipulation(ros::NodeHandle*) {
-    nh_ = nodeHandle;
-    set_obj_state = nh_->serviceClient<std_srvs::SetBool>("/setObjectState");
-    ROS_INFO_STREAM(" Starting Manipulation node ");
+Manipulation::Manipulation(ros::NodeHandle* nh) {
+    nh_ = nh;
+    set_obj_state_client_ = nh_->serviceClient<std_srvs::SetBool>("/setObjectState");
+    ROS_INFO_STREAM("[Manipulation Stack]: Starting Manipulation node ");
 }
 //change goal
 void Manipulation::pick_package() {
@@ -31,7 +31,7 @@ void Manipulation::pick_package() {
     goal.position.z = 0.45;
     goal.orientation = tf2::toMsg(transform);
     
-    move_to_object(goal);
+    reach(goal);
 }
 
 //change again
@@ -43,12 +43,12 @@ void Manipulation::place_package() {
     goal.position.x = 0.65;
     goal.position.y = 0.0;
     goal.position.z = 0.26;
-    goal.orientation = tf2::toMs(transform));
-    move_arm_to_pose(goal);
+    goal.orientation = tf2::toMsg(transform);
+    reach(goal);
 
     std_srvs::SetBool srv;
     srv.request.data = false;
-    set_obj_state.call(srv);
+    set_obj_state_client_.call(srv);
 }
 
 void Manipulation::reach(geometry_msgs::Pose my_pose) {
@@ -58,17 +58,14 @@ void Manipulation::reach(geometry_msgs::Pose my_pose) {
 
     //  publishing robot arm goal pose
     geometry_msgs::PoseStamped goal;
-    goal.header.frame_id = "base";
+    goal.header.frame_id = "base_footprint";
     goal.pose = my_pose;
     moveit::planning_interface::MoveGroupInterface group_arm_torso("arm_torso");
     group_arm_torso.setPlannerId("SBLkConfigDefault");
-    group_arm_torso.setPoseReferenceFrame("base");
+    group_arm_torso.setPoseReferenceFrame("base_footprint");
     group_arm_torso.setPoseTarget(goal);
 
-    ROS_INFO_STREAM("[GraspObject] Planning to move " <<
-                    group_arm_torso.getEndEffectorLink()
-                    << " to a target pose expressed in " <<
-                    group_arm_torso.getPlanningFrame());
+    ROS_INFO_STREAM("[Manipulation Stack]: Planning for Manipulation ");
 
     group_arm_torso.setStartStateToCurrentState();
     group_arm_torso.setMaxVelocityScalingFactor(1.0);
@@ -89,10 +86,8 @@ void Manipulation::reach(geometry_msgs::Pose my_pose) {
 
     moveit::planning_interface::MoveItErrorCode e = group_arm_torso.move();
     if (!static_cast<bool>(e))
-        throw std::runtime_error(" Error in manipulation");
+        throw std::runtime_error("[Manipulation Stack]: Error in manipulation");
 
-    // ROS_INFO_STREAM("[GraspObject] Motion duration: "
-    //                                     << (ros::Time::now() - start).toSec());
     spinner.stop();
 }
 
@@ -102,9 +97,9 @@ void Manipulation::move_to_object(geometry_msgs::Pose tar_pose)  {
     transform.setRPY(-0.011, 1.57, 1.57);
     tar_pose.position.z = 0.30;
     tar_pose.orientation = tf2::toMsg(transform);
-    move_arm_to_pose(objectPose);
+    reach(tar_pose);
 
     std_srvs::SetBool srv;
     srv.request.data = true;
-    set_obj_state.call(srv);
+    set_obj_state_client_.call(srv);
 }
