@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
 
 
 #include <std_srvs/SetBool.h>
@@ -27,4 +26,40 @@
 #include <ros/ros.h>
 
 
+class Object {
+ public:
 
+    Object(ros::NodeHandle*);
+
+    bool spawn_pkg();
+
+    void set_pose_of_pkg(geometry_msgs::Pose);
+
+    bool if_picked_up_pkg;
+
+ private:
+
+    bool set_pkg_state_callback(std_srvs::SetBool::Request&,
+                                    std_srvs::SetBool::Response&);
+
+    void publish_pkg_loc(const ros::TimerEvent &);
+
+    int seed;
+    bool if_spawned;
+    int map_range[4];
+
+    ros::NodeHandle* nh_;
+    ros::ServiceServer update_state_service_;
+    ros::ServiceClient spawn_pkg_client_;
+    ros::Timer pkg_pose_tf_timer_;
+    ros::Publisher pose_pub_;
+
+    std::string urdf_string_;
+    geometry_msgs::Pose pkg_pose_;
+    std::string pkg_name;
+
+    tf2_ros::TransformBroadcaster broadcaster_;
+    tf2_ros::Buffer tfbuffer_;
+    tf2_ros::TransformListener tflistener_;       
+
+}
