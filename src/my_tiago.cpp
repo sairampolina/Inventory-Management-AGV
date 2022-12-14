@@ -14,6 +14,8 @@
 
 #include "../include/my_tiago.hpp"
 
+//using namespace PointHeadClient;
+
 MyTiago::MyTiago(ros::NodeHandle* nh):
                     navigator(nh),
                     manipulator(nh),
@@ -21,7 +23,7 @@ MyTiago::MyTiago(ros::NodeHandle* nh):
                     tflistener_(this->tfbuffer_) {
     nh_ = nh;
     state_ = robotState::STARTING;
-    ROS_INFO_STREAM(" Tiago object initialized");
+    ROS_INFO_STREAM("[Tiago Stack]: Tiago object initialized");
 }
 
 void MyTiago::handle_states() {
@@ -36,37 +38,38 @@ void MyTiago::handle_states() {
         case STARTING:
             // Create a point head action client to move the TIAGo's head
             create_point_head_client(point_head_client_);
-            set_head_down();
-            ROS_INFO_STREAM("Tiago Setting head position");
+            //set_head_down();
+            //ROS_INFO_STREAM("[Tiago Stack]: Tiago Setting head position");
             state_ = IDLE;
             break;
 
         case IDLE:
             // Sets checkpoints for the robot
-            navigator.set_next_goal();
+            navigator.set_goal();
+            set_head_down();
             state_ = MOVING_TO_CHECKPOINT;
             break;
 
         case MOVING_TO_CHECKPOINT:
             // Moves the robot to the checkpoint
-            if (detector.if_object_detected) {
+            if (detector.if_obj_detected) {
                 navigator.stop_robot();
                 navigator.set_pkgloc_as_goal(get_object_pose());
                 state_ = MOVING_TOWARDS_OBJECT;
             } else if (navigator.if_goal_reached()) {
-                navigator.turn_state = Navigation::rotation::ROTATING;
+                navigator.rot_state_ = Navigation::rotation::ROT_START;
                 state_ = TURNING_AROUND;
             }
             break;
 
         case TURNING_AROUND:
             // Turns the robot at the checkpoint
-            if (detector.is_object_detected) {
+            if (detector.if_obj_detected) {
                 navigator.set_pkgloc_as_goal(get_object_pose());
                 state_ = MOVING_TOWARDS_OBJECT;
-            } else if (navigator.turn_state ==
+            } else if (navigator.rot_state_ ==
                                         Navigation::rotation::ROT_COMPLETE) {
-                navigator.set_next_goal();
+                navigator.set_goal();
                 state_ = MOVING_TO_CHECKPOINT;
             } else {
                 navigator.turn_robot();
@@ -75,7 +78,7 @@ void MyTiago::handle_states() {
 
         case MOVING_TOWARDS_OBJECT:
             //  Moves the robot towards the object
-            if (is_obj_within_reach()) {
+            if (if_obj_within_reach()) {
                navigator.stop_robot();
                state_ = PICKING_OBJECT;
             }
@@ -97,13 +100,13 @@ void MyTiago::handle_states() {
         case PLACING_OBJECT:
             // Acion of object placing at the bin location
             place_object();
-            ROS_INFO_STREAM(" Task accomplished!");
+            ROS_ERROR("[Tiago Stack]: Task accomplished!");
             state_ = STOP;
             break;
     }
 }
 
-bool MyTiago::is_obj_within_reach() {
+bool MyTiago::if_obj_within_reach() {
     //  Checks if object is within reach of the robot arm.
     auto objectPose = get_object_pose("base_link");
     double dx = objectPose.position.x;
@@ -117,11 +120,11 @@ bool MyTiago::is_obj_within_reach() {
 geometry_msgs::Pose MyTiago::get_object_pose(std::string wrt) {
     //  Checks if object is within reach of the robot arm.
     geometry_msgs::Pose objectPose;
-    if (detector.if_object_detected == false) {
-        ROS_INFO_STREAM(" object has not been found yet.");
+    if (detector.if_obj_detected == false) {
+        ROS_INFO_STREAM("[Tiago Stack]: object has not been found yet.");
     } else {
         geometry_msgs::TransformStamped transformStamped;
-        transformStamped = tfBuffer_.lookupTransform(wrt, "blue_box",
+        transformStamped = tfbuffer_.lookupTransform(wrt, "box",
                                                             ros::Time(0));
         objectPose.position.x = transformStamped.transform.translation.x;
         objectPose.position.y = transformStamped.transform.translation.y;
@@ -137,14 +140,14 @@ void MyTiago::pick_up_object() {
     //  Picking up the object
     manipulator.move_to_object(get_object_pose("base_link"));
     manipulator.pick_package();
-    ROS_INFO_STREAM(" Object Picked up");
+    ROS_INFO_STREAM("[Tiago Stack]: Object Picked up");
 }
 
 void MyTiago::place_object() {
     //  Placing the object
     manipulator.place_package();
     manipulator.pick_package();
-    ROS_INFO_STREAM(" Object Placed");
+    ROS_INFO_STREAM("[Tiago Stack]: Object Placed");
 }
 
 void MyTiago::set_head_down() {
@@ -152,7 +155,7 @@ void MyTiago::set_head_down() {
     std::string camera_frame = "/xtion_rgb_optical_frame";
     geometry_msgs::PointStamped pointStamped;
     pointStamped.header.frame_id = camera_frame;
-    pointStamped.header.stamp    = ros::Time::now();
+    pointStamped.header.stamp = ros::Time::now();
     pointStamped.point.x = 0.0;
     pointStamped.point.y = 0.8;    // value for looking down
     pointStamped.point.z = 1.0;
@@ -173,7 +176,7 @@ void MyTiago::set_head_down() {
 }
 
 void MyTiago::create_point_head_client(PointHeadClientPtr& actionClient) {
-    ROS_INFO(" Creating action client to head controller ...");
+    ROS_INFO("[Tiago Stack]: Creating action client to head controller ...");
     actionClient.reset(
                     new PointHeadClient("/head_controller/point_head_action"));
 
@@ -181,13 +184,13 @@ void MyTiago::create_point_head_client(PointHeadClientPtr& actionClient) {
     // Wait for head controller action server to come up
     while (!actionClient->waitForServer(ros::Duration(2.0)) && ros::ok()
                                             && iterations < max_iterations) {
-        ROS_DEBUG(R"( Waiting for the point_head_action server to come
+        ROS_DEBUG(R"([Tiago Stack]: Waiting for the point_head_action server to come
                                                                          up)");
         ++iterations;
   }
 
   if ( iterations == max_iterations )
-    throw std::runtime_error(R"(Error in create_point_head_client: 
+    throw std::runtime_error(R"([Tiago Stack]: Error in create_point_head_client: 
                                 head controller action server not available)");
 }
 
@@ -197,12 +200,12 @@ int main(int argc, char *argv[]) {
     ROS_INFO_STREAM(" Started tiago_node");
     ros::NodeHandle nh_;
 
-    MyTiago tiago_bot(&nh_);  // Create DCRobot object
+    MyTiago tiago_agv(&nh_);  // Create MyTiago object
 
     ros::Duration(10).sleep();
     ros::Rate r(10);
     while (ros::ok()) {
-        tiago_bot.handle_states();
+        tiago_agv.handle_states();
         r.sleep();
         ros::spinOnce();
     }
