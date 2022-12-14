@@ -12,10 +12,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+
+#include <actionlib/client/simple_action_client.h>
+#include <geometry_msgs/PointStamped.h>
+#include <control_msgs/PointHeadAction.h>
+#include <tf2_ros/transform_listener.h>
+// #include <geometry_msgs/Pose.h>
+
+// C++ standard headers
+#include <string>
+
+// Boost headers
+#include <boost/shared_ptr.hpp>
+
 #include "manipulation.hpp"
 #include "navigation.hpp"
 #include "perception.hpp"
 #include "object.hpp"
+
+// namespace client {
+//     actionlib::SimpleActionClient<control_msgs::PointHeadAction> PointHeadClient;
+// };
+
+typedef actionlib::SimpleActionClient<control_msgs::PointHeadAction>
+                                                            PointHeadClient;
+typedef boost::shared_ptr<PointHeadClient> PointHeadClientPtr;
 
 class MyTiago {
     public:
@@ -35,7 +56,7 @@ class MyTiago {
         * @brief Checks whether the object is within reach of the robot
         * 
         */
-        bool is_obj_within_reach();
+        bool if_obj_within_reach();
 
         /**
         * @brief Gets object pose from the world. 
@@ -88,6 +109,8 @@ class MyTiago {
         * 
         */
         void set_head_down();
+
+        //using namespace PointHeadClient;
 
         /**
         * @brief Enumerates various object states.
