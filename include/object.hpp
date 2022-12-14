@@ -46,7 +46,7 @@ class Object {
 
     int seed;
     bool if_spawned;
-    int map_range[4];
+    int map_range[4] = {-6,-7,2,7};
 
     ros::NodeHandle* nh_;
     ros::ServiceServer update_state_service_;
@@ -56,10 +56,10 @@ class Object {
 
     std::string urdf_string_;
     geometry_msgs::Pose pkg_pose_;
-    std::string pkg_name;
+    std::string pkg_name_;
 
     tf2_ros::TransformBroadcaster broadcaster_;
     tf2_ros::Buffer tfbuffer_;
     tf2_ros::TransformListener tflistener_;       
 
-}
+};
