@@ -190,3 +190,21 @@ void MyTiago::create_point_head_client(PointHeadClientPtr& actionClient) {
     throw std::runtime_error(R"(Error in create_point_head_client: 
                                 head controller action server not available)");
 }
+
+int main(int argc, char *argv[]) {
+    // Initialize the node
+    ros::init(argc, argv, "tiago_node");
+    ROS_INFO_STREAM(" Started tiago_node");
+    ros::NodeHandle nh_;
+
+    MyTiago tiago_bot(&nh_);  // Create DCRobot object
+
+    ros::Duration(10).sleep();
+    ros::Rate r(10);
+    while (ros::ok()) {
+        tiago_bot.handle_states();
+        r.sleep();
+        ros::spinOnce();
+    }
+    return 0;
+}
