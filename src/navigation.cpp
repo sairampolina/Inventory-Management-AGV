@@ -14,11 +14,13 @@
 
 
 #include "../include/navigation.hpp"
+#include <cmath>
 
-Navigation::Navigation(ros::Nodehandle* nh) {
+Navigation::Navigation(ros::NodeHandle* nh) {
     nh_ = nh;
     rot_state_ = ROT_COMPLETE;
     pose_flag_ = false;
+    //check
     waypoint_counter_ = 0;
     
     //change according to map
@@ -42,17 +44,18 @@ void Navigation::set_goal() {
     //we can change number of waypoints
     if(waypoint_counter_ < 4) {
         geometry_msgs::PoseStamped new_goal;
-        new_goal.pose.position = waypoints_[waypoint_counter].position;
+        new_goal.pose.position = waypoints_[waypoint_counter_].position;
         new_goal.pose.orientation.w = 1.0;
         //check 'map'
-        new_goal.header.frame_id = 'map';
+        new_goal.header.frame_id = "map";
         //Check twice
         goal_pub_.publish(new_goal);
-        goal_ = new_goal;
-        ROS_INFO_STREAM(" Navigating to waypoint number : ", waypoint_counter_);
+        goal_pub_.publish(new_goal);
+        goal_pose_ = new_goal.pose;
+        ROS_INFO_STREAM("[Navigation Stack]: Navigating to next waypoint ");
     }
     else {
-        ROS_INFO_STREAM(" No package left in the warehouse ");
+        ROS_INFO_STREAM("[Navigation Stack]: No package left in the warehouse ");
     }
 
     waypoint_counter_++;
@@ -63,11 +66,12 @@ void Navigation::set_pkgloc_as_goal(geometry_msgs::Pose object) {
     target_pose.pose.position = object.position;
     target_pose.pose.orientation.w = 1.0;
     //check 'map'
-    target_pose.header.frame_id = 'map';
+    target_pose.header.frame_id = "map";
     //Check twice
     goal_pub_.publish(target_pose);
-    goal_ = target_pose;
-    ROS_INFO_STREAM(" Navigating closer to the package ");
+    goal_pub_.publish(target_pose);
+    goal_pose_ = target_pose.pose;
+    ROS_INFO_STREAM("[Navigation Stack]: Navigating closer to the package ");
 }
 
 void Navigation::set_droploc_as_goal() {
@@ -78,24 +82,26 @@ void Navigation::set_droploc_as_goal() {
     target.pose.position = drop_loc_.position;
     target.pose.orientation.w = 1.0;
     //check 'map'
-    target.header.frame_id = 'map';
+    target.header.frame_id = "map";
     //Check twice
     goal_pub_.publish(target);
-    goal_ = target;
-    ROS_INFO_STREAM(" Navigating to drop location ");
+    goal_pub_.publish(target);
+    goal_pose_ = target.pose;
+    ROS_INFO_STREAM("[Navigation Stack]: Navigating to drop location ");
 }
 
 void Navigation::pose_callback(const geometry_msgs::PoseWithCovarianceStamped &agv_pose) {
-    pre_pos_ = agv_pose.pose.pose;
+    pre_pose_ = agv_pose.pose.pose;
     pose_flag_ = true;
 }
 
 bool Navigation::if_goal_reached() {
-    auto x = pre_pose_.position.x - goal_.position.x;
+    auto x = pre_pose_.position.x - goal_pose_.position.x;
     x = std::pow(x, 2);
-    auto y = pre_pose_.position.y - goal_.position.y;
+    auto y = pre_pose_.position.y - goal_pose_.position.y;
     y = std::pow(y, 2);
-    if (std::sqrt(x, y) > 0.1)
+    //check vals
+    if (std::sqrt(x + y) >= 0.1)
         return false;
     return true;
 }
@@ -127,42 +133,42 @@ void Navigation::turn_robot() {
             }
         }
     } else {
-        ROS_INFO_STREM("Navigation initial pose not published")
+        ROS_INFO_STREAM("[Navigation Stack]: Initial pose not published");
     }
 }
 
 
 void Navigation::stop_robot() {
 
-    actionlib_msgs::GoalID msg_;
-    cancel_goal_pub_.publish(msg_);
+    actionlib_msgs::GoalID msg;
+    cancel_goal_pub_.publish(msg);
 
-    actionlib_msgs::GoalStatusArrayConstPtr status_;
+    actionlib_msgs::GoalStatusArrayConstPtr status;
 
-    ROS_INFO_STREAM("Cancelling assigned goal")
+    ROS_INFO_STREAM("[Navigation Stack]: Cancelling assigned goal");
 
-    status_ = ros::topic::waitForMessage<actionlib_msgs::GoalStatusArray>(
-                                                                "/move_base/status",
-    ROS_INFO_STREAM("Robot has stopped.");      
+    status = ros::topic::waitForMessage<actionlib_msgs::GoalStatusArray>(
+                                                                "/move_base/status", ros::Duration(2));
+    ROS_INFO_STREAM("[Navigation Stack]: Robot has stopped.");      
 }
 
 void Navigation::set_waypoints() {
 
-    std::array<int,5> waypoints_x = {-1, 1, 4, -1, -4};
+    std::array<int,5> waypoints_x = {0, 1, 4, -1, -4};
     std::array<int,5> waypoints_y = {1, -1, -6, -6, -3};
     for (int i = 0; i < 5; i++) {
-        geometry_msgs::Pose pose_;
-        pose_.position.x = cp_arr_x[i];
-        pose_.position.y = cp_arr_y[i];
-        _.push_back(pose_);
+        geometry_msgs::Pose point_pose;
+        point_pose.position.x = waypoints_x[i];
+        point_pose.position.y = waypoints_y[i];
+        waypoints_.push_back(point_pose);
     }
-
 }
 
 void Navigation::set_rot_vel() {
 
-    geometry_msgs::Twist msg_;
-    msg_.angular.z = 0.5;
-    vel_pub_.publish(msg_);
+    geometry_msgs::Twist msg;
+    //change val
+    msg.angular.z = 0.6;
+    vel_pub_.publish(msg);
 }
 
