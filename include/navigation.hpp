@@ -48,6 +48,7 @@ class Navigation {
         bool if_reached_goal();
 
         //  turn rbot
+        void turn_robot();
 
         void stop_robot();
 
