@@ -14,3 +14,97 @@
 
 
 #include "../include/manipulation.hpp"
+
+Manipulation::Manipulation(ros::NodeHandle*) {
+    nh_ = nodeHandle;
+    set_obj_state = nh_->serviceClient<std_srvs::SetBool>("/setObjectState");
+    ROS_INFO_STREAM(" Starting Manipulation node ");
+}
+//change goal
+void Manipulation::pick_package() {
+    geometry_msgs::Pose goal;
+    tf2::Quaternion transform;
+    transform.setRPY(0.011, 0.011, 1.57);
+
+    goal.position.x = 0.2;
+    goal.position.y = 0.0;
+    goal.position.z = 0.45;
+    goal.orientation = tf2::toMsg(transform);
+    
+    move_to_object(goal);
+}
+
+//change again
+void Manipulation::place_package() {
+    geometry_msgs::Pose goal;
+    tf2::Quaternion transform;
+    // orientation while placing the object
+    transform.setRPY(-0.011, 1.57, 1.57);
+    goal.position.x = 0.65;
+    goal.position.y = 0.0;
+    goal.position.z = 0.26;
+    goal.orientation = tf2::toMs(transform));
+    move_arm_to_pose(goal);
+
+    std_srvs::SetBool srv;
+    srv.request.data = false;
+    set_obj_state.call(srv);
+}
+
+void Manipulation::reach(geometry_msgs::Pose my_pose) {
+    //  create am asynchronous spinner
+    ros::AsyncSpinner spinner(1);
+    spinner.start();
+
+    //  publishing robot arm goal pose
+    geometry_msgs::PoseStamped goal;
+    goal.header.frame_id = "base";
+    goal.pose = my_pose;
+    moveit::planning_interface::MoveGroupInterface group_arm_torso("arm_torso");
+    group_arm_torso.setPlannerId("SBLkConfigDefault");
+    group_arm_torso.setPoseReferenceFrame("base");
+    group_arm_torso.setPoseTarget(goal);
+
+    ROS_INFO_STREAM("[GraspObject] Planning to move " <<
+                    group_arm_torso.getEndEffectorLink()
+                    << " to a target pose expressed in " <<
+                    group_arm_torso.getPlanningFrame());
+
+    group_arm_torso.setStartStateToCurrentState();
+    group_arm_torso.setMaxVelocityScalingFactor(1.0);
+
+    //  Create moveit planner interface.
+    moveit::planning_interface::MoveGroupInterface::Plan my_plan;
+
+    group_arm_torso.setPlanningTime(5.0);
+    bool flag = static_cast<bool>(group_arm_torso.plan(my_plan));
+
+    if (!flag)
+        throw std::runtime_error("No plan found");
+
+    ROS_INFO_STREAM(" Plan found ");
+
+    // Execute the plan
+    ros::Time start = ros::Time::now();
+
+    moveit::planning_interface::MoveItErrorCode e = group_arm_torso.move();
+    if (!static_cast<bool>(e))
+        throw std::runtime_error(" Error in manipulation");
+
+    // ROS_INFO_STREAM("[GraspObject] Motion duration: "
+    //                                     << (ros::Time::now() - start).toSec());
+    spinner.stop();
+}
+
+void Manipulation::move_to_object(geometry_msgs::Pose tar_pose)  {
+    tf2::Quaternion transform;
+    // orientation while picking up
+    transform.setRPY(-0.011, 1.57, 1.57);
+    tar_pose.position.z = 0.30;
+    tar_pose.orientation = tf2::toMsg(transform);
+    move_arm_to_pose(objectPose);
+
+    std_srvs::SetBool srv;
+    srv.request.data = true;
+    set_obj_state.call(srv);
+}
