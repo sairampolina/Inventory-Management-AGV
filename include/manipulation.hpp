@@ -41,15 +41,15 @@ class Manipulation {
 
         void place_package();
 
-        void move_to_object();
+        void move_to_object(geometry_msgs::Pose);
 
     private:
 
         ros::NodeHandle* nh_;
         
-        ros::ServiceClient set_obj_state;
+        ros::ServiceClient set_obj_state_client_;
 
-        void reach();
+        void reach(geometry_msgs::Pose);
 
 
-}
+};
