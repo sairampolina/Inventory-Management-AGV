@@ -24,7 +24,7 @@ Navigation::Navigation(ros::NodeHandle* nh) {
     waypoint_counter_ = 0;
     
     //change according to map
-    drop_loc_.position.x = 0;
+    drop_loc_.position.x = -4;
     drop_loc_.position.y = 0;
     
     goal_pub_ = nh_->advertise<geometry_msgs::PoseStamped>("/move_base_simple/goal", 10);
@@ -154,8 +154,8 @@ void Navigation::stop_robot() {
 
 void Navigation::set_waypoints() {
 
-    std::array<int,5> waypoints_x = {0, 1, 4, -1, -4};
-    std::array<int,5> waypoints_y = {1, -1, -6, -6, -3};
+    std::array<int,5> waypoints_x = {0, 1, -1, 1, 2};
+    std::array<int,5> waypoints_y = {-4, -1, -5, -8, 0};
     for (int i = 0; i < 5; i++) {
         geometry_msgs::Pose point_pose;
         point_pose.position.x = waypoints_x[i];
