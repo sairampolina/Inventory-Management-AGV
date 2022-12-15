@@ -42,7 +42,7 @@ class PackageDetector {
         * @param nh
         */
 
-        PackageDetector(ros::NodeHandle*);
+        explicit PackageDetector(ros::NodeHandle*);
 
         /*
         * @brief Find the object using perception stack

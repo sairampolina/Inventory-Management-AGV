@@ -39,7 +39,7 @@ class Navigation {
         * @brief Construct new navigation object.
         * @param nh
         */
-        Navigation(ros::NodeHandle*);
+        explicit Navigation(ros::NodeHandle*);
 
         /*
         * @brief Set the goal location for the robot.  

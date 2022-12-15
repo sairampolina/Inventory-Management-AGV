@@ -38,7 +38,7 @@ class Manipulation {
          * @param nh 
          */
 
-        Manipulation(ros::NodeHandle*);
+        explicit Manipulation(ros::NodeHandle*);
 
         
         /**
