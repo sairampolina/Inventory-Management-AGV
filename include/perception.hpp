@@ -44,12 +44,14 @@ class PackageDetector {
         bool if_obj_detected;
 
         void image_callback(const sensor_msgs::ImageConstPtr &);
+    
+        cv::Mat image_;
 
     private:
 
     ros::NodeHandle* nh_;
 
-    cv::Mat image_, image_hsv_, image_thresh_;
+    cv::Mat image_hsv_, image_thresh_;
 
     image_transport::ImageTransport image_transport_;
 
