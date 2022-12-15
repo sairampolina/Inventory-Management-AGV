@@ -52,53 +52,53 @@ void velocity_callback(const geometry_msgs::TwistConstPtr& msg) {
 }
 
 
-TEST(test_navigation_class, test_bin_goal_setting) {
-    // Arrange
-    message_received = false;
-    ros::NodeHandle nh;
-    ros::Subscriber sub = nh.subscribe("/move_base_simple/goal", 10,
-                                                            pose_callback);
-    geometry_msgs::PoseStamped expected_msg;
-    expected_msg.pose.orientation.w = 1;
-    expected_msg.header.frame_id = "map";
+// TEST(test_navigation_class, test_bin_goal_setting) {
+//     // Arrange
+//     message_received = false;
+//     ros::NodeHandle nh;
+//     ros::Subscriber sub = nh.subscribe("/move_base_simple/goal", 10,
+//                                                             pose_callback);
+//     geometry_msgs::PoseStamped expected_msg;
+//     expected_msg.pose.orientation.w = 1;
+//     expected_msg.header.frame_id = "map";
 
-    // Act
-    Navigation navigator(&nh);
-    navigator.set_droploc_as_goal();
+//     // Act
+//     Navigation navigator(&nh);
+//     navigator.set_droploc_as_goal();
 
-    // Assert
-    ASSERT_TRUE(wait_for_message(message_received, 3));
-    EXPECT_EQ(pose_message.pose.orientation, expected_msg.pose.orientation);
-    EXPECT_EQ(pose_message.pose.position, expected_msg.pose.position);
-    EXPECT_EQ(pose_message.header.frame_id, expected_msg.header.frame_id);
-}
+//     // Assert
+//     ASSERT_TRUE(wait_for_message(message_received, 3));
+//     EXPECT_EQ(pose_message.pose.orientation, expected_msg.pose.orientation);
+//     EXPECT_EQ(pose_message.pose.position, expected_msg.pose.position);
+//     EXPECT_EQ(pose_message.header.frame_id, expected_msg.header.frame_id);
+// }
 
-TEST(test_navigation_class, test_checkpoint_goal_setting) {
-    // Arrange
-    int number_of_rooms = 5;
-    message_received = false;
-    ros::NodeHandle nh;
-    ros::Subscriber sub = nh.subscribe("/move_base_simple/goal", 10,
-                                                            pose_callback);
-    geometry_msgs::PoseStamped expected_msg;
-    expected_msg.pose.position.z = 0;
-    expected_msg.pose.orientation.w = 1;
-    expected_msg.header.frame_id = "map";
+// TEST(test_navigation_class, test_checkpoint_goal_setting) {
+//     // Arrange
+//     int number_of_rooms = 5;
+//     message_received = false;
+//     ros::NodeHandle nh;
+//     ros::Subscriber sub = nh.subscribe("/move_base_simple/goal", 10,
+//                                                             pose_callback);
+//     geometry_msgs::PoseStamped expected_msg;
+//     expected_msg.pose.position.z = 0;
+//     expected_msg.pose.orientation.w = 1;
+//     expected_msg.header.frame_id = "map";
 
-    // Act
-    Navigation navigator(&nh);
-    for (int room=0; room < number_of_rooms; room++) {
-        navigator.set_goal();
+//     // Act
+//     Navigation navigator(&nh);
+//     for (int room=0; room < number_of_rooms; room++) {
+//         navigator.set_goal();
 
-        // Assert
-        ASSERT_TRUE(wait_for_message(message_received, 3));
-        EXPECT_EQ(pose_message.pose.orientation, expected_msg.pose.orientation);
-        EXPECT_NE(pose_message.pose.position.x, expected_msg.pose.position.x);
-        EXPECT_NE(pose_message.pose.position.y, expected_msg.pose.position.y);
-        EXPECT_EQ(pose_message.pose.position.z, expected_msg.pose.position.z);
-        EXPECT_EQ(pose_message.header.frame_id, expected_msg.header.frame_id);
-    }
-}
+//         // Assert
+//         ASSERT_TRUE(wait_for_message(message_received, 3));
+//         EXPECT_EQ(pose_message.pose.orientation, expected_msg.pose.orientation);
+//         EXPECT_NE(pose_message.pose.position.x, expected_msg.pose.position.x);
+//         EXPECT_NE(pose_message.pose.position.y, expected_msg.pose.position.y);
+//         EXPECT_EQ(pose_message.pose.position.z, expected_msg.pose.position.z);
+//         EXPECT_EQ(pose_message.header.frame_id, expected_msg.header.frame_id);
+//     }
+// }
 
 
 TEST(test_navigation_class, test_object_pose_goal_setting) {
