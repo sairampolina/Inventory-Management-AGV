@@ -12,7 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-# pragma once
+#ifndef INCLUDE_NAVIGATION_HPP_
+#define INCLUDE_NAVIGATION_HPP_
 
 #include <actionlib/client/simple_action_client.h>
 
@@ -33,22 +34,55 @@
 class Navigation {
     
     public:
+
+        /*
+        * @brief Construct new navigation object.
+        * @param nh
+        */
         Navigation(ros::NodeHandle*);
+
+        /*
+        * @brief Set the goal location for the robot.  
+        * @param goal_pose
+        */
 
         void set_pkgloc_as_goal(geometry_msgs::Pose);
 
+        /*
+        * @brief Set the drop location for the robot.
+        */
+        
         void set_droploc_as_goal();
+
+        /*
+        * @brief Set the goal location for the robot.
+        */
 
         void set_goal();
 
+        /*
+        * @brief Check if the goal is reached.
+        * @return bool
+        */
 
         bool if_goal_reached();
 
-        //  turn rbot
+        /*
+        * @brief Turn robot 180 degrees.
+        */
+
         void turn_robot();
+
+        /*
+        * @brief Stop the robot.
+        */
 
         void stop_robot();
 
+        /*
+        * @brief Callback function to receive the present pose of the robot.
+        * @param robot's pose
+        */
         void pose_callback(const geometry_msgs::PoseWithCovarianceStamped&);
 
         enum rotation {
@@ -60,7 +94,15 @@ class Navigation {
 
     private:
 
+        /*
+        * @brief Set the robot's rotation velocity.
+        */
+
         void set_rot_vel();
+
+        /*
+        * @brief Set waypoints for the robot.
+        */
 
         void set_waypoints();
 
