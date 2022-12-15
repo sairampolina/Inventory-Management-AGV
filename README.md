@@ -53,9 +53,22 @@ limitations under the License.
 ### Team
 The Members are Graduate students at The University of Maryland, College Park. The members each have a Bachelors in Mechanical Engineering from prestigious universities in India. Their Graduate Study is in the field of Robotics with each of them having a specialization. Sanchit is pursuing a career in Computer vision and perception, Sairam aims to build his career in Deep Learning and Computer Vision and Shelvin is developing expertise in SLAM and Autonomous Vehicles.
 
+# Phase 1
 | `Shelvin Pauly`  | `Venkata Sairam Polina` | `Sanchit Tanwar` |
 | ------------- | ------------- |------------- |
 | 118426556 | 118436579 | 119167717 |
+| Navigator | Driver |  Design Keeper |
+
+# Phase 2
+| `Venkata Sairam Polina`  | `Sanchit Tanwar` | `Shelvin Pauly` |
+| ------------- | ------------- |------------- |
+| 118436579 | 119167717 | 118426556 |
+| Navigator | Driver |  Design Keeper |
+
+# Phase 3
+| `Sanchit Tanwar`  | `Shelvin Pauly` | `Sanchit Tanwar` |
+| ------------- | ------------- |------------- |
+| 119167717 | 118426556 | 118436579 |
 | Navigator | Driver |  Design Keeper |
 
 ---
