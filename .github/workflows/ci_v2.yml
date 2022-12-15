@@ -6,7 +6,7 @@ on: [push, pull_request]
 jobs:
   build:
 
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     strategy:
       matrix:
@@ -70,13 +70,24 @@ jobs:
           lcov --remove coverage.info '/opt/*' '/usr/*' '*/devel/*' '*_test*' --output-file coverage.info
           lcov --list coverage.info
       
-      - name: Codecov
+      - name: Upload coverage reports to Codecov with GitHub Action
         uses: codecov/codecov-action@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           files: ${{ github.workspace }}/coverage.info
-          flags: unittests # optional
-          directory: ${{github.workspace}}/install/
-          name: codecov-umbrella # optional
           fail_ci_if_error: true # optional (default = false)
           verbose: true # optional (default = false)
+#       - name: Upload codecov
+#         run: |
+#           curl -Os https://uploader.codecov.io/latest/linux/codecov
+#           chmod +x codecov
+#           ./codecov
+#       - name: Codecov
+#         uses: codecov/codecov-action@v3
+#         with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           files: ${{ github.workspace }}../../coverage.info
+#           flags: unittests # optional
+# #           directory: ${{github.workspace}}/install/
+#           name: codecov-umbrella # optional
+#           fail_ci_if_error: true # optional (default = false)
+#           verbose: true # optional (default = false)
