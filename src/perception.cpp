@@ -33,9 +33,6 @@ PackageDetector::PackageDetector(ros::NodeHandle* nh_):
 bool PackageDetector::find_obj(){
     cv::cvtColor(image_,image_hsv_,cv::COLOR_BGR2HSV);
     
-    //  (0,70,50) (10,255,255)  or (80,70,50) ()
-    // cv::inRange(image_hsv_,cv::Scalar(0,100,100),cv::Scalar(20,255,255),image_thresh_);
-
     cv::inRange(image_hsv_,cv::Scalar(69,50,0),cv::Scalar(120,255,255),image_thresh_);
 
     cv::findContours(image_thresh_,contours_,CV_RETR_EXTERNAL,
