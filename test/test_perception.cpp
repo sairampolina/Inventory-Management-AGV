@@ -8,9 +8,12 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-// #include "include/perception.cpp"
+#include "perception.hpp"
 
 bool messageReceived;
+
+
+
 
 bool waitFor_message(const bool& message_received, double timeout = 5) {
     ros::Time start = ros::Time::now();
@@ -42,4 +45,23 @@ TEST(TestDetector, detectorTest) {
 
     // Assert
     ASSERT_TRUE(waitFor_message(messageReceived, 3));
+}
+
+
+TEST(TestDetector, findObjectTest) {
+    // Arrange
+
+    bool expected_value = true;
+
+    ros::NodeHandle nh;
+
+    PackageDetector detector(&nh);
+
+
+    cv::Mat image(320, 240, CV_8UC3, cv::Scalar(0, 0, 0));
+
+    detector.image_ = image;
+
+    ASSERT_EQ(detector.find_obj(), expected_value);
+    
 }
