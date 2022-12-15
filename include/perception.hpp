@@ -13,7 +13,8 @@
 // limitations under the License.
 
 
-# pragma once
+#ifndef INCLUDE_PERCEPTION_HPP_
+#define INCLUDE_PERCEPTION_HPP_
 
 #include <cv_bridge/cv_bridge.h>
 #include <image_transport/image_transport.h>
@@ -36,22 +37,38 @@
 
 class PackageDetector {
     public:
+        /*
+        * @brief Construct new package detector object.
+        * @param nh
+        */
 
         PackageDetector(ros::NodeHandle*);
 
+        /*
+        * @brief Find the object using perception stack
+        * @return bool
+        */
         bool find_obj();
+
+        /*
+        * @brief Check if object is detected
+        * @return bool
+        */
 
         bool if_obj_detected;
 
+        /*
+        * @brief Callback function for image subscriber
+        * @param sensor_msgs::ImageConstPtr
+        */
+
         void image_callback(const sensor_msgs::ImageConstPtr &);
-    
-        cv::Mat image_;
 
     private:
 
     ros::NodeHandle* nh_;
 
-    cv::Mat image_hsv_, image_thresh_;
+    cv::Mat image_, image_hsv_, image_thresh_;
 
     image_transport::ImageTransport image_transport_;
 
