@@ -1,6 +1,6 @@
 # Inventory-Management-AGV
 
-[![Build Status](https://github.com/sairampolina/Inventory-Management-AGV/actions/workflows/industrial_ci_action.yml/badge.svg)](https://github.com/sairampolina/Inventory-Management-AGV/blob/actions/workflows/industrial_ci_action.yml/)
+[![Build Status](https://github.com/sairampolina/Inventory-Management-AGV/actions/workflows/ci_v2.yml/badge.svg)](https://github.com/sairampolina/Inventory-Management-AGV/actions/workflows/ci_v2.yml/)
 [![codecov](https://codecov.io/gh/shelvinpauly/Inventory-Management-AGV/branch/phase3/graph/badge.svg?token=YUMKWMA7D0)](https://codecov.io/gh/shelvinpauly/Inventory-Management-AGV)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ---
