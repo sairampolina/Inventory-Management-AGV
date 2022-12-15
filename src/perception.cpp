@@ -15,6 +15,8 @@
 
 #include "../include/perception.hpp"
 
+
+
 PackageDetector::PackageDetector(ros::NodeHandle* nh_):
                                 image_transport_(*nh_) {
 
@@ -39,18 +41,6 @@ bool PackageDetector::find_obj(){
     cv::findContours(image_thresh_,contours_,CV_RETR_EXTERNAL,
                         CV_CHAIN_APPROX_SIMPLE);
     
-    // if(contours_.size() > 0) {
-    //     cv::Rect bounding_box =  cv::Rect(0,0,0,0);
-        
-    //     std::vector<std::vector<cv::Point>>  main_contour;
-    //     main_contour.push_back(contours_[);
-
-    //     bounding_box = cv::boundingRect(contours.size()-1]);
-
-    //     bounding_box.x
-
-    // }
-
     if(contours_.size() > 0) {
         if_obj_detected = true;
     }
