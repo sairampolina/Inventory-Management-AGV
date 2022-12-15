@@ -82,9 +82,9 @@ if(CATKIN_ENABLE_TESTING)
     
     test/test_perception.cpp
     test/test_navigation.cpp
-#    test/detect_object_test.cpp
-#    test/grasp_object_test.cpp
-#    test/test_object.cpp
+    test/test_manipulation.cpp
+    test/test_object.cpp
+
   )
 
 
