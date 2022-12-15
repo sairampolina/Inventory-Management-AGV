@@ -84,7 +84,7 @@ if(CATKIN_ENABLE_TESTING)
     test/test_navigation.cpp
 #    test/detect_object_test.cpp
 #    test/grasp_object_test.cpp
-#    test/object_spawner_test.cpp
+    test/test_object.cpp
   )
 
 
