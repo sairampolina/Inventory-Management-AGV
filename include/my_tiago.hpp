@@ -64,7 +64,7 @@ class MyTiago {
 
         /**
         * @brief Gets object pose from the world. 
-        *    /**
+        * 
         * @brief Construct a new DCRobot object
         * 
         */
