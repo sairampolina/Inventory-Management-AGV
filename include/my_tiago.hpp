@@ -12,27 +12,31 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
+/**
+ * Ros headers
+*/
 #include <actionlib/client/simple_action_client.h>
-#include <geometry_msgs/PointStamped.h>
 #include <control_msgs/PointHeadAction.h>
+#include <geometry_msgs/PointStamped.h>
 #include <tf2_ros/transform_listener.h>
-// #include <geometry_msgs/Pose.h>
 
-// C++ standard headers
+
 #include <string>
 
-// Boost headers
+/**
+ * boost library
+*/
 #include <boost/shared_ptr.hpp>
 
-#include "manipulation.hpp"
-#include "navigation.hpp"
-#include "perception.hpp"
-#include "object.hpp"
+/**
+ * custom libraries
+*/
+#include "../include/manipulation.hpp"
+#include "../include/navigation.hpp"
+#include "../include/perception.hpp"
+#include "../include/object.hpp"
 
-// namespace client {
-//     actionlib::SimpleActionClient<control_msgs::PointHeadAction> PointHeadClient;
-// };
+
 
 typedef actionlib::SimpleActionClient<control_msgs::PointHeadAction>
                                                             PointHeadClient;
@@ -50,7 +54,7 @@ class MyTiago {
         * @brief Synchronizes various tasks of the robot
         * 
         */
-        void handle_states();
+        void execution_pipeline();
 
         /**
         * @brief Checks whether the object is within reach of the robot
@@ -65,33 +69,33 @@ class MyTiago {
         * 
         */
     
-        geometry_msgs::Pose get_object_pose(std::string wrt = "map");
+        geometry_msgs::Pose get_pkg_pose(std::string wrt = "map");
 
         /**
         * @brief Handles object picking by the robot.
         * 
         */
-        void pick_up_object();
+        void pickup_pkg();
 
         /**
         * @brief Handles object placement by the robot.
         * 
         */
-        void place_object();
+        void place_pkg();
 
         /**
         * @brief Enumerations various robot functioning states.
         * 
         */
         enum robotState {
-            STARTING,
+            START,
             IDLE,
-            MOVING_TO_CHECKPOINT,
-            TURNING_AROUND,
+            MOVING_TO_WAYPOINT,
+            ROTATE_AROUND,
             OBJECT_FOUND,
             MOVING_TOWARDS_OBJECT,
             PICKING_OBJECT,
-            MOVING_TO_BIN_LOCATION,
+            MOVING_TO_DROP_LOCATION,
             PLACING_OBJECT,
             STOP
         };
@@ -108,7 +112,7 @@ class MyTiago {
         * @brief Enumerates various object states.
         * 
         */
-        void set_head_down();
+        void move_head();
 
         //using namespace PointHeadClient;
 
@@ -116,7 +120,7 @@ class MyTiago {
         * @brief Enumerates various object states.
         * 
         */
-        void create_point_head_client(PointHeadClientPtr&);
+        void create_head_client(PointHeadClientPtr&);
 
         /** Node Handle created*/
         ros::NodeHandle* nh_;
