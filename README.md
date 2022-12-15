@@ -1,8 +1,7 @@
 # Inventory-Management-AGV
 
-<!-- [![Build Status](https://app.travis-ci.com/spauly98/ENPM808X_Midterm_project.svg?branch=phase2)](https://app.travis-ci.com/github/bharadwaj-chukkala/ENPM808X_Midterm_project)
-[![Coverage Status](https://coveralls.io/repos/github/spauly98/ENPM808X_Midterm_project/badge.svg?branch=phase2)](https://coveralls.io/github/spauly98/ENPM808X_Midterm_project?branch=phase2) -->
-
+[![Build Status](https://github.com/sairampolina/Inventory-Management-AGV/actions/workflows/industrial_ci_action.yml/badge.svg)](https://github.com/sairampolina/Inventory-Management-AGV/blob/actions/workflows/industrial_ci_action.yml/)
+[![codecov](https://codecov.io/gh/shelvinpauly/Inventory-Management-AGV/branch/phase3/graph/badge.svg?token=YUMKWMA7D0)](https://codecov.io/gh/shelvinpauly/Inventory-Management-AGV)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ---
 
