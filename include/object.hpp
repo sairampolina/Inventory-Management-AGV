@@ -29,19 +29,49 @@
 class Object {
  public:
 
+   /**
+    * @brief Construct a new Object class's object
+    * 
+    */
+
     Object(ros::NodeHandle*);
+   
+   /**
+    * @brief  method to spawn the package in gazebo
+    * 
+    * @return bool
+    */
 
     bool spawn_pkg();
 
+   /**
+    * @brief Set the pose of pkg object   
+    * @param Pose pose for the object to be spawned
+    */
     void set_pose_of_pkg(geometry_msgs::Pose);
-
+   
+   /**
+    * @brief Flag to check if object is in manipulator
+    * @return bool
+    */
     bool if_picked_up_pkg;
 
  private:
 
+   
+      /**
+      * @brief  Callback for the service to update the state of the package
+      * @param std_srvs::SetBool::Request& 
+      * @param std_srvs::SetBool::Response& 
+      * @return bool
+      */
     bool set_pkg_state_callback(std_srvs::SetBool::Request&,
                                     std_srvs::SetBool::Response&);
 
+    /**
+     * @brief Callback for the timer to publish the pose of the package
+     * @param ros::TimerEvent&
+     */
     void publish_pkg_loc(const ros::TimerEvent &);
 
     int seed;
