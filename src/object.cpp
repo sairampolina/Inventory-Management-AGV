@@ -1,3 +1,6 @@
+
+
+
 // Copyright Venkata Sairam Polina.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,6 +14,8 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
+
+
 
 #include "../include/object.hpp"
 
@@ -38,9 +43,9 @@ Object::Object(ros::NodeHandle* nh):
     <link name="my_box"><inertial><origin xyz="0 0 0" />
     <mass value="0.1" /><inertia  ixx="0.0001" ixy="0.0"  
     ixz="0.0"  iyy="0.0001"  iyz="0.0"  izz="0.0001" /></inertial>
-    <visual><origin xyz="0 0 0"/><geometry><box size="0.05 0.05 0.05" />
+    <visual><origin xyz="0 0 0"/><geometry><box size="0.05 0.05 0.4" />
     </geometry></visual><collision><origin xyz="0 0 0"/><geometry>
-    <box size="0.05 0.05 0.05" /></geometry></collision></link>
+    <box size="0.05 0.05 0.4" /></geometry></collision></link>
     <gazebo reference="my_box"><material>Gazebo/Blue</material>
     </gazebo><gazebo reference="object_base_link"><gravity>0</gravity>
     </gazebo></robot>)";
@@ -62,8 +67,8 @@ bool Object::spawn_pkg(){
     srv.request.model_xml = urdf_string_;  
 
     //change val
-    srv.request.initial_pose.position.x = 4;
-    srv.request.initial_pose.position.y = 2;
+    srv.request.initial_pose.position.x = -3.5;
+    srv.request.initial_pose.position.y = -12;
     srv.request.initial_pose.position.z = 0.025;
     srv.request.initial_pose.orientation.w = 1;
     srv.request.reference_frame = "world";
