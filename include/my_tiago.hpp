@@ -45,46 +45,44 @@ typedef boost::shared_ptr<PointHeadClient> PointHeadClientPtr;
 class MyTiago {
     public:
         /**
-        * @brief Construct a new DCRobot object
+        * @brief Spawning MyTiago bot   
         * 
         */
         explicit MyTiago(ros::NodeHandle*);
 
         /**
-        * @brief Synchronizes various tasks of the robot
+        * @brief Starts the robot execution pipeline
         * 
         */
         void execution_pipeline();
 
         /**
-        * @brief Checks whether the object is within reach of the robot
+        * @brief Checks if object is within reach of the robot, returns boolean.
         * 
         */
         bool if_obj_within_reach();
 
         /**
-        * @brief Gets object pose from the world. 
-        * 
-        * @brief Construct a new DCRobot object
-        * 
+        * @brief Get the pose of the object using the perception stack.
+        * @param wrt - string, frame of reference for the pose.
         */
-    
+            
         geometry_msgs::Pose get_pkg_pose(std::string wrt = "map");
 
         /**
-        * @brief Handles object picking by the robot.
+        * @brief Handles pickup of detected object.
         * 
         */
         void pickup_pkg();
 
         /**
-        * @brief Handles object placement by the robot.
+        * @brief Handles placement of picked object.
         * 
         */
         void place_pkg();
 
         /**
-        * @brief Enumerations various robot functioning states.
+        * @brief Enumerates various robot's states.
         * 
         */
         enum robotState {
@@ -102,14 +100,14 @@ class MyTiago {
 
         /** Instance for Navigation class*/
         Navigation navigator;
-        /** Instance for graspObj class*/
+        /** Instance for Manipulator class*/
         Manipulation manipulator;
-        /** Instance for DetectObject class*/
+        /** Instance for PackageDetector class*/
         PackageDetector detector;
 
     private:
-    /**
-        * @brief Enumerates various object states.
+       /**
+        * @brief Moves the head to look at a point in space.
         * 
         */
         void move_head();
@@ -117,8 +115,8 @@ class MyTiago {
         //using namespace PointHeadClient;
 
         /**
-        * @brief Enumerates various object states.
-        * 
+        * @brief Creates a head client for head movement actions.
+        * @param point_head_client_ - PointHeadClientPtr
         */
         void create_head_client(PointHeadClientPtr&);
 
