@@ -1,0 +1,16 @@
+<launch>
+  
+  <node pkg="im_agv" name="tiagobot" type="tiago_node" output="screen"/>
+
+  <!-- node to spawn package in gazebo -->
+  <node pkg="im_agv" name="object" type="object_node" output="screen"/>
+
+  <!-- node to launch tiagao robot in small office gazebo world -->
+  <include file="$(find tiago_2dnav_gazebo)/launch/tiago_navigation.launch">
+    <arg name="robot"       value="steel"/>
+    <arg name="world"       value="small_office"/>
+    <arg name="lost"        value="false"/>
+    <arg name="public_sim"  value="true"/>
+  </include>
+
+</launch>
