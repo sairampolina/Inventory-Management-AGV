@@ -2,9 +2,10 @@
 <package format="2">
   <name>im_agv</name>
   <version>0.0.0</version>
-  <description>The im_agv package</description>
+  <description>This package involves the simulation of pick and place  of
+  a delivery package by a mobile robot in ROS1. </description>
 
-  <maintainer email="sairam@todo.todo">sairam</maintainer>
+  <maintainer email="poinavenkatasairam@gmail.com">sairam polina</maintainer>
 
   <license>Apache License 2.0</license>
 
