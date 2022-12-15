@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#pragma once
-
+#ifndef INCLUDE_MANIPULATION_HPP_
+#define INCLUDE_MANIPULATION_HPP_
 
 #include <geometry_msgs/Pose.h>
 #include <geometry_msgs/Quaternion.h>
@@ -33,23 +33,45 @@
 class Manipulation {
     public:
 
+        /**
+         * @brief Construct a new Manipulation object
+         * @param nh 
+         */
+
         Manipulation(ros::NodeHandle*);
 
-        // move to object
+        
+        /**
+        * @brief Handles pickup of picked object.
+        * 
+        */
 
         void pick_package();
 
+        /**
+         * @brief  Handles placing of picked object.
+         * 
+         */
         void place_package();
 
+        /**
+         * @brief  Handles movement of object and takes input the pose of detected object.
+         * @param pose of the object
+         */
         void move_to_object(geometry_msgs::Pose);
 
     private:
 
-        ros::NodeHandle* nh_;
         
-        ros::ServiceClient set_obj_state_client_;
+        ros::NodeHandle* nh_; // Node handle
+        
+        ros::ServiceClient set_obj_state_client_; // Service client to set object state
 
-        void reach(geometry_msgs::Pose);
+        /**
+         * @brief Handles reaching of object and takes input the pose of detected object.
+         * @param pose of the object
+         */
+        void reach(geometry_msgs::Pose); 
 
 
 };
