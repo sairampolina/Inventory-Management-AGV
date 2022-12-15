@@ -21,21 +21,27 @@ find_package(catkin REQUIRED COMPONENTS
 )
 
 #find_package(OpenCV REQUIRED)
-find_package(OpenCV COMPONENTS opencv_highgui opencv_features2d opencv_xfeatures2d opencv_calib3d)
-if(NOT OPENCV_FOUND)
-	find_package(OpenCV REQUIRED COMPONENTS opencv_highgui opencv_features2d opencv_calib3d)
-	add_definitions(-DNO_CV_XFEATURES2D)
-endif()
+#find_package(OpenCV COMPONENTS opencv_highgui opencv_features2d opencv_xfeatures2d opencv_calib3d)
+#set(OpenCV_FOUND 1)
+#if(NOT OPENCV_FOUND)
+find_package(OpenCV REQUIRED COMPONENTS opencv_highgui opencv_features2d opencv_calib3d)
+add_definitions(-DNO_CV_XFEATURES2D)
+#endif()
 
 find_package(Eigen3 REQUIRED)
 catkin_package(
 )
 
-###########
-## Build ##
-###########
+
+# build files 
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+
+add_library(dcrobot_library src/my_tiago.cpp)
+add_library(navigation_library src/navigation.cpp)
+add_library(detect_object_library src/perception.cpp)
+add_library(grasp_object_library src/manipulation.cpp)
+add_library(object_spawner_library src/object.cpp)
 
 include_directories(
   include
@@ -57,9 +63,7 @@ target_link_libraries(object_node
   ${catkin_LIBRARIES}
 )
 
-#############
-## Testing ##
-#############
+# Testing
 
 ## Add gtest based cpp test target and link libraries
 # catkin_add_gtest(${PROJECT_NAME}-test test/test_im_agv.cpp)
@@ -69,3 +73,32 @@ target_link_libraries(object_node
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
+
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  add_rostest_gtest(main_rostest
+    test/main_test.test
+    test/main.cpp
+    
+    test/test_perception.cpp
+    test/test_navigation.cpp
+#    test/detect_object_test.cpp
+#    test/grasp_object_test.cpp
+#    test/object_spawner_test.cpp
+  )
+
+
+  target_link_libraries(main_rostest
+    ${catkin_LIBRARIES}
+    ${OpenCV_LIBRARIES}
+
+
+    dcrobot_library
+    navigation_library
+    detect_object_library
+    grasp_object_library
+    object_spawner_library
+    
+    )
+endif()
+
