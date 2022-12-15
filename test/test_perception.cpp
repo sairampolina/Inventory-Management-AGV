@@ -48,20 +48,20 @@ TEST(TestDetector, detectorTest) {
 }
 
 
-TEST(TestDetector, findObjectTest) {
-    // Arrange
+// TEST(TestDetector, findObjectTest) {
+//     // Arrange
 
-    bool expected_value = true;
+//     bool expected_value = true;
 
-    ros::NodeHandle nh;
+//     ros::NodeHandle nh;
 
-    PackageDetector detector(&nh);
+//     PackageDetector detector(&nh);
 
 
-    cv::Mat image(320, 240, CV_8UC3, cv::Scalar(0, 0, 0));
+//     cv::Mat image(320, 240, CV_8UC3, cv::Scalar(0, 0, 0));
 
-    detector.image_ = image;
+//     detector.image_ = image;
 
-    ASSERT_EQ(detector.find_obj(), expected_value);
+//     ASSERT_EQ(detector.find_obj(), expected_value);
     
-}
+// }

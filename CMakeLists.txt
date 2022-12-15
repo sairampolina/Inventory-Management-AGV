@@ -40,7 +40,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
 add_library(tiago_lib src/my_tiago.cpp)
 add_library(navigation_lib src/navigation.cpp)
 add_library(perception_lib src/perception.cpp)
-add_library(manipulation_lib src/manipulation.cpp)
+#add_library(manipulation_lib src/manipulation.cpp)
 add_library(object_lib src/object.cpp)
 
 include_directories(
@@ -82,7 +82,7 @@ if(CATKIN_ENABLE_TESTING)
     
     test/test_perception.cpp
     test/test_navigation.cpp
-    test/test_manipulation.cpp
+    #test/test_manipulation.cpp
     test/test_object.cpp
 
   )
@@ -96,7 +96,7 @@ if(CATKIN_ENABLE_TESTING)
     tiago_lib
     navigation_lib
     perception_lib
-    manipulation_lib
+    #manipulation_lib
     object_lib
     
     )
