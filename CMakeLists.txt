@@ -96,7 +96,7 @@ if(CATKIN_ENABLE_TESTING)
     tiago_lib
     navigation_lib
     perception_lib
-    detector_lib
+    manipulation_lib
     object_lib
     
     )
