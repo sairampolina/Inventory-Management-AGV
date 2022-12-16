@@ -131,15 +131,11 @@ The Members are Graduate students at The University of Maryland, College Park. T
 - Quad Chart.
 - Developer-level documentation.
 ---
-
-
 ### Video Results
-![Demonstration Video](https://drive.google.com/file/d/1_zlkNh7n82LKpOkjOCAaItQpVTASn1nq/view?usp=sharing)
+[Demonstration Video](https://drive.google.com/file/d/1_zlkNh7n82LKpOkjOCAaItQpVTASn1nq/view?usp=sharing)
 
 ### Presentation
-![Final Presentation](https://docs.google.com/presentation/d/1NeBHGJK7w3UahWF0we489h2Lg_fpibfpUOyoCq6geCc/edit#slide=id.p)
-
-
+[Final Presentation](https://docs.google.com/presentation/d/1NeBHGJK7w3UahWF0we489h2Lg_fpibfpUOyoCq6geCc/edit#slide=id.p)
 ---
 
 ## Development Aspects
