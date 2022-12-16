@@ -1,0 +1,134 @@
+\hypertarget{test__object_8cpp}{}\doxysection{/media/okritvik/\+N\+S\+S\+D/\+Inventory-\/\+Management-\/\+A\+G\+V/test/test\+\_\+object.cpp File Reference}
+\label{test__object_8cpp}\index{/media/okritvik/NSSD/Inventory-\/Management-\/AGV/test/test\_object.cpp@{/media/okritvik/NSSD/Inventory-\/Management-\/AGV/test/test\_object.cpp}}
+
+
+test file to test package spawning  
+
+
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\newline
+{\ttfamily \#include $<$ros/ros.\+h$>$}\newline
+{\ttfamily \#include $<$geometry\+\_\+msgs/\+Pose\+Stamped.\+h$>$}\newline
+{\ttfamily \#include $<$gazebo\+\_\+msgs/\+Spawn\+Model.\+h$>$}\newline
+{\ttfamily \#include $<$gazebo\+\_\+msgs/\+Model\+State.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}object.\+hpp\char`\"{}}\newline
+Include dependency graph for test\+\_\+object.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__object_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{test__object_8cpp_a5705e441062aaf07f95379c9ca22f618}{wait\+For\+Message}} (const bool \&\mbox{\hyperlink{test__object_8cpp_a83df816234091b3d00ffa0aa3f2c4b6d}{msg\+\_\+received}}, double timeout=5)
+\item 
+void \mbox{\hyperlink{test__object_8cpp_a18602938715106d468c903e4b7116be4}{pose\+\_\+cb}} (const gazebo\+\_\+msgs\+::\+Model\+State\+Const\+Ptr \&msg)
+\item 
+\mbox{\hyperlink{test__object_8cpp_ad965cef0091b016bb36e9d6ade980a2c}{T\+E\+ST}} (test\+\_\+object\+\_\+spawner\+\_\+class, test\+\_\+constructor)
+\item 
+\mbox{\hyperlink{test__object_8cpp_ab275629c73bb4b82efe6a60ff0af5161}{T\+E\+ST}} (test\+\_\+object\+\_\+spawner\+\_\+class, test\+\_\+set\+\_\+object\+\_\+pose)
+\item 
+\mbox{\hyperlink{test__object_8cpp_a78135f4c83cbd859b3d5b5ecea2390da}{T\+E\+ST}} (test\+\_\+object\+\_\+spawner\+\_\+class, set\+\_\+object\+\_\+pose\+\_\+test)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{test__object_8cpp_a83df816234091b3d00ffa0aa3f2c4b6d}{msg\+\_\+received}} = false
+\item 
+gazebo\+\_\+msgs\+::\+Model\+State \mbox{\hyperlink{test__object_8cpp_a0254cab2db2c3bb0f5b49e5105a4a3f9}{pose\+\_\+msg}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+test file to test package spawning 
+
+\begin{DoxyAuthor}{Author}
+sairam polina (\href{mailto:polinavenkatasairam@gmail.com}{\texttt{ polinavenkatasairam@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/12-\/15
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{test__object_8cpp_a18602938715106d468c903e4b7116be4}\label{test__object_8cpp_a18602938715106d468c903e4b7116be4}} 
+\index{test\_object.cpp@{test\_object.cpp}!pose\_cb@{pose\_cb}}
+\index{pose\_cb@{pose\_cb}!test\_object.cpp@{test\_object.cpp}}
+\doxysubsubsection{\texorpdfstring{pose\_cb()}{pose\_cb()}}
+{\footnotesize\ttfamily void pose\+\_\+cb (\begin{DoxyParamCaption}\item[{const gazebo\+\_\+msgs\+::\+Model\+State\+Const\+Ptr \&}]{msg }\end{DoxyParamCaption})}
+
+
+
+Definition at line 52 of file test\+\_\+object.\+cpp.
+
+\mbox{\Hypertarget{test__object_8cpp_a78135f4c83cbd859b3d5b5ecea2390da}\label{test__object_8cpp_a78135f4c83cbd859b3d5b5ecea2390da}} 
+\index{test\_object.cpp@{test\_object.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!test\_object.cpp@{test\_object.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{test\+\_\+object\+\_\+spawner\+\_\+class}]{,  }\item[{set\+\_\+object\+\_\+pose\+\_\+test}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 108 of file test\+\_\+object.\+cpp.
+
+\mbox{\Hypertarget{test__object_8cpp_ad965cef0091b016bb36e9d6ade980a2c}\label{test__object_8cpp_ad965cef0091b016bb36e9d6ade980a2c}} 
+\index{test\_object.cpp@{test\_object.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!test\_object.cpp@{test\_object.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{test\+\_\+object\+\_\+spawner\+\_\+class}]{,  }\item[{test\+\_\+constructor}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 68 of file test\+\_\+object.\+cpp.
+
+\mbox{\Hypertarget{test__object_8cpp_ab275629c73bb4b82efe6a60ff0af5161}\label{test__object_8cpp_ab275629c73bb4b82efe6a60ff0af5161}} 
+\index{test\_object.cpp@{test\_object.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!test\_object.cpp@{test\_object.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{test\+\_\+object\+\_\+spawner\+\_\+class}]{,  }\item[{test\+\_\+set\+\_\+object\+\_\+pose}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 81 of file test\+\_\+object.\+cpp.
+
+\mbox{\Hypertarget{test__object_8cpp_a5705e441062aaf07f95379c9ca22f618}\label{test__object_8cpp_a5705e441062aaf07f95379c9ca22f618}} 
+\index{test\_object.cpp@{test\_object.cpp}!waitForMessage@{waitForMessage}}
+\index{waitForMessage@{waitForMessage}!test\_object.cpp@{test\_object.cpp}}
+\doxysubsubsection{\texorpdfstring{waitForMessage()}{waitForMessage()}}
+{\footnotesize\ttfamily bool wait\+For\+Message (\begin{DoxyParamCaption}\item[{const bool \&}]{msg\+\_\+received,  }\item[{double}]{timeout = {\ttfamily 5} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 39 of file test\+\_\+object.\+cpp.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{test__object_8cpp_a83df816234091b3d00ffa0aa3f2c4b6d}\label{test__object_8cpp_a83df816234091b3d00ffa0aa3f2c4b6d}} 
+\index{test\_object.cpp@{test\_object.cpp}!msg\_received@{msg\_received}}
+\index{msg\_received@{msg\_received}!test\_object.cpp@{test\_object.cpp}}
+\doxysubsubsection{\texorpdfstring{msg\_received}{msg\_received}}
+{\footnotesize\ttfamily bool msg\+\_\+received = false}
+
+
+
+Definition at line 36 of file test\+\_\+object.\+cpp.
+
+\mbox{\Hypertarget{test__object_8cpp_a0254cab2db2c3bb0f5b49e5105a4a3f9}\label{test__object_8cpp_a0254cab2db2c3bb0f5b49e5105a4a3f9}} 
+\index{test\_object.cpp@{test\_object.cpp}!pose\_msg@{pose\_msg}}
+\index{pose\_msg@{pose\_msg}!test\_object.cpp@{test\_object.cpp}}
+\doxysubsubsection{\texorpdfstring{pose\_msg}{pose\_msg}}
+{\footnotesize\ttfamily gazebo\+\_\+msgs\+::\+Model\+State pose\+\_\+msg}
+
+
+
+Definition at line 37 of file test\+\_\+object.\+cpp.
+

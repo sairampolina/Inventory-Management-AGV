@@ -1,0 +1,253 @@
+\hypertarget{class_my_tiago}{}\doxysection{My\+Tiago Class Reference}
+\label{class_my_tiago}\index{MyTiago@{MyTiago}}
+
+
+{\ttfamily \#include $<$my\+\_\+tiago.\+hpp$>$}
+
+
+
+Collaboration diagram for My\+Tiago\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_my_tiago__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33e}{robot\+State}} \{ \newline
+\mbox{\hyperlink{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33eac4106311a96d257df7547cd5097dcaf5}{S\+T\+A\+RT}}, 
+\mbox{\hyperlink{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea265399b5b99aa0cdacc1ef06a327c923}{I\+D\+LE}}, 
+\mbox{\hyperlink{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea1faf55a972cc255ce99ca598c42a8984}{M\+O\+V\+I\+N\+G\+\_\+\+T\+O\+\_\+\+W\+A\+Y\+P\+O\+I\+NT}}, 
+\mbox{\hyperlink{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33eae9cb4d6dcf02ed2eeb0c4fe702c4bc2d}{R\+O\+T\+A\+T\+E\+\_\+\+A\+R\+O\+U\+ND}}, 
+\newline
+\mbox{\hyperlink{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea9449cd00f489af59f9cb3675ee6a3358}{O\+B\+J\+E\+C\+T\+\_\+\+F\+O\+U\+ND}}, 
+\mbox{\hyperlink{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea55a61e1c42661bd094f8af5f6235da36}{M\+O\+V\+I\+N\+G\+\_\+\+T\+O\+W\+A\+R\+D\+S\+\_\+\+O\+B\+J\+E\+CT}}, 
+\mbox{\hyperlink{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea8e1a72762b3510f346a22bb53478c0be}{P\+I\+C\+K\+I\+N\+G\+\_\+\+O\+B\+J\+E\+CT}}, 
+\mbox{\hyperlink{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea43286accf498bb0ac197ba03dd386b6a}{M\+O\+V\+I\+N\+G\+\_\+\+T\+O\+\_\+\+D\+R\+O\+P\+\_\+\+L\+O\+C\+A\+T\+I\+ON}}, 
+\newline
+\mbox{\hyperlink{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea84de346bbd2ea51369b9f47a46ed131e}{P\+L\+A\+C\+I\+N\+G\+\_\+\+O\+B\+J\+E\+CT}}, 
+\mbox{\hyperlink{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea39266014a7a9c8b85fec407803193f4f}{S\+T\+OP}}
+ \}
+\begin{DoxyCompactList}\small\item\em Enumerations various robot functioning states. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_my_tiago_a0bfd2afd3557abb423ef1812771af1b6}{My\+Tiago}} (ros\+::\+Node\+Handle $\ast$)
+\begin{DoxyCompactList}\small\item\em Construct a new D\+C\+Robot object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_my_tiago_a6a05d290a01e58cfe2f16176af6686d3}{execution\+\_\+pipeline}} ()
+\begin{DoxyCompactList}\small\item\em Synchronizes various tasks of the robot. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_my_tiago_a9515894710e535fd4dd17626161587ab}{if\+\_\+obj\+\_\+within\+\_\+reach}} ()
+\begin{DoxyCompactList}\small\item\em Checks whether the object is within reach of the robot. \end{DoxyCompactList}\item 
+geometry\+\_\+msgs\+::\+Pose \mbox{\hyperlink{class_my_tiago_a3bf0f0954521bdddcab7c1fe1eab85ba}{get\+\_\+pkg\+\_\+pose}} (std\+::string wrt=\char`\"{}map\char`\"{})
+\begin{DoxyCompactList}\small\item\em Gets object pose from the world. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_my_tiago_a41c1f4edcebc974ebda889067a869e53}{pickup\+\_\+pkg}} ()
+\begin{DoxyCompactList}\small\item\em Handles object picking by the robot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_my_tiago_a8edec102a3918ad07edf133cbefb0799}{place\+\_\+pkg}} ()
+\begin{DoxyCompactList}\small\item\em Handles object placement by the robot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_navigation}{Navigation}} \mbox{\hyperlink{class_my_tiago_a01bfe2611ee0de933e1ded38f346eaa3}{navigator}}
+\item 
+\mbox{\hyperlink{class_manipulation}{Manipulation}} \mbox{\hyperlink{class_my_tiago_a87902c99170c46096108d6056208f982}{manipulator}}
+\item 
+\mbox{\hyperlink{class_package_detector}{Package\+Detector}} \mbox{\hyperlink{class_my_tiago_a291da9b7d1f8f39c4791458ec44379ff}{detector}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 59 of file my\+\_\+tiago.\+hpp.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33e}\label{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33e}} 
+\index{MyTiago@{MyTiago}!robotState@{robotState}}
+\index{robotState@{robotState}!MyTiago@{MyTiago}}
+\doxysubsubsection{\texorpdfstring{robotState}{robotState}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33e}{My\+Tiago\+::robot\+State}}}
+
+
+
+Enumerations various robot functioning states. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{START@{START}!MyTiago@{MyTiago}}\index{MyTiago@{MyTiago}!START@{START}}}\mbox{\Hypertarget{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33eac4106311a96d257df7547cd5097dcaf5}\label{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33eac4106311a96d257df7547cd5097dcaf5}} 
+S\+T\+A\+RT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IDLE@{IDLE}!MyTiago@{MyTiago}}\index{MyTiago@{MyTiago}!IDLE@{IDLE}}}\mbox{\Hypertarget{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea265399b5b99aa0cdacc1ef06a327c923}\label{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea265399b5b99aa0cdacc1ef06a327c923}} 
+I\+D\+LE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOVING\_TO\_WAYPOINT@{MOVING\_TO\_WAYPOINT}!MyTiago@{MyTiago}}\index{MyTiago@{MyTiago}!MOVING\_TO\_WAYPOINT@{MOVING\_TO\_WAYPOINT}}}\mbox{\Hypertarget{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea1faf55a972cc255ce99ca598c42a8984}\label{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea1faf55a972cc255ce99ca598c42a8984}} 
+M\+O\+V\+I\+N\+G\+\_\+\+T\+O\+\_\+\+W\+A\+Y\+P\+O\+I\+NT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROTATE\_AROUND@{ROTATE\_AROUND}!MyTiago@{MyTiago}}\index{MyTiago@{MyTiago}!ROTATE\_AROUND@{ROTATE\_AROUND}}}\mbox{\Hypertarget{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33eae9cb4d6dcf02ed2eeb0c4fe702c4bc2d}\label{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33eae9cb4d6dcf02ed2eeb0c4fe702c4bc2d}} 
+R\+O\+T\+A\+T\+E\+\_\+\+A\+R\+O\+U\+ND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{OBJECT\_FOUND@{OBJECT\_FOUND}!MyTiago@{MyTiago}}\index{MyTiago@{MyTiago}!OBJECT\_FOUND@{OBJECT\_FOUND}}}\mbox{\Hypertarget{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea9449cd00f489af59f9cb3675ee6a3358}\label{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea9449cd00f489af59f9cb3675ee6a3358}} 
+O\+B\+J\+E\+C\+T\+\_\+\+F\+O\+U\+ND&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOVING\_TOWARDS\_OBJECT@{MOVING\_TOWARDS\_OBJECT}!MyTiago@{MyTiago}}\index{MyTiago@{MyTiago}!MOVING\_TOWARDS\_OBJECT@{MOVING\_TOWARDS\_OBJECT}}}\mbox{\Hypertarget{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea55a61e1c42661bd094f8af5f6235da36}\label{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea55a61e1c42661bd094f8af5f6235da36}} 
+M\+O\+V\+I\+N\+G\+\_\+\+T\+O\+W\+A\+R\+D\+S\+\_\+\+O\+B\+J\+E\+CT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PICKING\_OBJECT@{PICKING\_OBJECT}!MyTiago@{MyTiago}}\index{MyTiago@{MyTiago}!PICKING\_OBJECT@{PICKING\_OBJECT}}}\mbox{\Hypertarget{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea8e1a72762b3510f346a22bb53478c0be}\label{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea8e1a72762b3510f346a22bb53478c0be}} 
+P\+I\+C\+K\+I\+N\+G\+\_\+\+O\+B\+J\+E\+CT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MOVING\_TO\_DROP\_LOCATION@{MOVING\_TO\_DROP\_LOCATION}!MyTiago@{MyTiago}}\index{MyTiago@{MyTiago}!MOVING\_TO\_DROP\_LOCATION@{MOVING\_TO\_DROP\_LOCATION}}}\mbox{\Hypertarget{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea43286accf498bb0ac197ba03dd386b6a}\label{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea43286accf498bb0ac197ba03dd386b6a}} 
+M\+O\+V\+I\+N\+G\+\_\+\+T\+O\+\_\+\+D\+R\+O\+P\+\_\+\+L\+O\+C\+A\+T\+I\+ON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLACING\_OBJECT@{PLACING\_OBJECT}!MyTiago@{MyTiago}}\index{MyTiago@{MyTiago}!PLACING\_OBJECT@{PLACING\_OBJECT}}}\mbox{\Hypertarget{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea84de346bbd2ea51369b9f47a46ed131e}\label{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea84de346bbd2ea51369b9f47a46ed131e}} 
+P\+L\+A\+C\+I\+N\+G\+\_\+\+O\+B\+J\+E\+CT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STOP@{STOP}!MyTiago@{MyTiago}}\index{MyTiago@{MyTiago}!STOP@{STOP}}}\mbox{\Hypertarget{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea39266014a7a9c8b85fec407803193f4f}\label{class_my_tiago_adc9458b5b2316a3334f48d0d71e1b33ea39266014a7a9c8b85fec407803193f4f}} 
+S\+T\+OP&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 104 of file my\+\_\+tiago.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_my_tiago_a0bfd2afd3557abb423ef1812771af1b6}\label{class_my_tiago_a0bfd2afd3557abb423ef1812771af1b6}} 
+\index{MyTiago@{MyTiago}!MyTiago@{MyTiago}}
+\index{MyTiago@{MyTiago}!MyTiago@{MyTiago}}
+\doxysubsubsection{\texorpdfstring{MyTiago()}{MyTiago()}}
+{\footnotesize\ttfamily My\+Tiago\+::\+My\+Tiago (\begin{DoxyParamCaption}\item[{ros\+::\+Node\+Handle $\ast$}]{nh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct a new D\+C\+Robot object. 
+
+
+
+Definition at line 27 of file my\+\_\+tiago.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_my_tiago_a6a05d290a01e58cfe2f16176af6686d3}\label{class_my_tiago_a6a05d290a01e58cfe2f16176af6686d3}} 
+\index{MyTiago@{MyTiago}!execution\_pipeline@{execution\_pipeline}}
+\index{execution\_pipeline@{execution\_pipeline}!MyTiago@{MyTiago}}
+\doxysubsubsection{\texorpdfstring{execution\_pipeline()}{execution\_pipeline()}}
+{\footnotesize\ttfamily void My\+Tiago\+::execution\+\_\+pipeline (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Synchronizes various tasks of the robot. 
+
+
+
+Definition at line 38 of file my\+\_\+tiago.\+cpp.
+
+\mbox{\Hypertarget{class_my_tiago_a3bf0f0954521bdddcab7c1fe1eab85ba}\label{class_my_tiago_a3bf0f0954521bdddcab7c1fe1eab85ba}} 
+\index{MyTiago@{MyTiago}!get\_pkg\_pose@{get\_pkg\_pose}}
+\index{get\_pkg\_pose@{get\_pkg\_pose}!MyTiago@{MyTiago}}
+\doxysubsubsection{\texorpdfstring{get\_pkg\_pose()}{get\_pkg\_pose()}}
+{\footnotesize\ttfamily geometry\+\_\+msgs\+::\+Pose My\+Tiago\+::get\+\_\+pkg\+\_\+pose (\begin{DoxyParamCaption}\item[{std\+::string}]{wrt = {\ttfamily \char`\"{}map\char`\"{}} }\end{DoxyParamCaption})}
+
+
+
+Gets object pose from the world. 
+
+Construct a new D\+C\+Robot object 
+
+Definition at line 125 of file my\+\_\+tiago.\+cpp.
+
+\mbox{\Hypertarget{class_my_tiago_a9515894710e535fd4dd17626161587ab}\label{class_my_tiago_a9515894710e535fd4dd17626161587ab}} 
+\index{MyTiago@{MyTiago}!if\_obj\_within\_reach@{if\_obj\_within\_reach}}
+\index{if\_obj\_within\_reach@{if\_obj\_within\_reach}!MyTiago@{MyTiago}}
+\doxysubsubsection{\texorpdfstring{if\_obj\_within\_reach()}{if\_obj\_within\_reach()}}
+{\footnotesize\ttfamily bool My\+Tiago\+::if\+\_\+obj\+\_\+within\+\_\+reach (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Checks whether the object is within reach of the robot. 
+
+
+
+Definition at line 114 of file my\+\_\+tiago.\+cpp.
+
+\mbox{\Hypertarget{class_my_tiago_a41c1f4edcebc974ebda889067a869e53}\label{class_my_tiago_a41c1f4edcebc974ebda889067a869e53}} 
+\index{MyTiago@{MyTiago}!pickup\_pkg@{pickup\_pkg}}
+\index{pickup\_pkg@{pickup\_pkg}!MyTiago@{MyTiago}}
+\doxysubsubsection{\texorpdfstring{pickup\_pkg()}{pickup\_pkg()}}
+{\footnotesize\ttfamily void My\+Tiago\+::pickup\+\_\+pkg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handles object picking by the robot. 
+
+
+
+Definition at line 143 of file my\+\_\+tiago.\+cpp.
+
+\mbox{\Hypertarget{class_my_tiago_a8edec102a3918ad07edf133cbefb0799}\label{class_my_tiago_a8edec102a3918ad07edf133cbefb0799}} 
+\index{MyTiago@{MyTiago}!place\_pkg@{place\_pkg}}
+\index{place\_pkg@{place\_pkg}!MyTiago@{MyTiago}}
+\doxysubsubsection{\texorpdfstring{place\_pkg()}{place\_pkg()}}
+{\footnotesize\ttfamily void My\+Tiago\+::place\+\_\+pkg (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handles object placement by the robot. 
+
+
+
+Definition at line 150 of file my\+\_\+tiago.\+cpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_my_tiago_a291da9b7d1f8f39c4791458ec44379ff}\label{class_my_tiago_a291da9b7d1f8f39c4791458ec44379ff}} 
+\index{MyTiago@{MyTiago}!detector@{detector}}
+\index{detector@{detector}!MyTiago@{MyTiago}}
+\doxysubsubsection{\texorpdfstring{detector}{detector}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_package_detector}{Package\+Detector}} My\+Tiago\+::detector}
+
+Instance for Detect\+Object class 
+
+Definition at line 122 of file my\+\_\+tiago.\+hpp.
+
+\mbox{\Hypertarget{class_my_tiago_a87902c99170c46096108d6056208f982}\label{class_my_tiago_a87902c99170c46096108d6056208f982}} 
+\index{MyTiago@{MyTiago}!manipulator@{manipulator}}
+\index{manipulator@{manipulator}!MyTiago@{MyTiago}}
+\doxysubsubsection{\texorpdfstring{manipulator}{manipulator}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_manipulation}{Manipulation}} My\+Tiago\+::manipulator}
+
+Instance for grasp\+Obj class 
+
+Definition at line 120 of file my\+\_\+tiago.\+hpp.
+
+\mbox{\Hypertarget{class_my_tiago_a01bfe2611ee0de933e1ded38f346eaa3}\label{class_my_tiago_a01bfe2611ee0de933e1ded38f346eaa3}} 
+\index{MyTiago@{MyTiago}!navigator@{navigator}}
+\index{navigator@{navigator}!MyTiago@{MyTiago}}
+\doxysubsubsection{\texorpdfstring{navigator}{navigator}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_navigation}{Navigation}} My\+Tiago\+::navigator}
+
+Instance for \mbox{\hyperlink{class_navigation}{Navigation}} class 
+
+Definition at line 118 of file my\+\_\+tiago.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/media/okritvik/\+N\+S\+S\+D/\+Inventory-\/\+Management-\/\+A\+G\+V/include/\mbox{\hyperlink{my__tiago_8hpp}{my\+\_\+tiago.\+hpp}}\item 
+/media/okritvik/\+N\+S\+S\+D/\+Inventory-\/\+Management-\/\+A\+G\+V/src/\mbox{\hyperlink{my__tiago_8cpp}{my\+\_\+tiago.\+cpp}}\end{DoxyCompactItemize}

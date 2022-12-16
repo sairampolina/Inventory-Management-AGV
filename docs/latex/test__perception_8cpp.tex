@@ -1,0 +1,101 @@
+\hypertarget{test__perception_8cpp}{}\doxysection{/media/okritvik/\+N\+S\+S\+D/\+Inventory-\/\+Management-\/\+A\+G\+V/test/test\+\_\+perception.cpp File Reference}
+\label{test__perception_8cpp}\index{/media/okritvik/NSSD/Inventory-\/Management-\/AGV/test/test\_perception.cpp@{/media/okritvik/NSSD/Inventory-\/Management-\/AGV/test/test\_perception.cpp}}
+
+
+test file to test perception module.  
+
+
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\newline
+{\ttfamily \#include $<$ros/ros.\+h$>$}\newline
+{\ttfamily \#include $<$sensor\+\_\+msgs/\+Image.\+h$>$}\newline
+{\ttfamily \#include $<$std\+\_\+msgs/\+Header.\+h$>$}\newline
+{\ttfamily \#include $<$cv\+\_\+bridge/cv\+\_\+bridge.\+h$>$}\newline
+{\ttfamily \#include $<$opencv2/objdetect/objdetect.\+hpp$>$}\newline
+{\ttfamily \#include $<$opencv2/imgproc/imgproc.\+hpp$>$}\newline
+{\ttfamily \#include $<$opencv2/highgui/highgui.\+hpp$>$}\newline
+{\ttfamily \#include \char`\"{}perception.\+hpp\char`\"{}}\newline
+Include dependency graph for test\+\_\+perception.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__perception_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{test__perception_8cpp_ac29a4f245b2639ac484d1f335892df27}{wait\+For\+\_\+message}} (const bool \&\mbox{\hyperlink{test__navigation_8cpp_a9a75d3b2e50a13d5eed2e8c1068f0acb}{message\+\_\+received}}, double timeout=5)
+\item 
+\mbox{\hyperlink{test__perception_8cpp_ae4cbd2df6bf729c7be629daac82aa438}{T\+E\+ST}} (Test\+Detector, detector\+Test)
+\item 
+\mbox{\hyperlink{test__perception_8cpp_a1f3836131c4e598b0598000d6c2bd747}{T\+E\+ST}} (Test\+Detector, find\+Object\+Test)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{test__perception_8cpp_a109a5b4a978e1cfc92ebc8094456f8a7}{message\+Received}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+test file to test perception module. 
+
+\begin{DoxyAuthor}{Author}
+sairam polina (\href{mailto:polinavenkatasairam@gmail.com}{\texttt{ polinavenkatasairam@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/12-\/15
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{test__perception_8cpp_ae4cbd2df6bf729c7be629daac82aa438}\label{test__perception_8cpp_ae4cbd2df6bf729c7be629daac82aa438}} 
+\index{test\_perception.cpp@{test\_perception.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!test\_perception.cpp@{test\_perception.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Test\+Detector}]{,  }\item[{detector\+Test}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 53 of file test\+\_\+perception.\+cpp.
+
+\mbox{\Hypertarget{test__perception_8cpp_a1f3836131c4e598b0598000d6c2bd747}\label{test__perception_8cpp_a1f3836131c4e598b0598000d6c2bd747}} 
+\index{test\_perception.cpp@{test\_perception.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!test\_perception.cpp@{test\_perception.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{Test\+Detector}]{,  }\item[{find\+Object\+Test}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 73 of file test\+\_\+perception.\+cpp.
+
+\mbox{\Hypertarget{test__perception_8cpp_ac29a4f245b2639ac484d1f335892df27}\label{test__perception_8cpp_ac29a4f245b2639ac484d1f335892df27}} 
+\index{test\_perception.cpp@{test\_perception.cpp}!waitFor\_message@{waitFor\_message}}
+\index{waitFor\_message@{waitFor\_message}!test\_perception.cpp@{test\_perception.cpp}}
+\doxysubsubsection{\texorpdfstring{waitFor\_message()}{waitFor\_message()}}
+{\footnotesize\ttfamily bool wait\+For\+\_\+message (\begin{DoxyParamCaption}\item[{const bool \&}]{message\+\_\+received,  }\item[{double}]{timeout = {\ttfamily 5} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 40 of file test\+\_\+perception.\+cpp.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{test__perception_8cpp_a109a5b4a978e1cfc92ebc8094456f8a7}\label{test__perception_8cpp_a109a5b4a978e1cfc92ebc8094456f8a7}} 
+\index{test\_perception.cpp@{test\_perception.cpp}!messageReceived@{messageReceived}}
+\index{messageReceived@{messageReceived}!test\_perception.cpp@{test\_perception.cpp}}
+\doxysubsubsection{\texorpdfstring{messageReceived}{messageReceived}}
+{\footnotesize\ttfamily bool message\+Received}
+
+
+
+Definition at line 38 of file test\+\_\+perception.\+cpp.
+

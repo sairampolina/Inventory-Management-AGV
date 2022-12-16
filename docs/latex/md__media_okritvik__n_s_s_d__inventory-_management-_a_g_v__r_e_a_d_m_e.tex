@@ -1,0 +1,180 @@
+\href{https://github.com/sairampolina/Inventory-Management-AGV/actions/workflows/ci_v2.yml/}{\texttt{ }} \href{https://codecov.io/gh/shelvinpauly/Inventory-Management-AGV}{\texttt{ }} \hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md1}{}\doxysection{$<$a href=\char`\"{}https\+://opensource.\+org/licenses/\+Apache-\/2.\+0\char`\"{}$>$$<$img src=\char`\"{}https\+://img.\+shields.\+io/badge/\+License-\/\+Apache\+\_\+2.\+0-\/blue.\+svg\char`\"{} alt=\char`\"{}\+License\char`\"{}/$>$$<$/a$>$}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md1}
+\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md2}{}\doxysection{Overview}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md2}
+\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{Manfred -\/ The Automated Guided Vehicle}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md3}
+With the increase in e\+Commerce, the need for logistics and supply chain has only gone up. Warehousing becomes very challenging because manual operators are required to restock and move stuff around. Though conveyer belts were a convenient solution a few years back their inability to be dynamic and cemented at a specific location makes it challenging to use them in increasingly complex scenarios. This solution is often replaced with humans handling forklifts and moving the stacks around. With improvements in robotics technology, solutions can be developed to automate these machines which will save numerous man-\/hours and can also work around the hours thus saving the cost of shipment for both companies and customers. Manfred is an A\+GV for the task of inventory management in the warehouse which is tasked to move objects from one location to another after the user inputs the pickup and drop location.\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md4}{}\doxysubsection{Goal}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md4}
+The development of A\+GV tasked for inventory management requires multiple modules, these modules include, communication with the user for pickup and drop location, navigation(to localize and navigate the robot in the industry environment, which will also have the map information in the human-\/readable form to take the pickup and drop input from the user(for example using aisle number etc.)) module for taking robot from current location to pickup location and later from the pickup to drop location, perception module to detect an object that needs to be picked up, manipulator planning and control to pick the package detected. Each of the modules will be developed independently in a modular form allowing it to be reused for several other applications in inventory management.\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md5}{}\doxysubsection{Aim of the Product}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md5}
+The aim of the product is to reduce the human hours required for logistics in the warehouse. The development of the product will also facilitate the development of future products by independently using the already developed modules, for example, a similar A\+GV can be developed for transporting stuff in any other indoor environment like replacing waiters in restaurants or automated vacuums. Thus most of these modules can be directly used in other products facilitating quicker development and reducing time to market.\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md6}{}\doxysubsection{Module Description}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md6}
+The Software Product will consist of 4 modules each tasked with different aspects of the product, these modules are\+:
+\begin{DoxyEnumerate}
+\item Communication Module\+: The purpose of this module is to establish communication with the user, the robot needs the input of pickup and drop location from the user, this will serve as the input for the later modules. This module can also be used as the kill switch for the robot in case of any problems.
+\item Path planning, localization and navigation module\+: This module uses several sensors like cameras and lidar to create a map(\+N\+A\+V2 library R\+O\+S2) of the warehouse. This map will help in localizing the current location of the robot and navigating the object to the desired location. This module also consists of obstacle detection which will help in avoiding collisions and dynamically change the path robot takes in case any obstacle is encountered. This module also controls the actuators which control the motion of the robot.
+\item Perception module\+: This module will be used to locate the pickup object and the drop off location in the 3d world coordinates which will be used by the manipulator module to pickup or drop the object from the exact location. This module includes object detection and poses estimation of the desired object to facilitate the pickup of the object without damaging the product that needs to be picked up. Different sensors will be used to locate the objects in 3d world coordinates.
+\item Manipulator planning and control\+: This module will take the 3d location and pose of the desired object from the previous module. This input will be used to plan and move the manipulator (robotic hand) to the extracted location and place the object back in a bin, the module will also have to inform the bot when the task is executed so that object can move to the next task of navigating to the drop off location.
+\end{DoxyEnumerate}
+
+
+
+\doxyparagraph*{A\+GV with inventory management capabilities}
+
+\DoxyHorRuler{0}
+ \hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md8}{}\doxysection{License}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md8}
+Apache License 2.\+0 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{DISCLAIMER: Copyright 2022 Sanchit Tanwar, Shelvin Pauly, Venkata Sairam Polina}
+\DoxyCodeLine{}
+\DoxyCodeLine{Licensed under the Apache License, Version 2.0 (the "License");}
+\DoxyCodeLine{you may not use this file except in compliance with the License.}
+\DoxyCodeLine{You may obtain a copy of the License at}
+\DoxyCodeLine{}
+\DoxyCodeLine{    http://www.apache.org/licenses/LICENSE-\/2.0}
+\DoxyCodeLine{    }
+\DoxyCodeLine{Unless required by applicable law or agreed to in writing, software}
+\DoxyCodeLine{distributed under the License is distributed on an "AS IS" BASIS,}
+\DoxyCodeLine{WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.}
+\DoxyCodeLine{See the License for the specific language governing permissions and}
+\DoxyCodeLine{limitations under the License.}
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ \hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md10}{}\doxysubsection{Team}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md10}
+The Members are Graduate students at The University of Maryland, College Park. The members each have a Bachelors in Mechanical Engineering from prestigious universities in India. Their Graduate Study is in the field of Robotics with each of them having a specialization. Sanchit is pursuing a career in Computer vision and perception, Sairam aims to build his career in Deep Learning and Computer Vision and Shelvin is developing expertise in S\+L\+AM and Autonomous Vehicles.\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md11}{}\doxysection{Phase 1}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md11}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Shelvin Pauly} }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Venkata Sairam Polina} }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Sanchit Tanwar}  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Shelvin Pauly} }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Venkata Sairam Polina} }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Sanchit Tanwar}  }\\\cline{1-3}
+\endhead
+118426556 &118436579 &119167717  \\\cline{1-3}
+Navigator &Driver &Design Keeper  \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md12}{}\doxysection{Phase 2}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md12}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Venkata Sairam Polina} }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Sanchit Tanwar} }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Shelvin Pauly}  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Venkata Sairam Polina} }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Sanchit Tanwar} }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Shelvin Pauly}  }\\\cline{1-3}
+\endhead
+118436579 &119167717 &118426556  \\\cline{1-3}
+Navigator &Driver &Design Keeper  \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md13}{}\doxysection{Phase 3}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md13}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Sanchit Tanwar} }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Shelvin Pauly} }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Sanchit Tanwar}  }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Sanchit Tanwar} }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Shelvin Pauly} }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ {\ttfamily Sanchit Tanwar}  }\\\cline{1-3}
+\endhead
+119167717 &118426556 &118436579  \\\cline{1-3}
+Navigator &Driver &Design Keeper  \\\cline{1-3}
+\end{longtabu}
+
+
+\DoxyHorRuler{0}
+\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md15}{}\doxysubsection{Software Project Management}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md15}
+
+\begin{DoxyItemize}
+\item {\ttfamily Process, Tools and Technologies, Risk Management, References} -\/ \href{https://github.com/sairampolina/Enpm808x-finalproject/blob/phase1/finalproject_enpm808x_proposal.pdf}{\texttt{ Project Proposal}}
+\item {\ttfamily Implementation, Class Diagram, Activity Diagram} -\/ \href{https://github.com/sairampolina/Enpm808x-finalproject/tree/master/UML/initial}{\texttt{ U\+ML Diagrams}} 
+\end{DoxyItemize}\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md16}{}\doxysubsection{$<$!-\/-\/}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md16}
+\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md17}{}\doxysubsection{Deliverables}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md17}
+
+\begin{DoxyItemize}
+\item Project\+: Perception Module \mbox{[}Human obstacle detector and tracker\mbox{]}
+\item Overview of proposed work including timeline, risks, and mitigations.
+\item U\+ML diagrams
+\item Github repository with \mbox{\hyperlink{_r_e_a_d_m_e_8md}{R\+E\+A\+D\+ME}}
+\item Travis\+CI setup with code coverage using Coveralls.
+\item Valgrind Check for Memory Leaks.
+\item Git Version Control Workflow. 
+\end{DoxyItemize}\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md18}{}\doxysubsection{-\/ Developer-\/level documentation.}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md18}
+-\/-\/$>$\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md23}{}\doxysubsection{Development Aspects}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md23}
+Agile Iterative Development Process will be used to develop the software along Test-\/\+Driven Development.\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md24}{}\doxysubsubsection{$<$a href=\char`\"{}https\+://docs.\+google.\+com/spreadsheets/d/1\+B\+Z1\+S\+M\+S-\/p\+V\+F\+I\+Ovn\+L44y\+T\+Zs3n\+G\+Ow\+I\+K\+B\+Sia\+Rsw7p3\+Z\+Lkmk/edit\#gid=0\char`\"{}$>$\+Product Backlog and Sprint Sheet$<$/a$>$}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md24}
+\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md25}{}\doxysubsubsection{$<$a href=\char`\"{}https\+://docs.\+google.\+com/document/d/102\+M\+Qq\+V\+Z\+Mx\+Tf\+V\+C\+X7\+L\+\_\+\+Uc2\+S\+S\+M\+K\+D\+L\+Dp\+Sjjp1\+\_\+cofr\+B92\+X\+M/edit\#\char`\"{}$>$\+Sprint Review Sheet$<$/a$>$}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md25}
+\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md26}{}\doxysubsubsection{R\+O\+S Packages}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md26}
+
+\begin{DoxyItemize}
+\item tiago\+\_\+simulation
+\item tiago\+\_\+2dnav
+\item move\+\_\+base
+\end{DoxyItemize}\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md27}{}\doxysubsubsection{Software Dependencies}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md27}
+
+\begin{DoxyItemize}
+\item Open\+CV 4.\+6.\+0 (covered under the open-\/source Apache 2 License)
+\item Eigen 3.\+4 the Mozilla Public License 2.\+0
+\item G\+Test B\+SD 3-\/Clause \char`\"{}\+New\char`\"{} or \char`\"{}\+Revised\char`\"{} License
+\end{DoxyItemize}\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md28}{}\doxysubsubsection{Tools and Technologies}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md28}
+{\ttfamily Ubuntu 22.\+04(L\+TS)} {\ttfamily C++ 14+} {\ttfamily C\+Make} {\ttfamily Open\+CV} {\ttfamily Git\+Hub\+CI} {\ttfamily Coveralls} {\ttfamily Makefile} {\ttfamily C\+Make} {\ttfamily cpplint} {\ttfamily cppcheck} {\ttfamily clangd} {\ttfamily Valgrind} {\ttfamily G\+Test} {\ttfamily V\+Scode}\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md29}{}\doxysubsubsection{Installation via Command Line}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md29}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# Code Coverage}
+\DoxyCodeLine{sudo apt-\/get install -\/y -\/qq lcov}
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# OpenCV install}
+\DoxyCodeLine{sudo apt-\/get install -\/y build-\/essential}
+\DoxyCodeLine{sudo apt-\/get install -\/y cmake git libgtk2.0-\/dev pkg-\/config libavcodec-\/dev libavformat-\/dev libswscale-\/dev}
+\DoxyCodeLine{sudo apt-\/get install -\/y python-\/dev python-\/numpy libtbb2 libtbb-\/dev libjpeg-\/dev libpng-\/dev libtiff-\/dev libjasper-\/dev libdc1394-\/22-\/dev}
+\DoxyCodeLine{\# Download v4.6.0}
+\DoxyCodeLine{curl -\/sL https://github.com/Itseez/opencv/archive/4.6.0.zip > opencv.zip}
+\DoxyCodeLine{unzip opencv.zip}
+\DoxyCodeLine{cd opencv-\/4.6.0}
+\DoxyCodeLine{mkdir build}
+\DoxyCodeLine{cd build}
+\DoxyCodeLine{cmake -\/D CMAKE\_BUILD\_TYPE=RELEASE -\/D CMAKE\_INSTALL\_PREFIX=/usr/local -\/D WITH\_TBB=ON -\/D BUILD\_NEW\_PYTHON\_SUPPORT=ON -\/D WITH\_V4L=ON -\/D INSTALL\_C\_EXAMPLES=ON -\/D INSTALL\_PYTHON\_EXAMPLES=ON -\/D BUILD\_EXAMPLES=ON -\/D WITH\_QT=ON -\/D WITH\_OPENGL=ON ..}
+\DoxyCodeLine{make -\/j4}
+\DoxyCodeLine{sudo make install}
+\DoxyCodeLine{sudo sh -\/c 'echo "/usr/local/lib" > /etc/ld.so.conf.d/opencv.conf'}
+\DoxyCodeLine{sudo ldconfig}
+\DoxyCodeLine{cd ../../}
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# Static Code Analysis}
+\DoxyCodeLine{sudo apt install cpplint}
+\DoxyCodeLine{sudo apt install cppcheck}
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# Valgrind}
+\DoxyCodeLine{sudo apt install valgrind}
+\DoxyCodeLine{sudo apt-\/get install -\/y kcachegrind}
+\end{DoxyCode}
+
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\# Doxygen}
+\DoxyCodeLine{sudo apt-\/get install doxygen}
+\DoxyCodeLine{sudo apt-\/get install doxygen-\/gui}
+\end{DoxyCode}
+\hypertarget{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md31}{}\doxysubsubsection{Doxygen Documentation}\label{md__media_okritvik__n_s_s_d__inventory-_management-_a_g_v__r_e_a_d_m_e_autotoc_md31}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cd ..}
+\DoxyCodeLine{doxygen doxygen.config}
+\DoxyCodeLine{doxywizard}
+\end{DoxyCode}
+
+
+\DoxyHorRuler{0}
+ 

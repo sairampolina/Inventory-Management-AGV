@@ -1,0 +1,159 @@
+\hypertarget{test__navigation_8cpp}{}\doxysection{/media/okritvik/\+N\+S\+S\+D/\+Inventory-\/\+Management-\/\+A\+G\+V/test/test\+\_\+navigation.cpp File Reference}
+\label{test__navigation_8cpp}\index{/media/okritvik/NSSD/Inventory-\/Management-\/AGV/test/test\_navigation.cpp@{/media/okritvik/NSSD/Inventory-\/Management-\/AGV/test/test\_navigation.cpp}}
+
+
+test file to test navigator functions  
+
+
+{\ttfamily \#include $<$gtest/gtest.\+h$>$}\newline
+{\ttfamily \#include $<$ros/ros.\+h$>$}\newline
+{\ttfamily \#include $<$std\+\_\+msgs/\+String.\+h$>$}\newline
+{\ttfamily \#include $<$geometry\+\_\+msgs/\+Pose\+Stamped.\+h$>$}\newline
+{\ttfamily \#include $<$geometry\+\_\+msgs/\+Pose\+With\+Covariance\+Stamped.\+h$>$}\newline
+{\ttfamily \#include $<$geometry\+\_\+msgs/\+Twist.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}navigation.\+hpp\char`\"{}}\newline
+Include dependency graph for test\+\_\+navigation.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{test__navigation_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{test__navigation_8cpp_a9dac885d64bd8f6cd1ab25f5a52fbacd}{wait\+\_\+for\+\_\+message}} (const bool \&\mbox{\hyperlink{test__navigation_8cpp_a9a75d3b2e50a13d5eed2e8c1068f0acb}{message\+\_\+received}}, double timeout=5)
+\item 
+void \mbox{\hyperlink{test__navigation_8cpp_a87b6f3f868ff7497b5044ecda69e039a}{keep\+\_\+publishing}} (const bool \&\mbox{\hyperlink{test__navigation_8cpp_a9a75d3b2e50a13d5eed2e8c1068f0acb}{message\+\_\+received}}, ros\+::\+Publisher $\ast$pose\+\_\+pub, geometry\+\_\+msgs\+::\+Pose\+With\+Covariance\+Stamped msg, double timeout=5)
+\item 
+void \mbox{\hyperlink{test__navigation_8cpp_a762c2fe97419dd46b328aaa2742e528a}{pose\+\_\+callback}} (const geometry\+\_\+msgs\+::\+Pose\+Stamped\+Const\+Ptr \&msg)
+\item 
+void \mbox{\hyperlink{test__navigation_8cpp_acb0b2edb525581279f1336db47f2076f}{velocity\+\_\+callback}} (const geometry\+\_\+msgs\+::\+Twist\+Const\+Ptr \&msg)
+\item 
+\mbox{\hyperlink{test__navigation_8cpp_ae022d602412d0560cdffed1199a84ae8}{T\+E\+ST}} (test\+\_\+navigation\+\_\+class, test\+\_\+object\+\_\+pose\+\_\+goal\+\_\+setting)
+\item 
+\mbox{\hyperlink{test__navigation_8cpp_ac8bac24263c2709fab7307cfe8fba802}{T\+E\+ST}} (test\+\_\+navigation\+\_\+class, test\+\_\+turn\+\_\+around)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{test__navigation_8cpp_a9a75d3b2e50a13d5eed2e8c1068f0acb}{message\+\_\+received}}
+\item 
+geometry\+\_\+msgs\+::\+Pose\+Stamped \mbox{\hyperlink{test__navigation_8cpp_ad6276d33a0fd569cdf65f7f661042355}{pose\+\_\+message}}
+\item 
+geometry\+\_\+msgs\+::\+Twist \mbox{\hyperlink{test__navigation_8cpp_a9e4c043b4ba396da676653e036ce98a5}{velocity\+\_\+message}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+test file to test navigator functions 
+
+\begin{DoxyAuthor}{Author}
+sairam polina (\href{mailto:polinavenkatasairam@gmail.com}{\texttt{ polinavenkatasairam@gmail.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2022-\/12-\/15
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2022 
+\end{DoxyCopyright}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{test__navigation_8cpp_a87b6f3f868ff7497b5044ecda69e039a}\label{test__navigation_8cpp_a87b6f3f868ff7497b5044ecda69e039a}} 
+\index{test\_navigation.cpp@{test\_navigation.cpp}!keep\_publishing@{keep\_publishing}}
+\index{keep\_publishing@{keep\_publishing}!test\_navigation.cpp@{test\_navigation.cpp}}
+\doxysubsubsection{\texorpdfstring{keep\_publishing()}{keep\_publishing()}}
+{\footnotesize\ttfamily void keep\+\_\+publishing (\begin{DoxyParamCaption}\item[{const bool \&}]{message\+\_\+received,  }\item[{ros\+::\+Publisher $\ast$}]{pose\+\_\+pub,  }\item[{geometry\+\_\+msgs\+::\+Pose\+With\+Covariance\+Stamped}]{msg,  }\item[{double}]{timeout = {\ttfamily 5} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 54 of file test\+\_\+navigation.\+cpp.
+
+\mbox{\Hypertarget{test__navigation_8cpp_a762c2fe97419dd46b328aaa2742e528a}\label{test__navigation_8cpp_a762c2fe97419dd46b328aaa2742e528a}} 
+\index{test\_navigation.cpp@{test\_navigation.cpp}!pose\_callback@{pose\_callback}}
+\index{pose\_callback@{pose\_callback}!test\_navigation.cpp@{test\_navigation.cpp}}
+\doxysubsubsection{\texorpdfstring{pose\_callback()}{pose\_callback()}}
+{\footnotesize\ttfamily void pose\+\_\+callback (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::\+Pose\+Stamped\+Const\+Ptr \&}]{msg }\end{DoxyParamCaption})}
+
+
+
+Definition at line 68 of file test\+\_\+navigation.\+cpp.
+
+\mbox{\Hypertarget{test__navigation_8cpp_ae022d602412d0560cdffed1199a84ae8}\label{test__navigation_8cpp_ae022d602412d0560cdffed1199a84ae8}} 
+\index{test\_navigation.cpp@{test\_navigation.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!test\_navigation.cpp@{test\_navigation.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{test\+\_\+navigation\+\_\+class}]{,  }\item[{test\+\_\+object\+\_\+pose\+\_\+goal\+\_\+setting}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 82 of file test\+\_\+navigation.\+cpp.
+
+\mbox{\Hypertarget{test__navigation_8cpp_ac8bac24263c2709fab7307cfe8fba802}\label{test__navigation_8cpp_ac8bac24263c2709fab7307cfe8fba802}} 
+\index{test\_navigation.cpp@{test\_navigation.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!test\_navigation.cpp@{test\_navigation.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily T\+E\+ST (\begin{DoxyParamCaption}\item[{test\+\_\+navigation\+\_\+class}]{,  }\item[{test\+\_\+turn\+\_\+around}]{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 109 of file test\+\_\+navigation.\+cpp.
+
+\mbox{\Hypertarget{test__navigation_8cpp_acb0b2edb525581279f1336db47f2076f}\label{test__navigation_8cpp_acb0b2edb525581279f1336db47f2076f}} 
+\index{test\_navigation.cpp@{test\_navigation.cpp}!velocity\_callback@{velocity\_callback}}
+\index{velocity\_callback@{velocity\_callback}!test\_navigation.cpp@{test\_navigation.cpp}}
+\doxysubsubsection{\texorpdfstring{velocity\_callback()}{velocity\_callback()}}
+{\footnotesize\ttfamily void velocity\+\_\+callback (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::\+Twist\+Const\+Ptr \&}]{msg }\end{DoxyParamCaption})}
+
+
+
+Definition at line 74 of file test\+\_\+navigation.\+cpp.
+
+\mbox{\Hypertarget{test__navigation_8cpp_a9dac885d64bd8f6cd1ab25f5a52fbacd}\label{test__navigation_8cpp_a9dac885d64bd8f6cd1ab25f5a52fbacd}} 
+\index{test\_navigation.cpp@{test\_navigation.cpp}!wait\_for\_message@{wait\_for\_message}}
+\index{wait\_for\_message@{wait\_for\_message}!test\_navigation.cpp@{test\_navigation.cpp}}
+\doxysubsubsection{\texorpdfstring{wait\_for\_message()}{wait\_for\_message()}}
+{\footnotesize\ttfamily bool wait\+\_\+for\+\_\+message (\begin{DoxyParamCaption}\item[{const bool \&}]{message\+\_\+received,  }\item[{double}]{timeout = {\ttfamily 5} }\end{DoxyParamCaption})}
+
+
+
+Definition at line 41 of file test\+\_\+navigation.\+cpp.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{test__navigation_8cpp_a9a75d3b2e50a13d5eed2e8c1068f0acb}\label{test__navigation_8cpp_a9a75d3b2e50a13d5eed2e8c1068f0acb}} 
+\index{test\_navigation.cpp@{test\_navigation.cpp}!message\_received@{message\_received}}
+\index{message\_received@{message\_received}!test\_navigation.cpp@{test\_navigation.cpp}}
+\doxysubsubsection{\texorpdfstring{message\_received}{message\_received}}
+{\footnotesize\ttfamily bool message\+\_\+received}
+
+
+
+Definition at line 37 of file test\+\_\+navigation.\+cpp.
+
+\mbox{\Hypertarget{test__navigation_8cpp_ad6276d33a0fd569cdf65f7f661042355}\label{test__navigation_8cpp_ad6276d33a0fd569cdf65f7f661042355}} 
+\index{test\_navigation.cpp@{test\_navigation.cpp}!pose\_message@{pose\_message}}
+\index{pose\_message@{pose\_message}!test\_navigation.cpp@{test\_navigation.cpp}}
+\doxysubsubsection{\texorpdfstring{pose\_message}{pose\_message}}
+{\footnotesize\ttfamily geometry\+\_\+msgs\+::\+Pose\+Stamped pose\+\_\+message}
+
+
+
+Definition at line 38 of file test\+\_\+navigation.\+cpp.
+
+\mbox{\Hypertarget{test__navigation_8cpp_a9e4c043b4ba396da676653e036ce98a5}\label{test__navigation_8cpp_a9e4c043b4ba396da676653e036ce98a5}} 
+\index{test\_navigation.cpp@{test\_navigation.cpp}!velocity\_message@{velocity\_message}}
+\index{velocity\_message@{velocity\_message}!test\_navigation.cpp@{test\_navigation.cpp}}
+\doxysubsubsection{\texorpdfstring{velocity\_message}{velocity\_message}}
+{\footnotesize\ttfamily geometry\+\_\+msgs\+::\+Twist velocity\+\_\+message}
+
+
+
+Definition at line 39 of file test\+\_\+navigation.\+cpp.
+

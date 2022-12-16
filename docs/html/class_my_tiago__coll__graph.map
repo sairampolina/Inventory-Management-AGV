@@ -1,0 +1,6 @@
+<map id="MyTiago" name="MyTiago">
+<area shape="rect" id="node1" title=" " alt="" coords="177,95,255,121"/>
+<area shape="rect" id="node2" href="$class_package_detector.html" title=" " alt="" coords="5,5,139,32"/>
+<area shape="rect" id="node3" href="$class_manipulation.html" title="Manipulation class to control the manipulator." alt="" coords="163,5,269,32"/>
+<area shape="rect" id="node4" href="$class_navigation.html" title=" " alt="" coords="293,5,387,32"/>
+</map>
