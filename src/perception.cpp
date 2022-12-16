@@ -12,13 +12,59 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
-
-
-
-
-
-
-
+/**
+ * @file perception.cpp
+ * @author sairam polina (polinavenkatasairam@gmail.com)
+ * @brief Implementation of perception.cpp
+ * @version 0.1
+ * @date 2022-12-15
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 
 #include "../include/perception.hpp"
+
+PackageDetector::PackageDetector(ros::NodeHandle* nh_):
+                                image_transport_(*nh_) {
+    image_sub_ = image_transport_.subscribe
+        ("xtion/rgb/image_raw", 1, &PackageDetector::image_callback,
+            this, image_transport::TransportHints("compressed"));
+    if_obj_detected = false;
+    cv::namedWindow("camera_feed", 0);
+    ROS_INFO_STREAM("[Perception Stack]: Detector object initialized");
+}
+
+bool PackageDetector::find_obj() {
+    cv::cvtColor(image_, image_hsv_, cv::COLOR_BGR2HSV);
+
+    cv::inRange(image_hsv_, cv::Scalar(69, 50, 0),
+        cv::Scalar(120, 255, 255), image_thresh_);
+
+    cv::findContours(image_thresh_, contours_, CV_RETR_EXTERNAL,
+                        CV_CHAIN_APPROX_SIMPLE);
+
+    if (contours_.size() > 0) {
+        if_obj_detected = true;
+    }
+
+    ROS_ERROR("[Perception Stack]: Object initialized");
+
+    cv::imshow("camera_feed", image_thresh_);
+    cv::waitKey(1);
+    return true;
+}
+
+void PackageDetector::image_callback(const sensor_msgs::ImageConstPtr &msg) {
+    cv_bridge::CvImagePtr cvPtr;
+
+    try {
+        cvPtr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
+    } catch (cv_bridge::Exception& e) {
+        ROS_ERROR("erroe in retreiving image: %s", e.what());
+        return;
+    }
+
+    cvPtr->image.copyTo(image_);
+    this->find_obj();
+}

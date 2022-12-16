@@ -1,8 +1,7 @@
 # Inventory-Management-AGV
 
-<!-- [![Build Status](https://app.travis-ci.com/spauly98/ENPM808X_Midterm_project.svg?branch=phase2)](https://app.travis-ci.com/github/bharadwaj-chukkala/ENPM808X_Midterm_project)
-[![Coverage Status](https://coveralls.io/repos/github/spauly98/ENPM808X_Midterm_project/badge.svg?branch=phase2)](https://coveralls.io/github/spauly98/ENPM808X_Midterm_project?branch=phase2) -->
-
+[![Build Status](https://github.com/sairampolina/Inventory-Management-AGV/actions/workflows/ci_v2.yml/badge.svg)](https://github.com/sairampolina/Inventory-Management-AGV/actions/workflows/ci_v2.yml/)
+[![codecov](https://codecov.io/gh/sairampolina/Inventory-Management-AGV/branch/phase3/graph/badge.svg?token=YUMKWMA7D0)](https://codecov.io/gh/sairampolina/Inventory-Management-AGV)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 ---
 
@@ -53,9 +52,22 @@ limitations under the License.
 ### Team
 The Members are Graduate students at The University of Maryland, College Park. The members each have a Bachelors in Mechanical Engineering from prestigious universities in India. Their Graduate Study is in the field of Robotics with each of them having a specialization. Sanchit is pursuing a career in Computer vision and perception, Sairam aims to build his career in Deep Learning and Computer Vision and Shelvin is developing expertise in SLAM and Autonomous Vehicles.
 
+# Phase 1
 | `Shelvin Pauly`  | `Venkata Sairam Polina` | `Sanchit Tanwar` |
 | ------------- | ------------- |------------- |
 | 118426556 | 118436579 | 119167717 |
+| Navigator | Driver |  Design Keeper |
+
+# Phase 2
+| `Venkata Sairam Polina`  | `Sanchit Tanwar` | `Shelvin Pauly` |
+| ------------- | ------------- |------------- |
+| 118436579 | 119167717 | 118426556 |
+| Navigator | Driver |  Design Keeper |
+
+# Phase 3
+| `Sanchit Tanwar`  | `Shelvin Pauly` | `Sanchit Tanwar` |
+| ------------- | ------------- |------------- |
+| 119167717 | 118426556 | 118436579 |
 | Navigator | Driver |  Design Keeper |
 
 ---

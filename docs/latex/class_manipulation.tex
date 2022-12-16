@@ -1,0 +1,109 @@
+\hypertarget{class_manipulation}{}\doxysection{Manipulation Class Reference}
+\label{class_manipulation}\index{Manipulation@{Manipulation}}
+
+
+\mbox{\hyperlink{class_manipulation}{Manipulation}} class to control the manipulator.  
+
+
+
+
+{\ttfamily \#include $<$manipulation.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_manipulation_aba9abaf7db4c714771bbc31124d67aeb}{Manipulation}} (ros\+::\+Node\+Handle $\ast$)
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{class_manipulation}{Manipulation}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_manipulation_adef31ab753f7f314164431ccd211ab39}{pick\+\_\+package}} ()
+\begin{DoxyCompactList}\small\item\em Handles pickup of picked object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_manipulation_a39b29a045b4d9f42226e957963ba9043}{place\+\_\+package}} ()
+\begin{DoxyCompactList}\small\item\em Handles placing of picked object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_manipulation_af4daccc39115fcdd21bef13a8d0bc4ef}{move\+\_\+to\+\_\+object}} (geometry\+\_\+msgs\+::\+Pose)
+\begin{DoxyCompactList}\small\item\em Handles movement of object and takes input the pose of detected object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\mbox{\hyperlink{class_manipulation}{Manipulation}} class to control the manipulator. 
+
+
+
+Definition at line 50 of file manipulation.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_manipulation_aba9abaf7db4c714771bbc31124d67aeb}\label{class_manipulation_aba9abaf7db4c714771bbc31124d67aeb}} 
+\index{Manipulation@{Manipulation}!Manipulation@{Manipulation}}
+\index{Manipulation@{Manipulation}!Manipulation@{Manipulation}}
+\doxysubsubsection{\texorpdfstring{Manipulation()}{Manipulation()}}
+{\footnotesize\ttfamily Manipulation\+::\+Manipulation (\begin{DoxyParamCaption}\item[{ros\+::\+Node\+Handle $\ast$}]{nh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Construct a new \mbox{\hyperlink{class_manipulation}{Manipulation}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nh} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 27 of file manipulation.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_manipulation_af4daccc39115fcdd21bef13a8d0bc4ef}\label{class_manipulation_af4daccc39115fcdd21bef13a8d0bc4ef}} 
+\index{Manipulation@{Manipulation}!move\_to\_object@{move\_to\_object}}
+\index{move\_to\_object@{move\_to\_object}!Manipulation@{Manipulation}}
+\doxysubsubsection{\texorpdfstring{move\_to\_object()}{move\_to\_object()}}
+{\footnotesize\ttfamily void Manipulation\+::move\+\_\+to\+\_\+object (\begin{DoxyParamCaption}\item[{geometry\+\_\+msgs\+::\+Pose}]{tar\+\_\+pose }\end{DoxyParamCaption})}
+
+
+
+Handles movement of object and takes input the pose of detected object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pose} & of the object \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 100 of file manipulation.\+cpp.
+
+\mbox{\Hypertarget{class_manipulation_adef31ab753f7f314164431ccd211ab39}\label{class_manipulation_adef31ab753f7f314164431ccd211ab39}} 
+\index{Manipulation@{Manipulation}!pick\_package@{pick\_package}}
+\index{pick\_package@{pick\_package}!Manipulation@{Manipulation}}
+\doxysubsubsection{\texorpdfstring{pick\_package()}{pick\_package()}}
+{\footnotesize\ttfamily void Manipulation\+::pick\+\_\+package (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handles pickup of picked object. 
+
+
+
+Definition at line 33 of file manipulation.\+cpp.
+
+\mbox{\Hypertarget{class_manipulation_a39b29a045b4d9f42226e957963ba9043}\label{class_manipulation_a39b29a045b4d9f42226e957963ba9043}} 
+\index{Manipulation@{Manipulation}!place\_package@{place\_package}}
+\index{place\_package@{place\_package}!Manipulation@{Manipulation}}
+\doxysubsubsection{\texorpdfstring{place\_package()}{place\_package()}}
+{\footnotesize\ttfamily void Manipulation\+::place\+\_\+package (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handles placing of picked object. 
+
+
+
+Definition at line 44 of file manipulation.\+cpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/media/okritvik/\+N\+S\+S\+D/\+Inventory-\/\+Management-\/\+A\+G\+V/include/\mbox{\hyperlink{manipulation_8hpp}{manipulation.\+hpp}}\item 
+/media/okritvik/\+N\+S\+S\+D/\+Inventory-\/\+Management-\/\+A\+G\+V/src/\mbox{\hyperlink{manipulation_8cpp}{manipulation.\+cpp}}\end{DoxyCompactItemize}

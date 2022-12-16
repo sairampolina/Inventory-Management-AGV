@@ -1,0 +1,177 @@
+\hypertarget{class_navigation}{}\doxysection{Navigation Class Reference}
+\label{class_navigation}\index{Navigation@{Navigation}}
+
+
+{\ttfamily \#include $<$navigation.\+hpp$>$}
+
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_navigation_aba54b67498bf89deb13043913abeacce}{rotation}} \{ \mbox{\hyperlink{class_navigation_aba54b67498bf89deb13043913abeaccea7c9d1901288921dd004258cf4393401f}{R\+O\+T\+\_\+\+S\+T\+A\+RT}}, 
+\mbox{\hyperlink{class_navigation_aba54b67498bf89deb13043913abeacceaf3096102a95c882039b21fee12dd047a}{R\+O\+T\+A\+T\+I\+NG}}, 
+\mbox{\hyperlink{class_navigation_aba54b67498bf89deb13043913abeacceaf938c43484bcb00912fbd9d5709c0715}{R\+O\+T\+\_\+\+C\+O\+M\+P\+L\+E\+TE}}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_navigation_a001f155e15619df08a980438173d7b2e}{Navigation}} (ros\+::\+Node\+Handle $\ast$)
+\item 
+void \mbox{\hyperlink{class_navigation_a5a294521a3b5ae9c65e8c503ecf2d28f}{set\+\_\+pkgloc\+\_\+as\+\_\+goal}} (geometry\+\_\+msgs\+::\+Pose)
+\item 
+void \mbox{\hyperlink{class_navigation_ac046163e5b343daa427f9a85bcd8da22}{set\+\_\+droploc\+\_\+as\+\_\+goal}} ()
+\item 
+void \mbox{\hyperlink{class_navigation_a2fe39c09b21dad979302d53a03c6e421}{set\+\_\+goal}} ()
+\item 
+bool \mbox{\hyperlink{class_navigation_a65d7ef0201d2ba8f2fa3902c4c818921}{if\+\_\+goal\+\_\+reached}} ()
+\item 
+void \mbox{\hyperlink{class_navigation_afde9b13c9ce12893096260d384c5b489}{turn\+\_\+robot}} ()
+\item 
+void \mbox{\hyperlink{class_navigation_ac5653457ee425a146b71ae9a2e58e3c8}{stop\+\_\+robot}} ()
+\item 
+void \mbox{\hyperlink{class_navigation_a209efb70fc680e0da1ff7bea8e89309e}{pose\+\_\+callback}} (const geometry\+\_\+msgs\+::\+Pose\+With\+Covariance\+Stamped \&)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_navigation_aba54b67498bf89deb13043913abeacce}{rotation}} \mbox{\hyperlink{class_navigation_a8c59955515424c0842246e871237af83}{rot\+\_\+state\+\_\+}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line 44 of file navigation.\+hpp.
+
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_navigation_aba54b67498bf89deb13043913abeacce}\label{class_navigation_aba54b67498bf89deb13043913abeacce}} 
+\index{Navigation@{Navigation}!rotation@{rotation}}
+\index{rotation@{rotation}!Navigation@{Navigation}}
+\doxysubsubsection{\texorpdfstring{rotation}{rotation}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_navigation_aba54b67498bf89deb13043913abeacce}{Navigation\+::rotation}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROT\_START@{ROT\_START}!Navigation@{Navigation}}\index{Navigation@{Navigation}!ROT\_START@{ROT\_START}}}\mbox{\Hypertarget{class_navigation_aba54b67498bf89deb13043913abeaccea7c9d1901288921dd004258cf4393401f}\label{class_navigation_aba54b67498bf89deb13043913abeaccea7c9d1901288921dd004258cf4393401f}} 
+R\+O\+T\+\_\+\+S\+T\+A\+RT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROTATING@{ROTATING}!Navigation@{Navigation}}\index{Navigation@{Navigation}!ROTATING@{ROTATING}}}\mbox{\Hypertarget{class_navigation_aba54b67498bf89deb13043913abeacceaf3096102a95c882039b21fee12dd047a}\label{class_navigation_aba54b67498bf89deb13043913abeacceaf3096102a95c882039b21fee12dd047a}} 
+R\+O\+T\+A\+T\+I\+NG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROT\_COMPLETE@{ROT\_COMPLETE}!Navigation@{Navigation}}\index{Navigation@{Navigation}!ROT\_COMPLETE@{ROT\_COMPLETE}}}\mbox{\Hypertarget{class_navigation_aba54b67498bf89deb13043913abeacceaf938c43484bcb00912fbd9d5709c0715}\label{class_navigation_aba54b67498bf89deb13043913abeacceaf938c43484bcb00912fbd9d5709c0715}} 
+R\+O\+T\+\_\+\+C\+O\+M\+P\+L\+E\+TE&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+Definition at line 64 of file navigation.\+hpp.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_navigation_a001f155e15619df08a980438173d7b2e}\label{class_navigation_a001f155e15619df08a980438173d7b2e}} 
+\index{Navigation@{Navigation}!Navigation@{Navigation}}
+\index{Navigation@{Navigation}!Navigation@{Navigation}}
+\doxysubsubsection{\texorpdfstring{Navigation()}{Navigation()}}
+{\footnotesize\ttfamily Navigation\+::\+Navigation (\begin{DoxyParamCaption}\item[{ros\+::\+Node\+Handle $\ast$}]{nh }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Definition at line 29 of file navigation.\+cpp.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_navigation_a65d7ef0201d2ba8f2fa3902c4c818921}\label{class_navigation_a65d7ef0201d2ba8f2fa3902c4c818921}} 
+\index{Navigation@{Navigation}!if\_goal\_reached@{if\_goal\_reached}}
+\index{if\_goal\_reached@{if\_goal\_reached}!Navigation@{Navigation}}
+\doxysubsubsection{\texorpdfstring{if\_goal\_reached()}{if\_goal\_reached()}}
+{\footnotesize\ttfamily bool Navigation\+::if\+\_\+goal\+\_\+reached (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 107 of file navigation.\+cpp.
+
+\mbox{\Hypertarget{class_navigation_a209efb70fc680e0da1ff7bea8e89309e}\label{class_navigation_a209efb70fc680e0da1ff7bea8e89309e}} 
+\index{Navigation@{Navigation}!pose\_callback@{pose\_callback}}
+\index{pose\_callback@{pose\_callback}!Navigation@{Navigation}}
+\doxysubsubsection{\texorpdfstring{pose\_callback()}{pose\_callback()}}
+{\footnotesize\ttfamily void Navigation\+::pose\+\_\+callback (\begin{DoxyParamCaption}\item[{const geometry\+\_\+msgs\+::\+Pose\+With\+Covariance\+Stamped \&}]{agv\+\_\+pose }\end{DoxyParamCaption})}
+
+
+
+Definition at line 102 of file navigation.\+cpp.
+
+\mbox{\Hypertarget{class_navigation_ac046163e5b343daa427f9a85bcd8da22}\label{class_navigation_ac046163e5b343daa427f9a85bcd8da22}} 
+\index{Navigation@{Navigation}!set\_droploc\_as\_goal@{set\_droploc\_as\_goal}}
+\index{set\_droploc\_as\_goal@{set\_droploc\_as\_goal}!Navigation@{Navigation}}
+\doxysubsubsection{\texorpdfstring{set\_droploc\_as\_goal()}{set\_droploc\_as\_goal()}}
+{\footnotesize\ttfamily void Navigation\+::set\+\_\+droploc\+\_\+as\+\_\+goal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 85 of file navigation.\+cpp.
+
+\mbox{\Hypertarget{class_navigation_a2fe39c09b21dad979302d53a03c6e421}\label{class_navigation_a2fe39c09b21dad979302d53a03c6e421}} 
+\index{Navigation@{Navigation}!set\_goal@{set\_goal}}
+\index{set\_goal@{set\_goal}!Navigation@{Navigation}}
+\doxysubsubsection{\texorpdfstring{set\_goal()}{set\_goal()}}
+{\footnotesize\ttfamily void Navigation\+::set\+\_\+goal (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 52 of file navigation.\+cpp.
+
+\mbox{\Hypertarget{class_navigation_a5a294521a3b5ae9c65e8c503ecf2d28f}\label{class_navigation_a5a294521a3b5ae9c65e8c503ecf2d28f}} 
+\index{Navigation@{Navigation}!set\_pkgloc\_as\_goal@{set\_pkgloc\_as\_goal}}
+\index{set\_pkgloc\_as\_goal@{set\_pkgloc\_as\_goal}!Navigation@{Navigation}}
+\doxysubsubsection{\texorpdfstring{set\_pkgloc\_as\_goal()}{set\_pkgloc\_as\_goal()}}
+{\footnotesize\ttfamily void Navigation\+::set\+\_\+pkgloc\+\_\+as\+\_\+goal (\begin{DoxyParamCaption}\item[{geometry\+\_\+msgs\+::\+Pose}]{object }\end{DoxyParamCaption})}
+
+
+
+Definition at line 72 of file navigation.\+cpp.
+
+\mbox{\Hypertarget{class_navigation_ac5653457ee425a146b71ae9a2e58e3c8}\label{class_navigation_ac5653457ee425a146b71ae9a2e58e3c8}} 
+\index{Navigation@{Navigation}!stop\_robot@{stop\_robot}}
+\index{stop\_robot@{stop\_robot}!Navigation@{Navigation}}
+\doxysubsubsection{\texorpdfstring{stop\_robot()}{stop\_robot()}}
+{\footnotesize\ttfamily void Navigation\+::stop\+\_\+robot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 145 of file navigation.\+cpp.
+
+\mbox{\Hypertarget{class_navigation_afde9b13c9ce12893096260d384c5b489}\label{class_navigation_afde9b13c9ce12893096260d384c5b489}} 
+\index{Navigation@{Navigation}!turn\_robot@{turn\_robot}}
+\index{turn\_robot@{turn\_robot}!Navigation@{Navigation}}
+\doxysubsubsection{\texorpdfstring{turn\_robot()}{turn\_robot()}}
+{\footnotesize\ttfamily void Navigation\+::turn\+\_\+robot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line 118 of file navigation.\+cpp.
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_navigation_a8c59955515424c0842246e871237af83}\label{class_navigation_a8c59955515424c0842246e871237af83}} 
+\index{Navigation@{Navigation}!rot\_state\_@{rot\_state\_}}
+\index{rot\_state\_@{rot\_state\_}!Navigation@{Navigation}}
+\doxysubsubsection{\texorpdfstring{rot\_state\_}{rot\_state\_}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_navigation_aba54b67498bf89deb13043913abeacce}{rotation}} Navigation\+::rot\+\_\+state\+\_\+}
+
+
+
+Definition at line 69 of file navigation.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/media/okritvik/\+N\+S\+S\+D/\+Inventory-\/\+Management-\/\+A\+G\+V/include/\mbox{\hyperlink{navigation_8hpp}{navigation.\+hpp}}\item 
+/media/okritvik/\+N\+S\+S\+D/\+Inventory-\/\+Management-\/\+A\+G\+V/src/\mbox{\hyperlink{navigation_8cpp}{navigation.\+cpp}}\end{DoxyCompactItemize}

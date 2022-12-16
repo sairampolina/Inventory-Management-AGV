@@ -1,3 +1,6 @@
+#ifndef INCLUDE_NAVIGATION_HPP_
+#define INCLUDE_NAVIGATION_HPP_
+
 // Copyright Venkata Sairam Polina.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,8 +15,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-# pragma once
-
+/**
+ * @file navigation.hpp
+ * @author sairam polina (polinavenkatasairam@gmail.com)
+ * @brief Implementation of navigation.hpp
+ * @version 0.1
+ * @date 2022-12-15
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <actionlib/client/simple_action_client.h>
 
 #include <geometry_msgs/Pose.h>
@@ -30,74 +41,68 @@
 
 #include <vector>
 
-using namespace std::chrono_literals;
-
 class Navigation {
-    
-    public:
-        Navigation(ros::NodeHandle*);
+ public:
+    explicit Navigation(ros::NodeHandle*);
 
-        void set_next_goal();
+    void set_pkgloc_as_goal(geometry_msgs::Pose);
 
-        void set_pkgloc_as_goal();
+    void set_droploc_as_goal();
 
-        void set_droploc_as_goal();
+    void set_goal();
 
-        //  robot pose fn
 
-        bool if_reached_goal;
+    bool if_goal_reached();
 
-        //  turn rbot
+    //  turn rbot
+    void turn_robot();
 
-        void stop_robot();
+    void stop_robot();
 
-        enum rotation {
-        ROT_START,
-        ROTATING,
-        ROT_COMPLETE,
-        };
-        rotation rot_state;
+    void pose_callback(const geometry_msgs::PoseWithCovarianceStamped&);
 
-        geometry_msgs::Pose get_goal();
+    enum rotation {
+    ROT_START,
+    ROTATING,
+    ROT_COMPLETE,
+    };
+    rotation rot_state_;
 
-        void set_goal();
+ private:
+    void set_rot_vel();
 
-        void move_to_goal();
+    void set_waypoints();
 
-        void move_close_to_object();
-    private:
+    ros::NodeHandle* nh_;
 
-        void set_waypoints();
+    // subscriber to get present pose
+    ros::Subscriber pre_pose_sub_;
 
-        ros::NodeHandle* nh_;
+    // Publisher to set goals
+    ros::Publisher goal_pub_;
 
-        // subscriber to get present pose
-        ros::Subscriber pre_pose_sub_;
+    ros::Publisher vel_pub_;
 
-        // Publisher to set goals 
-        ros::Publisher goal_pub_;
+    ros::Publisher cancel_goal_pub_;
 
-        ros::Publisher vel_pub_;
+    ros::ServiceClient kill_costmap_client_;
 
-        ros::ServiceClient kill_costmap_clent_;
+    bool pose_flag_;
 
-        bool pose_recieved;
+    // present location of robot
+    geometry_msgs::Pose pre_pose_;
 
-        // present location of robot
-        geometry_msgs::Pose pre_pos_;
+    // approximate location of pkg
+    geometry_msgs::Pose goal_pose_;
 
-        // approximate location of pkg 
-        geometry_msgs::Pose goal_;
+    // Drop location of pkg
+    geometry_msgs::Pose drop_loc_;
 
-        // location of pkg
-        geometry_msgs::Pose pkg_loc_;
+    // robot initial orientation
+    tf2::Quaternion init_quaternion_;
 
-        // robot initial orientation
-        tf2::Quaternion init_quaternion_;
+    std::vector <geometry_msgs::Pose> waypoints_;
 
-        std::vector <geometry_msgs::Pose> waypoints_;
-
-        std::vector<geometry_msgs::Pose>::size_type waypoint_counter_;
- 
+    std::vector<geometry_msgs::Pose>::size_type waypoint_counter_;
 };
-
+#endif  // INCLUDE_NAVIGATION_HPP_

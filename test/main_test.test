@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <node pkg="im_agv" name="tiago" type="tiago_node" output="screen"/>
+  <node pkg="im_agv" name="object" type="object_node" output="screen"/>
+  <test pkg="im_agv" test-name="main_tests" type="main_rostest" />
+</launch>

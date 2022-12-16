@@ -1,3 +1,6 @@
+#ifndef INCLUDE_PERCEPTION_HPP_
+#define INCLUDE_PERCEPTION_HPP_
+
 // Copyright Venkata Sairam Polina.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,8 +15,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
-# pragma once
+/**
+ * @file perception.hpp
+ * @author sairam polina (polinavenkatasairam@gmail.com)
+ * @brief Implementation of perception.hpp
+ * @version 0.1
+ * @date 2022-12-15
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 
 #include <cv_bridge/cv_bridge.h>
 #include <image_transport/image_transport.h>
@@ -27,34 +38,31 @@
 #include <string.h>
 #include <vector>
 
-
-// 
-
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/objdetect/objdetect.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-class objectDetector {
-    public:
+class PackageDetector {
+ public:
+    explicit PackageDetector(ros::NodeHandle*);
 
-        objectDetector(ros::NodeHandle*);
+    bool find_obj();
 
-        bool find_obj();
+    bool if_obj_detected;
 
-        bool if_obj_detected;
+    void image_callback(const sensor_msgs::ImageConstPtr &);
 
-        void image_callback();
+    cv::Mat image_;
 
-    private:
-
+ private:
     ros::NodeHandle* nh_;
 
-    cv::Mat image_, image_hsv_, image_thresh_;
+    cv::Mat image_hsv_, image_thresh_;
 
     image_transport::ImageTransport image_transport_;
 
     image_transport::Subscriber image_sub_;
-    
-    std::vector<std::vector<cv::Point>> contours_;
 
+    std::vector<std::vector<cv::Point>> contours_;
 };
+#endif  // INCLUDE_PERCEPTION_HPP_
