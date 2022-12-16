@@ -17,10 +17,11 @@
 
 Manipulation::Manipulation(ros::NodeHandle* nh) {
     nh_ = nh;
-    set_obj_state_client_ = nh_->serviceClient<std_srvs::SetBool>("/setObjectState");
+    set_obj_state_client_ = nh_->serviceClient
+        <std_srvs::SetBool>("/setObjectState");
     ROS_INFO_STREAM("[Manipulation Stack]: Starting Manipulation node ");
 }
-//change goal
+
 void Manipulation::pick_package() {
     geometry_msgs::Pose goal;
     tf2::Quaternion transform;
@@ -30,11 +31,9 @@ void Manipulation::pick_package() {
     goal.position.y = 0.0;
     goal.position.z = 0.45;
     goal.orientation = tf2::toMsg(transform);
-    
     reach(goal);
 }
 
-//change again
 void Manipulation::place_package() {
     geometry_msgs::Pose goal;
     tf2::Quaternion transform;

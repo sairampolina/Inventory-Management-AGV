@@ -1,3 +1,6 @@
+#ifndef INCLUDE_MY_TIAGO_HPP_
+#define INCLUDE_MY_TIAGO_HPP_
+
 // Copyright Venkata Sairam Polina.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,93 +46,92 @@ typedef actionlib::SimpleActionClient<control_msgs::PointHeadAction>
 typedef boost::shared_ptr<PointHeadClient> PointHeadClientPtr;
 
 class MyTiago {
-    public:
-        /**
-        * @brief Spawning MyTiago bot   
-        * 
-        */
-        explicit MyTiago(ros::NodeHandle*);
+ public:
+    /**
+    * @brief Spawning MyTiago bot   
+    * 
+    */
+    explicit MyTiago(ros::NodeHandle*);
 
-        /**
-        * @brief Starts the robot execution pipeline
-        * 
-        */
-        void execution_pipeline();
+    /**
+    * @brief Starts the robot execution pipeline
+    * 
+    */
+    void execution_pipeline();
 
-        /**
-        * @brief Checks if object is within reach of the robot, returns boolean.
-        * 
-        */
-        bool if_obj_within_reach();
+    /**
+    * @brief Checks if object is within reach of the robot, returns boolean.
+    * 
+    */
+    bool if_obj_within_reach();
 
-        /**
-        * @brief Get the pose of the object using the perception stack.
-        * @param wrt - string, frame of reference for the pose.
-        */
-            
-        geometry_msgs::Pose get_pkg_pose(std::string wrt = "map");
+    /**
+    * @brief Get the pose of the object using the perception stack.
+    * @param wrt - string, frame of reference for the pose.
+    */
 
-        /**
-        * @brief Handles pickup of detected object.
-        * 
-        */
-        void pickup_pkg();
+    geometry_msgs::Pose get_pkg_pose(std::string wrt = "map");
 
-        /**
-        * @brief Handles placement of picked object.
-        * 
-        */
-        void place_pkg();
+    /**
+    * @brief Handles pickup of detected object.
+    * 
+    */
+    void pickup_pkg();
 
-        /**
-        * @brief Enumerates various robot's states.
-        * 
-        */
-        enum robotState {
-            START,
-            IDLE,
-            MOVING_TO_WAYPOINT,
-            ROTATE_AROUND,
-            OBJECT_FOUND,
-            MOVING_TOWARDS_OBJECT,
-            PICKING_OBJECT,
-            MOVING_TO_DROP_LOCATION,
-            PLACING_OBJECT,
-            STOP
-        };
+    /**
+    * @brief Handles placement of picked object.
+    * 
+    */
+    void place_pkg();
 
-        /** Instance for Navigation class*/
-        Navigation navigator;
-        /** Instance for Manipulator class*/
-        Manipulation manipulator;
-        /** Instance for PackageDetector class*/
-        PackageDetector detector;
+    /**
+    * @brief Enumerates various robot's states.
+    * 
+    */
+    enum robotState {
+        START,
+        IDLE,
+        MOVING_TO_WAYPOINT,
+        ROTATE_AROUND,
+        OBJECT_FOUND,
+        MOVING_TOWARDS_OBJECT,
+        PICKING_OBJECT,
+        MOVING_TO_DROP_LOCATION,
+        PLACING_OBJECT,
+        STOP
+    };
 
-    private:
-       /**
-        * @brief Moves the head to look at a point in space.
-        * 
-        */
-        void move_head();
+    /** Instance for Navigation class*/
+    Navigation navigator;
+    /** Instance for Manipulator class*/
+    Manipulation manipulator;
+    /** Instance for PackageDetector class*/
+    PackageDetector detector;
 
-        //using namespace PointHeadClient;
+ private:
+    /**
+    * @brief Moves the head to look at a point in space.
+    * 
+    */
+    void move_head();
 
-        /**
-        * @brief Creates a head client for head movement actions.
-        * @param point_head_client_ - PointHeadClientPtr
-        */
-        void create_head_client(PointHeadClientPtr&);
+    /**
+    * @brief Creates a head client for head movement actions.
+    * @param point_head_client_ - PointHeadClientPtr
+    */
+    void create_head_client(PointHeadClientPtr&);
 
-        /** Node Handle created*/
-        ros::NodeHandle* nh_;
-        /** TF buffer created*/
-        tf2_ros::Buffer tfbuffer_;
-        /** TF listener created*/
-        tf2_ros::TransformListener tflistener_;
-        /** PointHeadClientPtr for head movement actions*/
-        PointHeadClientPtr point_head_client_;
-        /** robotState for checking current state of the robot */
-        robotState state_;
-        /** robotState for storing previous states of the robot*/
-        robotState pre_state_;
+    /** Node Handle created*/
+    ros::NodeHandle* nh_;
+    /** TF buffer created*/
+    tf2_ros::Buffer tfbuffer_;
+    /** TF listener created*/
+    tf2_ros::TransformListener tflistener_;
+    /** PointHeadClientPtr for head movement actions*/
+    PointHeadClientPtr point_head_client_;
+    /** robotState for checking current state of the robot */
+    robotState state_;
+    /** robotState for storing previous states of the robot*/
+    robotState pre_state_;
 };
+#endif  // INCLUDE_MY_TIAGO_HPP_

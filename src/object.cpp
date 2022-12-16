@@ -1,6 +1,3 @@
-
-
-
 // Copyright Venkata Sairam Polina.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,13 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
-
 #include "../include/object.hpp"
 
-Object::Object(ros::NodeHandle* nh): 
-                        tflistener_(this->tfbuffer_){
-
+Object::Object(ros::NodeHandle* nh):
+                        tflistener_(this->tfbuffer_) {
     pkg_name_ = "box";
     if_spawned = false;
 
@@ -29,12 +23,13 @@ Object::Object(ros::NodeHandle* nh):
 
     // map_range = {-6,-7,2,7};
 
-    ros::topic::waitForMessage<geometry_msgs::PoseWithCovarianceStamped>(
-                                                    "/robot_pose",ros::Duration(10));
+    ros::topic::waitForMessage
+        <geometry_msgs::PoseWithCovarianceStamped>
+            ("/robot_pose", ros::Duration(10));
     nh_ = nh;
 
     pose_pub_ = nh_->advertise<gazebo_msgs::ModelState>(
-                                                "/gazebo/set_model_state",10);
+                                                "/gazebo/set_model_state", 10);
 
     urdf_string_ = R"(<robot name="simple_box"><link name="object_base_link">
     </link><joint name="object_base_joint" type="fixed">
@@ -49,24 +44,21 @@ Object::Object(ros::NodeHandle* nh):
     <gazebo reference="my_box"><material>Gazebo/Blue</material>
     </gazebo><gazebo reference="object_base_link"><gravity>0</gravity>
     </gazebo></robot>)";
-
 }
 
 
-bool Object::spawn_pkg(){
-    if(if_spawned) {
+bool Object::spawn_pkg() {
+    if (if_spawned) {
         ROS_INFO_STREAM("[Package Stack]: Package already spawned.");
         return false;
     }
-
-    spawn_pkg_client_ = 
-        nh_-> serviceClient<gazebo_msgs::SpawnModel>("/gazebo/spawn_urdf_model");
-    
+    spawn_pkg_client_ =
+        nh_-> serviceClient<gazebo_msgs::SpawnModel>
+            ("/gazebo/spawn_urdf_model");
     gazebo_msgs::SpawnModel srv;
     srv.request.model_name = pkg_name_;
-    srv.request.model_xml = urdf_string_;  
+    srv.request.model_xml = urdf_string_;
 
-    //change val
     srv.request.initial_pose.position.x = -3.5;
     srv.request.initial_pose.position.y = -12;
     srv.request.initial_pose.position.z = 0.025;
@@ -108,11 +100,10 @@ void Object::set_pose_of_pkg(geometry_msgs::Pose pkg_pose) {
     msg.model_name = pkg_name_;
     msg.pose = pkg_pose;
     msg.reference_frame = "world";
-    pose_pub_.publish(msg); 
+    pose_pub_.publish(msg);
 }
 
 void Object::publish_pkg_loc(const ros::TimerEvent&) {
-
     geometry_msgs::TransformStamped trans_stamp;
     if (if_picked_up_pkg) {
         geometry_msgs::TransformStamped trans_stamp;

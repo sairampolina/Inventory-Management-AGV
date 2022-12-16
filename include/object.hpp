@@ -1,3 +1,6 @@
+#ifndef INCLUDE_OBJECT_HPP_
+#define INCLUDE_OBJECT_HPP_
+
 // Copyright Venkata Sairam Polina.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,18 +28,23 @@
 #include <geometry_msgs/PoseWithCovarianceStamped.h>
 #include <ros/ros.h>
 
+#include <string>
 
 class Object {
  public:
-
-   /**
+    /**
     * @brief Construct a new Object class's object
     * 
     */
 
     explicit Object(ros::NodeHandle*);
+<<<<<<< Updated upstream
    
    /**
+=======
+
+    /**
+>>>>>>> Stashed changes
     * @brief  method to spawn the package in gazebo
     * 
     * @return bool
@@ -44,27 +52,25 @@ class Object {
 
     bool spawn_pkg();
 
-   /**
+    /**
     * @brief Set the pose of pkg object   
     * @param Pose pose for the object to be spawned
     */
     void set_pose_of_pkg(geometry_msgs::Pose);
-   
-   /**
+
+    /**
     * @brief Flag to check if object is in manipulator
     * @return bool
     */
     bool if_picked_up_pkg;
 
  private:
-
-   
-      /**
-      * @brief  Callback for the service to update the state of the package
-      * @param std_srvs::SetBool::Request& 
-      * @param std_srvs::SetBool::Response& 
-      * @return bool
-      */
+    /**
+    * @brief  Callback for the service to update the state of the package
+    * @param std_srvs::SetBool::Request& 
+    * @param std_srvs::SetBool::Response& 
+    * @return bool
+    */
     bool set_pkg_state_callback(std_srvs::SetBool::Request&,
                                     std_srvs::SetBool::Response&);
 
@@ -75,7 +81,7 @@ class Object {
     void publish_pkg_loc(const ros::TimerEvent &);
 
     bool if_spawned;
-    int map_range[4] = {-6,-7,2,7};
+    int map_range[4] = {-6, -7, 2, 7};
 
     ros::NodeHandle* nh_;
     ros::ServiceServer update_state_service_;
@@ -89,6 +95,6 @@ class Object {
 
     tf2_ros::TransformBroadcaster broadcaster_;
     tf2_ros::Buffer tfbuffer_;
-    tf2_ros::TransformListener tflistener_;       
-
+    tf2_ros::TransformListener tflistener_;
 };
+#endif  // INCLUDE_OBJECT_HPP_

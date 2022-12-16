@@ -1,3 +1,6 @@
+#ifndef INCLUDE_PERCEPTION_HPP_
+#define INCLUDE_PERCEPTION_HPP_
+
 // Copyright Venkata Sairam Polina.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,10 +15,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
-#ifndef INCLUDE_PERCEPTION_HPP_
-#define INCLUDE_PERCEPTION_HPP_
-
 #include <cv_bridge/cv_bridge.h>
 #include <image_transport/image_transport.h>
 
@@ -28,9 +27,6 @@
 #include <string.h>
 #include <vector>
 
-
-// 
-
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/objdetect/objdetect.hpp>
 #include <opencv2/highgui/highgui.hpp>
@@ -42,30 +38,29 @@ class PackageDetector {
         * @param nh
         */
 
-        explicit PackageDetector(ros::NodeHandle*);
+        PackageDetector(ros::NodeHandle*);
 
-        /*
-        * @brief Find the object using perception stack
-        * @return bool
-        */
-        bool find_obj();
+    /*
+    * @brief Find the object using perception stack
+    * @return bool
+    */
+    bool find_obj();
 
-        /*
-        * @brief Check if object is detected
-        * @return bool
-        */
+    /*
+    * @brief Check if object is detected
+    * @return bool
+    */
 
-        bool if_obj_detected;
+    bool if_obj_detected;
 
-        /*
-        * @brief Callback function for image subscriber
-        * @param sensor_msgs::ImageConstPtr
-        */
+    /*
+    * @brief Callback function for image subscriber
+    * @param sensor_msgs::ImageConstPtr
+    */
 
-        void image_callback(const sensor_msgs::ImageConstPtr &);
+    void image_callback(const sensor_msgs::ImageConstPtr &);
 
-    private:
-
+ private:
     ros::NodeHandle* nh_;
 
     cv::Mat image_, image_hsv_, image_thresh_;
@@ -73,8 +68,6 @@ class PackageDetector {
     image_transport::ImageTransport image_transport_;
 
     image_transport::Subscriber image_sub_;
-    
-    // check
     std::vector<std::vector<cv::Point>> contours_;
-
 };
+#endif  // INCLUDE_PERCEPTION_HPP_

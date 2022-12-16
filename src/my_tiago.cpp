@@ -12,13 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
-
-
-
 #include "../include/my_tiago.hpp"
-
-//using namespace PointHeadClient;
 
 MyTiago::MyTiago(ros::NodeHandle* nh):
                     navigator(nh),
@@ -40,7 +34,7 @@ void MyTiago::execution_pipeline() {
 
     //  Execution of pick and place pipeleine
     switch (state_) {
-        case START: 
+        case START:
             state_ = IDLE;
             break;
 
@@ -152,7 +146,6 @@ void MyTiago::place_pkg() {
 }
 
 void MyTiago::move_head() {
-
     //  moves the head of the rbot down
     std::string camera_frame = "/xtion_rgb_optical_frame";
     geometry_msgs::PointStamped pointStamped;

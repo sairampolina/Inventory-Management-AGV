@@ -1,3 +1,6 @@
+#ifndef INCLUDE_NAVIGATION_HPP_
+#define INCLUDE_NAVIGATION_HPP_
+
 // Copyright Venkata Sairam Polina.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,9 +14,6 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
-#ifndef INCLUDE_NAVIGATION_HPP_
-#define INCLUDE_NAVIGATION_HPP_
 
 #include <actionlib/client/simple_action_client.h>
 
@@ -32,111 +32,115 @@
 #include <vector>
 
 class Navigation {
-    
-    public:
+ public:
+    /*
+    * @brief Construct new navigation object.
+    * @param nh
+    */
+    explicit Navigation(ros::NodeHandle*);
 
+<<<<<<< Updated upstream
         /*
         * @brief Construct new navigation object.
         * @param nh
         */
         explicit Navigation(ros::NodeHandle*);
+=======
+    /*
+    * @brief Set the goal location for the robot.  
+    * @param goal_pose
+    */
+>>>>>>> Stashed changes
 
-        /*
-        * @brief Set the goal location for the robot.  
-        * @param goal_pose
-        */
+    void set_pkgloc_as_goal(geometry_msgs::Pose);
 
-        void set_pkgloc_as_goal(geometry_msgs::Pose);
+    /*
+    * @brief Set the drop location for the robot.
+    */
 
-        /*
-        * @brief Set the drop location for the robot.
-        */
-        
-        void set_droploc_as_goal();
+    void set_droploc_as_goal();
 
-        /*
-        * @brief Set the goal location for the robot.
-        */
+    /*
+    * @brief Set the goal location for the robot.
+    */
 
-        void set_goal();
+    void set_goal();
 
-        /*
-        * @brief Check if the goal is reached.
-        * @return bool
-        */
+    /*
+    * @brief Check if the goal is reached.
+    * @return bool
+    */
 
-        bool if_goal_reached();
+    bool if_goal_reached();
 
-        /*
-        * @brief Turn robot 180 degrees.
-        */
+    /*
+    * @brief Turn robot 180 degrees.
+    */
 
-        void turn_robot();
+    void turn_robot();
 
-        /*
-        * @brief Stop the robot.
-        */
+    /*
+    * @brief Stop the robot.
+    */
 
-        void stop_robot();
+    void stop_robot();
 
-        /*
-        * @brief Callback function to receive the present pose of the robot.
-        * @param robot's pose
-        */
-        void pose_callback(const geometry_msgs::PoseWithCovarianceStamped&);
+    /*
+    * @brief Callback function to receive the present pose of the robot.
+    * @param robot's pose
+    */
+    void pose_callback(const geometry_msgs::PoseWithCovarianceStamped&);
 
-        enum rotation {
-        ROT_START,
-        ROTATING,
-        ROT_COMPLETE,
-        };
-        rotation rot_state_;
+    enum rotation {
+    ROT_START,
+    ROTATING,
+    ROT_COMPLETE,
+    };
+    rotation rot_state_;
 
-    private:
+ private:
+    /*
+    * @brief Set the robot's rotation velocity.
+    */
 
-        /*
-        * @brief Set the robot's rotation velocity.
-        */
+    void set_rot_vel();
 
-        void set_rot_vel();
+    /*
+    * @brief Set waypoints for the robot.
+    */
 
-        /*
-        * @brief Set waypoints for the robot.
-        */
+    void set_waypoints();
 
-        void set_waypoints();
+    ros::NodeHandle* nh_;
 
-        ros::NodeHandle* nh_;
+    // subscriber to get present pose
+    ros::Subscriber pre_pose_sub_;
 
-        // subscriber to get present pose
-        ros::Subscriber pre_pose_sub_;
+    // Publisher to set goals
+    ros::Publisher goal_pub_;
 
-        // Publisher to set goals 
-        ros::Publisher goal_pub_;
+    ros::Publisher vel_pub_;
 
-        ros::Publisher vel_pub_;
+    ros::Publisher cancel_goal_pub_;
 
-        ros::Publisher cancel_goal_pub_;
+    ros::ServiceClient kill_costmap_client_;
 
-        ros::ServiceClient kill_costmap_client_;
+    bool pose_flag_;
 
-        bool pose_flag_;
+    // present location of robot
+    geometry_msgs::Pose pre_pose_;
 
-        // present location of robot
-        geometry_msgs::Pose pre_pose_;
+    // approximate location of pkg
+    geometry_msgs::Pose goal_pose_;
 
-        // approximate location of pkg 
-        geometry_msgs::Pose goal_pose_;
+    // Drop location of pkg
+    geometry_msgs::Pose drop_loc_;
 
-        // Drop location of pkg
-        geometry_msgs::Pose drop_loc_;
+    // robot initial orientation
+    tf2::Quaternion init_quaternion_;
 
-        // robot initial orientation
-        tf2::Quaternion init_quaternion_;
+    std::vector <geometry_msgs::Pose> waypoints_;
 
-        std::vector <geometry_msgs::Pose> waypoints_;
-
-        std::vector<geometry_msgs::Pose>::size_type waypoint_counter_;
- 
+    std::vector<geometry_msgs::Pose>::size_type waypoint_counter_;
 };
-
+#endif  // INCLUDE_NAVIGATION_HPP_

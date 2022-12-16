@@ -31,6 +31,7 @@
 #include <map>
 
 class Manipulation {
+<<<<<<< Updated upstream
     public:
 
         /**
@@ -44,34 +45,45 @@ class Manipulation {
         /**
         * @brief Handles pickup of picked object.
         * 
+=======
+ public:
+    /**
+        * @brief Construct a new Manipulation object
+        * @param nh 
+>>>>>>> Stashed changes
         */
 
-        void pick_package();
+    explicit Manipulation(ros::NodeHandle*);
 
-        /**
-         * @brief  Handles placing of picked object.
-         * 
-         */
-        void place_package();
+    /**
+    * @brief Handles pickup of picked object.
+    * 
+    */
 
-        /**
-         * @brief  Handles movement of object and takes input the pose of detected object.
-         * @param pose of the object
-         */
-        void move_to_object(geometry_msgs::Pose);
+    void pick_package();
 
-    private:
+    /**
+        * @brief  Handles placing of picked object.
+        * 
+        */
+    void place_package();
 
-        
-        ros::NodeHandle* nh_; // Node handle
-        
-        ros::ServiceClient set_obj_state_client_; // Service client to set object state
+    /**
+        * @brief  Handles movement of object and takes input the pose of detected object.
+        * @param pose of the object
+        */
+    void move_to_object(geometry_msgs::Pose);
 
-        /**
-         * @brief Handles reaching of object and takes input the pose of detected object.
-         * @param pose of the object
-         */
-        void reach(geometry_msgs::Pose); 
+ private:
+    // Node handle
+    ros::NodeHandle* nh_;
 
-
+    // Service client to set object state
+    ros::ServiceClient set_obj_state_client_;
+    /**
+        * @brief Handles reaching of object and takes input the pose of detected object.
+        * @param pose of the object
+        */
+    void reach(geometry_msgs::Pose);
 };
+#endif  // INCLUDE_MANIPULATION_HPP_
