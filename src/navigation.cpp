@@ -15,7 +15,7 @@
 #include "../include/navigation.hpp"
 #include <cmath>
 
-Navigation::Navigation(ros::NodeHandle* nh): waypoint_counter_ = 0 {
+Navigation::Navigation(ros::NodeHandle* nh): waypoint_counter_(0) {
     nh_ = nh;
     rot_state_ = ROT_COMPLETE;
     pose_flag_ = false;
