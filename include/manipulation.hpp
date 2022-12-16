@@ -44,13 +44,6 @@ class Manipulation {
     * @brief Handles pickup of picked object.
     */
 
-    explicit Manipulation(ros::NodeHandle*);
-
-    /**
-    * @brief Handles pickup of picked object.
-    * 
-    */
-
     void pick_package();
 
     /**
