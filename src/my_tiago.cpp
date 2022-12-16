@@ -108,6 +108,10 @@ void MyTiago::execution_pipeline() {
             ROS_ERROR("[Tiago Stack]: Task accomplished!");
             state_ = STOP;
             break;
+        case STOP:
+            break;
+        case OBJECT_FOUND:
+            break;
     }
 }
 
