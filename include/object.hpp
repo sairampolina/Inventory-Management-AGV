@@ -15,8 +15,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
-
 #include <std_srvs/SetBool.h>
 #include <gazebo_msgs/ModelState.h>
 #include <gazebo_msgs/SpawnModel.h>
