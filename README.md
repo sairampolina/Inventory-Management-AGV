@@ -214,14 +214,26 @@ mkdir build
 cd build
 cmake ..
 make
+-->
 
 # Run
-Run tests: ./test/cpp-test
-Run the perception module: ./app/shell-app
+## To run unit tests
 ```
-
+sudo apt install -y lcov
+. /opt/ros/$ROS_DISTRO/setup.bash
+catkin config --cmake-args -DCMAKE_CXX_FLAGS="-Wall -Wno-unused --coverage -fno-inline -fno-inline-small-functions -fno-default-inline" -DCMAKE_C_FLAGS="-Wall -Wno-unused --coverage -fno-inline -fno-inline-small-functions -fno-default-inline" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXE_LINKER_FLAGS="-lgcov"
+catkin build
+catkin run_tests -i && catkin_test_results
+```
+## To run simulation
+```
+cd <workspace>
+catkin build im_agv
+. devel/setup.bash
+roslaunch im_agv tiago_launch.launch
 ```
 # Static Code Analysis
+```
 1. cppcheck
 bash run_cppcheck.sh
 2. cpplint
@@ -238,12 +250,10 @@ kcachegrind
 
 ```
 # Code Coverage
-cmake -D COVERAGE=ON -D CMAKE_BUILD_TYPE=Debug ../
-make
-make code_coverage
-firefox index.html
+lcov --directory . --capture --output-file coverage.info
+lcov --remove coverage.info '/opt/*' '/usr/*' '*/devel/*' '*_test*' --output-file coverage.info
+lcov --list coverage.info
 ```
--->
 
 ### Doxygen Documentation
 ```
@@ -252,12 +262,11 @@ doxygen doxygen.config
 doxywizard
 ```
 ---
-<!--## Project Videos
-### [Final Video](https://drive.google.com/drive/folders/1NprRueNb3u7tsn6D-Y5_eI7PGIxM4owS?usp=share_link)
-Note: The Microphone had some issue, apologies beforehand
-### [Sprint 1 Video](https://drive.google.com/file/d/1hh5f50VzA4mIPJmc9IJAOi4N9bs-uyPp/view?usp=sharing)
-Note: The Microphone had some issue, apologies beforehand
-### [Proposal Video](https://drive.google.com/file/d/1BUSOc8T6gLknhAt8TJ6uW9MLCY49dpPH/view?usp=sharing)
+## Project Videos
 
--->
+### [Final Video](https://drive.google.com/file/d/1_zlkNh7n82LKpOkjOCAaItQpVTASn1nq/view?usp=sharing)
+
+### [Final PPT](https://docs.google.com/presentation/d/1NeBHGJK7w3UahWF0we489h2Lg_fpibfpUOyoCq6geCc/edit#slide=id.p)
+
+
 
