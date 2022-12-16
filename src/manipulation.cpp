@@ -12,6 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/**
+ * @file manipulation.cpp
+ * @author sairam polina (polinavenkatasairam@gmail.com)
+ * @brief Implementation of maniplation.cpp
+ * @version 0.1
+ * @date 2022-12-15
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include "../include/manipulation.hpp"
 
 Manipulation::Manipulation(ros::NodeHandle* nh) {

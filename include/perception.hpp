@@ -15,6 +15,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/**
+ * @file perception.hpp
+ * @author sairam polina (polinavenkatasairam@gmail.com)
+ * @brief Implementation of perception.hpp
+ * @version 0.1
+ * @date 2022-12-15
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <cv_bridge/cv_bridge.h>
 #include <image_transport/image_transport.h>
 

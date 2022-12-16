@@ -15,6 +15,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/**
+ * @file object.hpp
+ * @author sairam polina (polinavenkatasairam@gmail.com)
+ * @brief Implementation of object.hpp
+ * @version 0.1
+ * @date 2022-12-15
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <std_srvs/SetBool.h>
 #include <gazebo_msgs/ModelState.h>
 #include <gazebo_msgs/SpawnModel.h>

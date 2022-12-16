@@ -12,6 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/**
+ * @file my_tiago.cpp
+ * @author sairam polina (polinavenkatasairam@gmail.com)
+ * @brief Implementation of my_tiago.cpp
+ * @version 0.1
+ * @date 2022-12-15
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include "../include/my_tiago.hpp"
 
 MyTiago::MyTiago(ros::NodeHandle* nh):

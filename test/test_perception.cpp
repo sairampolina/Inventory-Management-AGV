@@ -12,6 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/**
+ * @file test_perception.cpp
+ * @author sairam polina (polinavenkatasairam@gmail.com)
+ * @brief test file to test perception module.
+ * @version 0.1
+ * @date 2022-12-15
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include <gtest/gtest.h>
 #include <ros/ros.h>
 

@@ -12,6 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/**
+ * @file navigation.cpp
+ * @author sairam polina (polinavenkatasairam@gmail.com)
+ * @brief Implementation of navigation.cpp
+ * @version 0.1
+ * @date 2022-12-15
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
 #include "../include/navigation.hpp"
 #include <cmath>
 

@@ -15,6 +15,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+/**
+ * @file navigation.hpp
+ * @author sairam polina (polinavenkatasairam@gmail.com)
+ * @brief Implementation of navigation.hpp
+ * @version 0.1
+ * @date 2022-12-15
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
 #include <actionlib/client/simple_action_client.h>
 
 #include <geometry_msgs/Pose.h>

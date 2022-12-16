@@ -16,6 +16,17 @@
 // limitations under the License.
 
 /**
+ * @file my_tiago.hpp
+ * @author sairam polina (polinavenkatasairam@gmail.com)
+ * @brief Implementation of my_tiago.hpp
+ * @version 0.1
+ * @date 2022-12-15
+ * 
+ * @copyright Copyright (c) 2022
+ * 
+ */
+
+/**
  * Ros headers
 */
 #include <actionlib/client/simple_action_client.h>
