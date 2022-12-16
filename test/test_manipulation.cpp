@@ -23,9 +23,22 @@
 
 #include <moveit/move_group_interface/move_group_interface.h>
 
-
 #include <string>
 #include <vector>
 #include <map>
 
 #include "manipulation.hpp"
+
+// bool message_received;
+// geometry_msgs::PoseStamped pose_message;
+// geometry_msgs::Twist velocity_message;
+
+// TEST(TestManipulation, testPickPackage) {
+
+//     ros::NodeHandle nh;
+//     Manipulation manip(&nh);
+
+
+//     ASSERT_EQ(manip.flag, false);
+
+// }

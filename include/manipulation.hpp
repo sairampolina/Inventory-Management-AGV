@@ -1,3 +1,6 @@
+#ifndef INCLUDE_MANIPULATION_HPP_
+#define INCLUDE_MANIPULATION_HPP_
+
 // Copyright Venkata Sairam Polina.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,9 +14,6 @@
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
-
-#ifndef INCLUDE_MANIPULATION_HPP_
-#define INCLUDE_MANIPULATION_HPP_
 
 #include <geometry_msgs/Pose.h>
 #include <geometry_msgs/Quaternion.h>
@@ -31,27 +31,18 @@
 #include <map>
 
 class Manipulation {
-<<<<<<< Updated upstream
-    public:
-
-        /**
-         * @brief Construct a new Manipulation object
-         * @param nh 
-         */
-
-        explicit Manipulation(ros::NodeHandle*);
-
-        
-        /**
-        * @brief Handles pickup of picked object.
-        * 
-=======
  public:
     /**
-        * @brief Construct a new Manipulation object
-        * @param nh 
->>>>>>> Stashed changes
-        */
+    * @brief Construct a new Manipulation object
+    * @param nh 
+    */
+
+    explicit Manipulation(ros::NodeHandle*);
+
+
+    /**
+    * @brief Handles pickup of picked object.
+    */
 
     explicit Manipulation(ros::NodeHandle*);
 
@@ -63,19 +54,19 @@ class Manipulation {
     void pick_package();
 
     /**
-        * @brief  Handles placing of picked object.
-        * 
-        */
+    * @brief  Handles placing of picked object.
+    * 
+    */
     void place_package();
 
     /**
-        * @brief  Handles movement of object and takes input the pose of detected object.
-        * @param pose of the object
-        */
+    * @brief  Handles movement of object and takes input the pose of detected object.
+    * @param pose of the object
+    */
     void move_to_object(geometry_msgs::Pose);
 
  private:
-    // Node handle
+    //  Node handle
     ros::NodeHandle* nh_;
 
     // Service client to set object state

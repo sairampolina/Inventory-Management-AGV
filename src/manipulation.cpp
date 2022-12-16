@@ -12,16 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
 #include "../include/manipulation.hpp"
 
 Manipulation::Manipulation(ros::NodeHandle* nh) {
     nh_ = nh;
-    set_obj_state_client_ = nh_->serviceClient
-        <std_srvs::SetBool>("/setObjectState");
+    set_obj_state_client_ = nh_->serviceClient<std_srvs::SetBool>
+        ("/setObjectState");
     ROS_INFO_STREAM("[Manipulation Stack]: Starting Manipulation node ");
 }
-
 void Manipulation::pick_package() {
     geometry_msgs::Pose goal;
     tf2::Quaternion transform;
@@ -33,7 +31,6 @@ void Manipulation::pick_package() {
     goal.orientation = tf2::toMsg(transform);
     reach(goal);
 }
-
 void Manipulation::place_package() {
     geometry_msgs::Pose goal;
     tf2::Quaternion transform;

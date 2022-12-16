@@ -22,6 +22,7 @@ Navigation::Navigation(ros::NodeHandle* nh) {
     waypoint_counter_ = 0;
     drop_loc_.position.x = -4;
     drop_loc_.position.y = 0;
+
     goal_pub_ = nh_->advertise<geometry_msgs::PoseStamped>
         ("/move_base_simple/goal", 10);
     vel_pub_ = nh_->advertise<geometry_msgs::Twist>
@@ -29,8 +30,8 @@ Navigation::Navigation(ros::NodeHandle* nh) {
     cancel_goal_pub_ = nh_->advertise<actionlib_msgs::GoalID>
         ("/move_base/cancel", 5);
 
-    pre_pose_sub_ = nh_->subscribe
-        ("/robot_pose", 10, &Navigation::pose_callback, this);
+    pre_pose_sub_ = nh_->subscribe("/robot_pose", 10,
+        &Navigation::pose_callback, this);
 
     kill_costmap_client_ = nh_->serviceClient<std_srvs::Empty>
         ("/move_base/clear_costmaps");
@@ -43,7 +44,9 @@ void Navigation::set_goal() {
         geometry_msgs::PoseStamped new_goal;
         new_goal.pose.position = waypoints_[waypoint_counter_].position;
         new_goal.pose.orientation.w = 1.0;
+
         new_goal.header.frame_id = "map";
+
         goal_pub_.publish(new_goal);
         goal_pub_.publish(new_goal);
         goal_pose_ = new_goal.pose;
@@ -60,7 +63,9 @@ void Navigation::set_pkgloc_as_goal(geometry_msgs::Pose object) {
     geometry_msgs::PoseStamped target_pose;
     target_pose.pose.position = object.position;
     target_pose.pose.orientation.w = 1.0;
+
     target_pose.header.frame_id = "map";
+
     goal_pub_.publish(target_pose);
     goal_pub_.publish(target_pose);
     goal_pose_ = target_pose.pose;
@@ -74,7 +79,9 @@ void Navigation::set_droploc_as_goal() {
     geometry_msgs::PoseStamped target;
     target.pose.position = drop_loc_.position;
     target.pose.orientation.w = 1.0;
+
     target.header.frame_id = "map";
+
     goal_pub_.publish(target);
     goal_pub_.publish(target);
     goal_pose_ = target.pose;
@@ -92,6 +99,7 @@ bool Navigation::if_goal_reached() {
     x = std::pow(x, 2);
     auto y = pre_pose_.position.y - goal_pose_.position.y;
     y = std::pow(y, 2);
+
     if (std::sqrt(x + y) >= 0.1)
         return false;
     return true;
@@ -124,7 +132,6 @@ void Navigation::turn_robot() {
     }
 }
 
-
 void Navigation::stop_robot() {
     actionlib_msgs::GoalID msg;
     cancel_goal_pub_.publish(msg);
@@ -134,8 +141,8 @@ void Navigation::stop_robot() {
     ROS_INFO_STREAM("[Navigation Stack]: Cancelling assigned goal");
 
     status = ros::topic::waitForMessage
-        <actionlib_msgs::GoalStatusArray>(
-            "/move_base/status", ros::Duration(2));
+        <actionlib_msgs::GoalStatusArray>
+            ("/move_base/status", ros::Duration(2));
     ROS_INFO_STREAM("[Navigation Stack]: Robot has stopped.");
 }
 
@@ -152,6 +159,7 @@ void Navigation::set_waypoints() {
 
 void Navigation::set_rot_vel() {
     geometry_msgs::Twist msg;
+
     msg.angular.z = 0.6;
     vel_pub_.publish(msg);
 }

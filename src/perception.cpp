@@ -16,9 +16,9 @@
 
 PackageDetector::PackageDetector(ros::NodeHandle* nh_):
                                 image_transport_(*nh_) {
-    image_sub_ = image_transport_.subscribe("xtion/rgb/image_raw",
-        1, &PackageDetector::image_callback,
-        this, image_transport::TransportHints("compressed"));
+    image_sub_ = image_transport_.subscribe
+        ("xtion/rgb/image_raw", 1, &PackageDetector::image_callback,
+            this, image_transport::TransportHints("compressed"));
     if_obj_detected = false;
     cv::namedWindow("camera_feed", 0);
     ROS_INFO_STREAM("[Perception Stack]: Detector object initialized");
@@ -31,7 +31,7 @@ bool PackageDetector::find_obj() {
         cv::Scalar(120, 255, 255), image_thresh_);
 
     cv::findContours(image_thresh_, contours_, CV_RETR_EXTERNAL,
-        CV_CHAIN_APPROX_SIMPLE);
+                        CV_CHAIN_APPROX_SIMPLE);
 
     if (contours_.size() > 0) {
         if_obj_detected = true;

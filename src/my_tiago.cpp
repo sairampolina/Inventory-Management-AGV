@@ -21,7 +21,6 @@ MyTiago::MyTiago(ros::NodeHandle* nh):
                     tflistener_(this->tfbuffer_) {
     nh_ = nh;
     state_ = robotState::START;
-    pre_state_= START;
     ROS_INFO_STREAM("[Tiago Stack]: Tiago object initialized");
 }
 
@@ -41,7 +40,6 @@ void MyTiago::execution_pipeline() {
         case IDLE:
             // Sets waypoints for the robot
             navigator.set_goal();
-            move_head();
             create_head_client(point_head_client_);
             state_ = MOVING_TO_WAYPOINT;
             break;

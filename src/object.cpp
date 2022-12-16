@@ -18,10 +18,7 @@ Object::Object(ros::NodeHandle* nh):
                         tflistener_(this->tfbuffer_) {
     pkg_name_ = "box";
     if_spawned = false;
-
     if_picked_up_pkg = false;
-
-    // map_range = {-6,-7,2,7};
 
     ros::topic::waitForMessage
         <geometry_msgs::PoseWithCovarianceStamped>
@@ -46,15 +43,15 @@ Object::Object(ros::NodeHandle* nh):
     </gazebo></robot>)";
 }
 
-
 bool Object::spawn_pkg() {
     if (if_spawned) {
         ROS_INFO_STREAM("[Package Stack]: Package already spawned.");
         return false;
     }
-    spawn_pkg_client_ =
-        nh_-> serviceClient<gazebo_msgs::SpawnModel>
-            ("/gazebo/spawn_urdf_model");
+
+    spawn_pkg_client_ = nh_-> serviceClient
+        <gazebo_msgs::SpawnModel>("/gazebo/spawn_urdf_model");
+
     gazebo_msgs::SpawnModel srv;
     srv.request.model_name = pkg_name_;
     srv.request.model_xml = urdf_string_;

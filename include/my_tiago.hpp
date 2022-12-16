@@ -48,44 +48,46 @@ typedef boost::shared_ptr<PointHeadClient> PointHeadClientPtr;
 class MyTiago {
  public:
     /**
-    * @brief Spawning MyTiago bot   
+    * @brief Construct a new DCRobot object
     * 
     */
     explicit MyTiago(ros::NodeHandle*);
 
     /**
-    * @brief Starts the robot execution pipeline
+    * @brief Synchronizes various tasks of the robot
     * 
     */
     void execution_pipeline();
 
     /**
-    * @brief Checks if object is within reach of the robot, returns boolean.
+    * @brief Checks whether the object is within reach of the robot
     * 
     */
     bool if_obj_within_reach();
 
     /**
-    * @brief Get the pose of the object using the perception stack.
-    * @param wrt - string, frame of reference for the pose.
+    * @brief Gets object pose from the world. 
+    * 
+    * @brief Construct a new DCRobot object
+    * 
     */
 
     geometry_msgs::Pose get_pkg_pose(std::string wrt = "map");
 
     /**
-    * @brief Handles pickup of detected object.
+    * @brief Handles object picking by the robot.
     * 
     */
     void pickup_pkg();
 
     /**
-    * @brief Handles placement of picked object.
+    * @brief Handles object placement by the robot.
     * 
     */
     void place_pkg();
 
     /**
-    * @brief Enumerates various robot's states.
+    * @brief Enumerations various robot functioning states.
     * 
     */
     enum robotState {
@@ -103,21 +105,21 @@ class MyTiago {
 
     /** Instance for Navigation class*/
     Navigation navigator;
-    /** Instance for Manipulator class*/
+    /** Instance for graspObj class*/
     Manipulation manipulator;
-    /** Instance for PackageDetector class*/
+    /** Instance for DetectObject class*/
     PackageDetector detector;
 
  private:
     /**
-    * @brief Moves the head to look at a point in space.
+    * @brief Enumerates various object states.
     * 
     */
     void move_head();
 
     /**
-    * @brief Creates a head client for head movement actions.
-    * @param point_head_client_ - PointHeadClientPtr
+    * @brief Enumerates various object states.
+    * 
     */
     void create_head_client(PointHeadClientPtr&);
 

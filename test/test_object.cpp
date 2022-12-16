@@ -45,6 +45,15 @@ void pose_cb(const gazebo_msgs::ModelStateConstPtr& msg) {
 }
 
 
+bool spawn_cb(gazebo_msgs::SpawnModel::Request
+                                    &req,  // NOLINT(runtime/references)
+            gazebo_msgs::SpawnModel::Response
+                                    &res ) {  // NOLINT(runtime/references)
+    res.success = true;
+    return true;
+}
+
+
 TEST(test_object_spawner_class, test_constructor) {
     // Arrange
     msg_received = false;
