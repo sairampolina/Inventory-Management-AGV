@@ -115,12 +115,6 @@ class MyTiago {
     * @brief Enumerates various object states.
     * 
     */
-    void move_head();
-
-    /**
-    * @brief Enumerates various object states.
-    * 
-    */
     void create_head_client(PointHeadClientPtr&);
 
     /** Node Handle created*/

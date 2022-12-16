@@ -20,6 +20,7 @@ MyTiago::MyTiago(ros::NodeHandle* nh):
                     detector(nh),
                     tflistener_(this->tfbuffer_) {
     nh_ = nh;
+    pre_state_ = state_;
     state_ = robotState::START;
     ROS_INFO_STREAM("[Tiago Stack]: Tiago object initialized");
 }
@@ -141,31 +142,6 @@ void MyTiago::place_pkg() {
     manipulator.place_package();
     manipulator.pick_package();
     ROS_INFO_STREAM("[Tiago Stack]: Object Placed");
-}
-
-void MyTiago::move_head() {
-    //  moves the head of the rbot down
-    std::string camera_frame = "/xtion_rgb_optical_frame";
-    geometry_msgs::PointStamped pointStamped;
-    pointStamped.header.frame_id = camera_frame;
-    pointStamped.header.stamp = ros::Time::now();
-    pointStamped.point.x = 0.0;
-    pointStamped.point.y = 0.8;    // value for looking down
-    pointStamped.point.z = 1.0;
-
-    // build the action goal
-    control_msgs::PointHeadGoal goal;
-
-    goal.pointing_frame = camera_frame;
-    goal.pointing_axis.x = 0.0;
-    goal.pointing_axis.y = 0.0;
-    goal.pointing_axis.z = 1.0;
-    goal.min_duration = ros::Duration(1.0);
-    goal.max_velocity = 0.25;
-    goal.target = pointStamped;
-
-    point_head_client_->sendGoal(goal);
-    ros::Duration(0.5).sleep();
 }
 
 void MyTiago::create_head_client(PointHeadClientPtr& actionClient) {

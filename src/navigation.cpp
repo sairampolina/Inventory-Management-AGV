@@ -15,11 +15,10 @@
 #include "../include/navigation.hpp"
 #include <cmath>
 
-Navigation::Navigation(ros::NodeHandle* nh) {
+Navigation::Navigation(ros::NodeHandle* nh): waypoint_counter_ = 0 {
     nh_ = nh;
     rot_state_ = ROT_COMPLETE;
     pose_flag_ = false;
-    waypoint_counter_ = 0;
     drop_loc_.position.x = -4;
     drop_loc_.position.y = 0;
 

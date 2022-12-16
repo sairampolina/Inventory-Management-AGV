@@ -84,8 +84,9 @@ bool Object::spawn_pkg() {
     return false;
 }
 
-bool Object::set_pkg_state_callback(std_srvs::SetBool::Request &request,
-                                    std_srvs::SetBool::Response &response) {
+bool Object::set_pkg_state_callback
+    (const std_srvs::SetBool::Request &request,
+        const std_srvs::SetBool::Response &response) {
     if_picked_up_pkg = request.data;
     response.message = "ObjectStateUpdated";
     response.success = true;
@@ -103,7 +104,6 @@ void Object::set_pose_of_pkg(geometry_msgs::Pose pkg_pose) {
 void Object::publish_pkg_loc(const ros::TimerEvent&) {
     geometry_msgs::TransformStamped trans_stamp;
     if (if_picked_up_pkg) {
-        geometry_msgs::TransformStamped trans_stamp;
         trans_stamp = tfbuffer_.lookupTransform("map",
                                                     "gripper_grasping_frame",
                                                                 ros::Time(0));

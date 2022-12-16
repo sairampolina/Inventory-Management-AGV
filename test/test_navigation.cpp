@@ -104,7 +104,7 @@ TEST(test_navigation_class, test_turn_around) {
                                                             "/robot_pose", 10);
     ros::Subscriber sub = nh.subscribe("/mobile_base_controller/cmd_vel", 10,
                                                             velocity_callback);
-    double expected_velocity = 0.6;
+    // double expected_velocity = 0.6;
     geometry_msgs::PoseWithCovarianceStamped msg;
     msg.pose.pose.orientation.w = 1;
 

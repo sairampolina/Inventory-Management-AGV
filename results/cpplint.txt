@@ -1,1 +1,15 @@
-cpplint: command not found
+Done processing include/manipulation.hpp
+Done processing include/my_tiago.hpp
+Done processing include/navigation.hpp
+Done processing include/object.hpp
+Done processing include/perception.hpp
+Done processing src/manipulation.cpp
+Done processing src/my_tiago.cpp
+Done processing src/navigation.cpp
+Done processing src/object.cpp
+Done processing src/perception.cpp
+Done processing test/main.cpp
+Done processing test/test_manipulation.cpp
+Done processing test/test_navigation.cpp
+Done processing test/test_object.cpp
+Done processing test/test_perception.cpp

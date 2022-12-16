@@ -43,7 +43,6 @@ class Object {
 
   void publish_pkg_loc(const ros::TimerEvent &);
 
-  int seed;
   bool if_spawned;
   int map_range[4] = {-6, -7, 2, 7};
 
