@@ -85,8 +85,8 @@ bool Object::spawn_pkg() {
 }
 
 bool Object::set_pkg_state_callback
-    (const std_srvs::SetBool::Request &request,
-        const std_srvs::SetBool::Response &response) {
+    (std_srvs::SetBool::Request &request,
+        std_srvs::SetBool::Response &response) {
     if_picked_up_pkg = request.data;
     response.message = "ObjectStateUpdated";
     response.success = true;
