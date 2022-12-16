@@ -71,73 +71,76 @@ The Members are Graduate students at The University of Maryland, College Park. T
 | Navigator | Driver |  Design Keeper |
 
 ---
-<!-- ## Content Tree
-<pre>├── <font color="#3465A4"><b>app</b></font>
-│   ├── CMakeLists.txt
-│   ├── main.cpp
-│   └── ReadData.cpp
-├── <font color="#3465A4"><b>cmake</b></font>
-│   └── CodeCoverage.cmake
+## Content Tree
+<pre>├── <font color="#3465A4"><b>src</b></font>
+│   ├── manipulation.cpp
+│   ├── my_tiago.cpp
+│   ├── navigation.cpp
+│   ├── object.cpp
+│   └── perception.cpp
+├── <font color="#3465A4"><b>include</b></font>
+│   ├── manipulation.hpp
+│   ├── <font color="#4E9A06"><b>my_tiago.hpp</b></font>
+│   ├── navigation.hpp
+│   ├── object.hpp
+│   └── perception.hpp
+├── <font color="#3465A4"><b>Quadchart</b></font>
+│   └── Quadchart.pdf
 ├── CMakeLists.txt
-├── dependencies.sh
+├── package.xml
 ├── <font color="#3465A4"><b>Design_Neccesities</b></font>
 │   ├── CRC_Cards_Mid_Term.pdf
 │   └── ESC_midtermproposal.pdf
-├── <font color="#3465A4"><b>include</b></font>
-│   ├── HumanClassifier.hpp
-│   ├── <font color="#4E9A06"><b>HumanDetector.hpp</b></font>
-│   ├── PerceptionModule.hpp
-│   ├── <font color="#4E9A06"><b>ReadData.hpp</b></font>
-│   └── RectandConfidence.hpp
 ├── Project Proposal.pdf
-├── <font color="#75507B"><b>quad_chart.jpg</b></font>
 ├── README.md
 ├── <font color="#3465A4"><b>results</b></font>
-│   └── cppcheck
+│   ├── cpplint.txt
+│   └── cppcheck.txt
 ├── <font color="#3465A4"><b>test</b></font>
-│   ├── CMakeLists.txt
 │   ├── main.cpp
-│   ├── tempCodeRunnerFile.cpp
-│   └── test.cpp
-├── <font color="#3465A4"><b>test_data</b></font>
-│   └── <font color="#75507B"><b>Lenna.png</b></font>
+│   ├── test_manipulation.cpp
+│   ├── test_navigation.cpp
+│   ├── test_object.cpp
+│   └── test_perception.cpp
 ├── <font color="#3465A4"><b>UML</b></font>
 │   ├── <font color="#3465A4"><b>initial</b></font>
 │   └── <font color="#3465A4"><b>revised</b></font>
-└── <font color="#3465A4"><b>vendor</b></font>
-   └── <font color="#3465A4"><b>googletest</b></font></pre>
+├── <font color="#3465A4"><b>docs</b></font>
+│   ├── html
+│   └── latex
+├── <font color="#3465A4"><b>LICENSE</b></font>
+└── <font color="#3465A4"><b>launch</b></font>
+   └── <font color="#3465A4"><b>tiago_launch.launch</b></font></pre>
 ---
--->
 
 ## Software Project Management 
-- ```Process, Tools and Technologies, Risk Management, References``` - [Project Proposal](https://github.com/sairampolina/Enpm808x-finalproject/blob/phase1/finalproject_enpm808x_proposal.pdf)
+- ```Process, Tools and Technologies, Risk Management, References``` - [Project Proposal](finalproject_enpm808x_proposal.pdf)
 
-- ``` Implementation, Class Diagram, Activity Diagram``` - [UML Diagrams](https://github.com/sairampolina/Enpm808x-finalproject/tree/master/UML/initial)
-<!--
+- ``` Implementation, Class Diagram, Activity Diagram``` - [UML Diagrams](UML/revised)
+
 ---
 ## Deliverables
-- Project: Perception Module [Human obstacle detector and tracker]
+- Project: Manfred- the Inventory Management AGV
 - Overview of proposed work including timeline, risks, and mitigations.
 - UML diagrams
-- Github repository with [README](./readme.md)
-- TravisCI setup with code coverage using Coveralls.
-- Valgrind Check for Memory Leaks.
+- Github repository with [README](README.md).
+- Testing Suites
+- GithubCI setup with code coverage using Codecov.
 - Git Version Control Workflow.
+- Doxygen Documentation.
+- Quad Chart.
 - Developer-level documentation.
 ---
--->
 
-<!--
-## Results
- ### Image Result
-![image_result](https://user-images.githubusercontent.com/106445479/198862636-5c1d19d4-fd54-41fc-9838-d262e331e8c9.jpeg)
 
-### Video Result
-![gif1](https://user-images.githubusercontent.com/106445479/198862649-732aea17-6d19-4a50-9b71-3572f0513b56.gif)
+### Video Results
+![Demonstration Video](https://drive.google.com/file/d/1_zlkNh7n82LKpOkjOCAaItQpVTASn1nq/view?usp=sharing)
+
+### Presentation
+![Final Presentation](https://docs.google.com/presentation/d/1NeBHGJK7w3UahWF0we489h2Lg_fpibfpUOyoCq6geCc/edit#slide=id.p)
 
 
 ---
--->
 
 ## Development Aspects
 Agile Iterative Development Process will be used to develop the software along Test-Driven Development.
@@ -149,22 +152,76 @@ Agile Iterative Development Process will be used to develop the software along T
  - tiago_simulation
  - tiago_2dnav
  - move_base
+ - Google Cartophagher
+ - tiago_maps
  
 ### Software Dependencies
-- OpenCV 4.6.0 (covered under the open-source Apache 2 License)
+- ROS Melodic
+- Gazebo
+- Rviz
+- [Tiago Dependencies](http://wiki.ros.org/Robots/TIAGo/Tutorials)
 - Eigen 3.4 the Mozilla Public License 2.0
+- Boost Library
 - GTest BSD 3-Clause "New" or "Revised" License
 
 
 ### Tools and Technologies
-`Ubuntu 22.04(LTS)` `C++ 14+` `CMake` `OpenCV` `GitHubCI` `Coveralls`
+`Ubuntu 22.04(LTS)` `C++ 14+` `ROS` `Melodic` `Gazebo` `Rviz` `CMake` `OpenCV` `GitHubCI` `Codecov`
 `Makefile` `CMake` `cpplint` `cppcheck` `clangd` `Valgrind` `GTest` `VScode`
 
 
 ### Installation via Command Line
+
+
+# ROS Installation
+- Setup your sources.list
 ```
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+```
+
+- Setup up your keys
+```
+sudo apt install curl # if you haven't already installed curl
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+```
+
+- Installation
+```
+sudo apt update
+sudo apt install ros-melodic-desktop-full
+```
+
+- Setup your environment
+```
+echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+``
+
+- Now close this terminal and open a new terminal and install the dependencies for building packages
+```
+sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
+```
+
+- You can install rosdep for conveniently installing system dependencies
+```
+sudo apt install python-rosdep
+```
+
+- Initialize rosdep
+```
+sudo rosdep init
+rosdep update
+```
+
 # Code Coverage
+```
 sudo apt-get install -y -qq lcov
+```
+sudo apt install python-rosdep
+```
+- Initialize rosdep
+```
+sudo rosdep init
+rosdep update
 ```
 
 ```
@@ -190,12 +247,6 @@ cd ../../
 # Static Code Analysis
 sudo apt install cpplint
 sudo apt install cppcheck
-```
-
-```
-# Valgrind
-sudo apt install valgrind
-sudo apt-get install -y kcachegrind
 ```
 
 ```
@@ -235,17 +286,9 @@ roslaunch im_agv tiago_launch.launch
 # Static Code Analysis
 ```
 1. cppcheck
-bash run_cppcheck.sh
+cppcheck src/*.cpp include/*.hpp test/*.cpp
 2. cpplint
-bash run_cpplint.sh
-```
-Note: Static Code Analysis Results are stored in `./results`
-
-```
-# Valgrind
-valgrind --leak-check=full <path of the executable>
-valgrind --tool=callgrind  ./app/shell-app
-kcachegrind
+cppcheck src/*.cpp include/*.hpp test/*.cpp
 ```
 
 ```
@@ -262,11 +305,3 @@ doxygen doxygen.config
 doxywizard
 ```
 ---
-## Project Videos
-
-### [Final Video](https://drive.google.com/file/d/1_zlkNh7n82LKpOkjOCAaItQpVTASn1nq/view?usp=sharing)
-
-### [Final PPT](https://docs.google.com/presentation/d/1NeBHGJK7w3UahWF0we489h2Lg_fpibfpUOyoCq6geCc/edit#slide=id.p)
-
-
-
