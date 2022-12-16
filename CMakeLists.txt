@@ -80,7 +80,7 @@ if(CATKIN_ENABLE_TESTING)
     test/main_test.test
     test/main.cpp
     
-    test/test_perception.cpp
+    #test/test_perception.cpp
     test/test_navigation.cpp
     #test/test_manipulation.cpp
     test/test_object.cpp
