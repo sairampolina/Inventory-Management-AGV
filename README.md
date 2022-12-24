@@ -25,13 +25,19 @@ The Software Product will consist of 4 modules each tasked with different aspect
 3. **Perception module**: This module will be used to locate the pickup object and the drop off location in the 3d world coordinates which will be used by the manipulator module to pickup or drop the object from the exact location. This module includes object detection and poses estimation of the desired object to facilitate the pickup of the object without damaging the product that needs to be picked up. Different sensors will be used to locate the objects in 3d world coordinates.
 4. **Manipulator planning and control**: This module will take the 3d location and pose of the desired object from the previous module. This input will be used to plan and move the manipulator (robotic hand) to the extracted location and place the object back in a bin, the module will also have to inform the bot when the task is executed so that object can move to the next task of navigating to the drop off location.
 
-
 <p align="center"> 
-  <img width="500" height="300" src="https://user-images.githubusercontent.com/48856345/205377455-878763b3-81f5-4133-9c8d-d718491c88e8.jpg">
-  
+  <img width="500" height="300" src="https://user-images.githubusercontent.com/48856345/205377455-878763b3-81f5-4133-9c8d-d718491c88e8.jpg"> 
 </p>
 <h4 align="center">AGV with inventory management capabilities</h1>
----
+
+<p align="center"> 
+  <img width="500" height="300" src="https://user-images.githubusercontent.com/48856345/209449530-cbeb7fa3-c225-48d2-8808-645c1a402fcf.png"> 
+</p>
+
+<p align="center"> 
+  <img width="500" height="300" src="https://user-images.githubusercontent.com/48856345/209449533-d17efb8a-f52e-42d4-bc37-4d1d4e29d341.png"> 
+</p>
+
 ### Team
 The Members are Graduate students at The University of Maryland, College Park. The members each have a Bachelors in Mechanical Engineering from prestigious universities in India. Their Graduate Study is in the field of Robotics with each of them having a specialization. Sanchit is pursuing a career in Computer vision and perception, Sairam aims to build his career in Deep Learning and Computer Vision and Shelvin is developing expertise in SLAM and Autonomous Vehicles.
 
@@ -41,238 +47,154 @@ The Members are Graduate students at The University of Maryland, College Park. T
 | 2 | Driver | Design Keeper | Navigator |
 | 3 | Navigator | Driver | Design Keeper |
 
----
+## Tools and Technologies
+`Ubuntu 18.04(LTS)` `ROS` `Melodic` `Gazebo` `Rviz` `CMake` `OpenCV` `GitHubCI` `Codecov`
+`Makefile` `CMake` `cpplint` `cppcheck` `clangd` `Valgrind` `GTest` `VScode`
+
+## Dependencies
+
+### Software Dependencies
+ - [Ubuntu 18.04](https://releases.ubuntu.com/18.04/)
+ - [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu)
+
+### ROS Package Dependencies
+- Gazebo
+- Rviz
+- [Tiago robot package and all other dependencies](http://wiki.ros.org/Robots/TIAGo/Tutorials/Installation/InstallUbuntuAndROS)
+
+## Command-line installations
+
+### Code Coverage
+```
+sudo apt-get install -y -qq lcov
+```
+### Static Code Analysis
+``` 
+sudo apt install cpplint
+sudo apt install cppcheck
+```
+### Doxygen
+```
+sudo apt install graphviz
+sudo apt install doxygen-gui
+```
 
 ## Content Tree
-<pre>├── <font color="#3465A4"><b>src</b></font>
+<pre>
+├── CMakeLists.txt
+├── docs
+│   ├── html
+│   └── latex
+├── finalproject_enpm808x_proposal.pdf
+├── include
+│   ├── manipulation.hpp
+│   ├── my_tiago.hpp
+│   ├── navigation.hpp
+│   ├── object.hpp
+│   └── perception.hpp
+├── launch
+│   └── tiago_launch.launch
+├── LICENSE
+├── package.xml
+├── Quadchart
+│   └── quad_chart_.pdf
+├── README.md
+├── results
+│   ├── cppcheck.txt
+│   └── cpplint.txt
+├── src
 │   ├── manipulation.cpp
 │   ├── my_tiago.cpp
 │   ├── navigation.cpp
 │   ├── object.cpp
 │   └── perception.cpp
-├── <font color="#3465A4"><b>include</b></font>
-│   ├── manipulation.hpp
-│   ├── <font color="#4E9A06"><b>my_tiago.hpp</b></font>
-│   ├── navigation.hpp
-│   ├── object.hpp
-│   └── perception.hpp
-├── <font color="#3465A4"><b>Quadchart</b></font>
-│   └── Quadchart.pdf
-├── CMakeLists.txt
-├── package.xml
-├── <font color="#3465A4"><b>Design_Neccesities</b></font>
-│   ├── CRC_Cards_Mid_Term.pdf
-│   └── ESC_midtermproposal.pdf
-├── Project Proposal.pdf
-├── README.md
-├── <font color="#3465A4"><b>results</b></font>
-│   ├── cpplint.txt
-│   └── cppcheck.txt
-├── <font color="#3465A4"><b>test</b></font>
+├── test
 │   ├── main.cpp
+│   ├── main_test.test
 │   ├── test_manipulation.cpp
 │   ├── test_navigation.cpp
 │   ├── test_object.cpp
 │   └── test_perception.cpp
-├── <font color="#3465A4"><b>UML</b></font>
-│   ├── <font color="#3465A4"><b>initial</b></font>
-│   └── <font color="#3465A4"><b>revised</b></font>
-├── <font color="#3465A4"><b>docs</b></font>
-│   ├── html
-│   └── latex
-├── <font color="#3465A4"><b>LICENSE</b></font>
-└── <font color="#3465A4"><b>launch</b></font>
-   └── <font color="#3465A4"><b>tiago_launch.launch</b></font></pre>
----
+└── UML
+    ├── initial
+    └── revised 
+</pre>
+
 
 ## Software Project Management 
 - ```Process, Tools and Technologies, Risk Management, References``` - [Project Proposal](finalproject_enpm808x_proposal.pdf)
 
 - ``` Implementation, Class Diagram, Activity Diagram``` - [UML Diagrams](UML/revised)
 
----
-## Deliverables
-- Project: Manfred- the Inventory Management AGV
-- Overview of proposed work including timeline, risks, and mitigations.
-- UML diagrams
-- Github repository with [README](README.md).
-- Testing Suites
-- GithubCI setup with code coverage using Codecov.
-- Git Version Control Workflow.
-- Doxygen Documentation.
-- Quad Chart.
-- Developer-level documentation.
----
-### Video Results
-[Demonstration Video](https://drive.google.com/file/d/1_zlkNh7n82LKpOkjOCAaItQpVTASn1nq/view?usp=sharing)
-
-### Presentation
-[Final Presentation](https://docs.google.com/presentation/d/1NeBHGJK7w3UahWF0we489h2Lg_fpibfpUOyoCq6geCc/edit#slide=id.p)
----
-
 ## Development Aspects
-Agile Iterative Development Process will be used to develop the software along Test-Driven Development.
+Agile Iterative Development Process was used to develop the simulation along with Test-Driven Development.
 
-### [Product Backlog and Sprint Sheet](https://docs.google.com/spreadsheets/d/1BZ1SMS-pVFIOvnL44yTZs3nGOwIKBSiaRsw7p3ZLkmk/edit#gid=0)
-### [Sprint Review Sheet](https://docs.google.com/document/d/102MQqVZMxTfVCX7L_Uc2SSMKDLDpSjjp1_cofrB92XM/edit#)
+[Product Backlog and Sprint Sheet](https://docs.google.com/spreadsheets/d/1BZ1SMS-pVFIOvnL44yTZs3nGOwIKBSiaRsw7p3ZLkmk/edit#gid=0)
 
-### ROS Packages
- - tiago_simulation
- - tiago_2dnav
- - move_base
- - Google Cartophagher
- - tiago_maps
- 
-### Software Dependencies
-- ROS Melodic
-- Gazebo
-- Rviz
-- [Tiago Dependencies](http://wiki.ros.org/Robots/TIAGo/Tutorials)
-- Eigen 3.4 the Mozilla Public License 2.0
-- Boost Library
-- GTest BSD 3-Clause "New" or "Revised" License
+[Sprint Review Sheet](https://docs.google.com/document/d/102MQqVZMxTfVCX7L_Uc2SSMKDLDpSjjp1_cofrB92XM/edit#)
 
+## To run the simulation
+- Make sure all the above dependencies are installed in your system.
+- Navigate in to the src folder of of your ROS workspace.
 
-### Tools and Technologies
-`Ubuntu 22.04(LTS)` `C++ 14+` `ROS` `Melodic` `Gazebo` `Rviz` `CMake` `OpenCV` `GitHubCI` `Codecov`
-`Makefile` `CMake` `cpplint` `cppcheck` `clangd` `Valgrind` `GTest` `VScode`
-
-
-### Installation via Command Line
-
-
-# ROS Installation
-- Setup your sources.list
-```
-sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
-```
-
-- Setup up your keys
-```
-sudo apt install curl # if you haven't already installed curl
-curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
-```
-
-- Installation
-```
-sudo apt update
-sudo apt install ros-melodic-desktop-full
-```
-
-- Setup your environment
-```
-echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
-``
-
-- Now close this terminal and open a new terminal and install the dependencies for building packages
-```
-sudo apt install python-rosdep python-rosinstall python-rosinstall-generator python-wstool build-essential
-```
-
-- You can install rosdep for conveniently installing system dependencies
-```
-sudo apt install python-rosdep
-```
-
-- Initialize rosdep
-```
-sudo rosdep init
-rosdep update
-```
-
-# Code Coverage
-```
-sudo apt-get install -y -qq lcov
-```
-sudo apt install python-rosdep
-```
-- Initialize rosdep
-```
-sudo rosdep init
-rosdep update
-```
+- Clone the package
 
 ```
-# OpenCV install
-sudo apt-get install -y build-essential
-sudo apt-get install -y cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
-sudo apt-get install -y python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
-# Download v4.6.0
-curl -sL https://github.com/Itseez/opencv/archive/4.6.0.zip > opencv.zip
-unzip opencv.zip
-cd opencv-4.6.0
-mkdir build
-cd build
-cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D WITH_TBB=ON -D BUILD_NEW_PYTHON_SUPPORT=ON -D WITH_V4L=ON -D INSTALL_C_EXAMPLES=ON -D INSTALL_PYTHON_EXAMPLES=ON -D BUILD_EXAMPLES=ON -D WITH_QT=ON -D WITH_OPENGL=ON ..
-make -j4
-sudo make install
-sudo sh -c 'echo "/usr/local/lib" > /etc/ld.so.conf.d/opencv.conf'
-sudo ldconfig
-cd ../../
+git clone  https://github.com/sairampolina/Inventory-Management-AGV.git
 ```
-
-``` 
-# Static Code Analysis
-sudo apt install cpplint
-sudo apt install cppcheck
-```
+- Build the package
 
 ```
-# Doxygen
-sudo apt-get install doxygen
-sudo apt-get install doxygen-gui
+cd ..
+catkin build im_agv
+```
+- Source the workspace
+```
+source ./devel/setup.bash
+```
+- Run the launch file
+```
+roslaunch im_agv tiago_launch.launch
 ```
 
-<!--
-### Build and Code Coverage
-```
-# Clone
-git clone https://github.com/bharadwaj-chukkala/ENPM808X_Midterm_project.git
-cd <path to repository>
-mkdir build
-cd build
-cmake ..
-make
--->
-
-# Run
 ## To run unit tests
 ```
-sudo apt install -y lcov
-. /opt/ros/$ROS_DISTRO/setup.bash
+. /opt/ros/melodic/setup.bash
 catkin config --cmake-args -DCMAKE_CXX_FLAGS="-Wall -Wno-unused --coverage -fno-inline -fno-inline-small-functions -fno-default-inline" -DCMAKE_C_FLAGS="-Wall -Wno-unused --coverage -fno-inline -fno-inline-small-functions -fno-default-inline" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_EXE_LINKER_FLAGS="-lgcov"
 catkin build
 catkin run_tests -i && catkin_test_results
 ```
-## To run simulation
-```
-cd <workspace>
-catkin build im_agv
-. devel/setup.bash
-roslaunch im_agv tiago_launch.launch
-```
-# Static Code Analysis
-```
+
+## Static Code Analysis
+Navigate in to the ROS package.Then run
+
 1. cppcheck
-cppcheck src/*.cpp include/*.hpp test/*.cpp
-2. cpplint
-cppcheck src/*.cpp include/*.hpp test/*.cpp
+```
+cppcheck --enable=all src/*.cpp include/*.hpp test/*.cpp --suppress=missingIncludeSystem --suppress=missingInclude --suppress=unmatchedSuppression --suppress=unusedFunction --suppress=unreadVariable --suppress=useInitializationList > ./results/cppcheck.txt
 ```
 
+2. cpplint
 ```
-# Code Coverage
+cpplint --filter=-build/c++11,-build/namespaces,-build/include_order src/*.cpp include/*.hpp test/*.cpp &> ./results/cpplint.txt
+```
+
+## Code Coverage
+```
 lcov --directory . --capture --output-file coverage.info
 lcov --remove coverage.info '/opt/*' '/usr/*' '*/devel/*' '*_test*' --output-file coverage.info
 lcov --list coverage.info
 ```
 
-### Doxygen Documentation
+## Doxygen Documentation
+In the terminal execute the command to open a GUI.
 ```
-cd ..
-doxygen doxygen.config
 doxywizard
 ```
----
+## Results
+
+[Demonstration Video](https://drive.google.com/file/d/1_zlkNh7n82LKpOkjOCAaItQpVTASn1nq/view?usp=sharing)
+
+[Final Presentation](https://docs.google.com/presentation/d/1NeBHGJK7w3UahWF0we489h2Lg_fpibfpUOyoCq6geCc/edit#slide=id.p)
 ## License
 Apache License 2.0
 ```
